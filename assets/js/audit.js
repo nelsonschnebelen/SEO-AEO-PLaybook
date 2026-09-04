@@ -181,6 +181,8 @@ const Audit = {
     const done = QUESTIONS.filter(q => this.state.answers[q.id]).length;
     document.getElementById('progress-note').textContent =
       done + ' of ' + QUESTIONS.length + ' answered';
+    const bar = document.getElementById('audit-bar');
+    if (bar) bar.style.width = Math.round((done / QUESTIONS.length) * 100) + '%';
   },
 
   /* --------------------------------------------------------------- score
@@ -271,21 +273,37 @@ const Audit = {
 
     document.getElementById('btn-dl').addEventListener('click', () => this.download(s, gaps));
     document.getElementById('btn-print-report').addEventListener('click', () => window.print());
+    this.animate(out);
+  },
+
+  /* Inline widths set at render time never transition, so paint the final
+     values on the next frame instead. */
+  animate(out) {
+    const reduced = window.matchMedia &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const paint = () => {
+      out.querySelectorAll('.bar-fill[data-w]').forEach(el => { el.style.width = el.dataset.w + '%'; });
+      const ring = out.querySelector('.ring[data-off]');
+      if (ring) ring.style.strokeDashoffset = ring.dataset.off;
+    };
+    if (reduced) paint();
+    else requestAnimationFrame(() => requestAnimationFrame(paint));
   },
 
   scoreHeroHtml(s, name) {
-    const C = 2 * Math.PI * 68;
-    const dash = (s.overall / 100) * C;
+    const R = 74, C = 2 * Math.PI * R;
+    const off = C - (s.overall / 100) * C;
     return '' +
     '<div class="score-hero tone-' + s.band.tone + '">' +
       '<div class="score-dial">' +
-        '<svg width="158" height="158" viewBox="0 0 158 158" aria-hidden="true">' +
-          '<circle cx="79" cy="79" r="68" fill="none" stroke="var(--line)" stroke-width="12"/>' +
-          '<circle class="ring" cx="79" cy="79" r="68" fill="none" stroke-width="12" stroke-linecap="round" ' +
-            'stroke-dasharray="' + dash.toFixed(1) + ' ' + C.toFixed(1) + '"/>' +
+        '<svg width="172" height="172" viewBox="0 0 172 172" aria-hidden="true">' +
+          '<circle class="track" cx="86" cy="86" r="' + R + '" fill="none" stroke-width="11"/>' +
+          '<circle class="ring" cx="86" cy="86" r="' + R + '" fill="none" stroke-width="11" ' +
+            'stroke-linecap="round" stroke-dasharray="' + C.toFixed(1) + '" ' +
+            'stroke-dashoffset="' + C.toFixed(1) + '" data-off="' + off.toFixed(1) + '"/>' +
         '</svg>' +
         '<div class="val"><div class="num">' + s.overall + '</div>' +
-        '<div class="grade">Grade ' + s.band.grade + ' &middot; ' + s.band.label + '</div></div>' +
+        '<div class="grade">Grade ' + s.band.grade + '<br>' + s.band.label + '</div></div>' +
       '</div>' +
       '<div class="score-copy">' +
         '<h3>' + this.esc(name) + ' scores ' + s.overall + ' out of 100</h3>' +
@@ -312,7 +330,7 @@ const Audit = {
         '<span class="nm">' + p.icon + ' ' + p.name + '</span>' +
         '<span class="wt">' + p.weight + '% of score &middot; ' + p.answered + '/' + p.total + ' answered</span>' +
         '<span class="pc">' + p.pct + '%</span>' +
-        '</div><div class="bar-track"><div class="bar-fill ' + cls + '" style="width:' + p.pct + '%"></div></div></div>';
+        '</div><div class="bar-track"><div class="bar-fill ' + cls + '" data-w="' + p.pct + '"></div></div></div>';
     }).join('');
 
     return '<h3 style="margin-top:36px">Where you stand, pillar by pillar</h3>' +
@@ -465,7 +483,9 @@ const Audit = {
           'ChatGPT, Gemini, Perplexity and Copilot the same 15 diner questions and logging whether ' +
           'you were mentioned and whether the facts were right.' + nl;
 
-    const slug = (p.name || 'restaurant').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+    const slug = (p.name || 'restaurant').toLowerCase()
+      .replace(/['\u2019"]/g, '')
+      .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
     const blob = new Blob([md], { type: 'text/markdown;charset=utf-8' });
     const a = document.createElement('a');
     a.href = URL.createObjectURL(blob);

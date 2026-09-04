@@ -1,5 +1,9 @@
 # Quick start — the first afternoon
 
+> **Start by checking what you already have.** Open `index.html`, go to *Check my site*, and paste
+> in your homepage source. It takes two minutes and tells you which of the items below you actually
+> need — rather than guessing.
+
 If you read nothing else in this playbook, do these five things. For a typical independent
 restaurant they account for the large majority of the available upside, and none of them requires
 a developer, an agency or a budget.

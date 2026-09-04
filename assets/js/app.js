@@ -19,6 +19,68 @@ const App = {
     this.renderPrompts();
     this.renderHoursFields();
     this.bind();
+    this.chrome();
+  },
+
+  /* Page chrome: mobile nav, sticky header state, reading progress and the
+     scroll-reveal pass. All of it degrades to "everything visible" if
+     IntersectionObserver is unavailable or motion is reduced. */
+  chrome() {
+    const header = document.getElementById('site-header');
+    const rail = document.getElementById('read-progress');
+    const nav = document.getElementById('nav');
+    const toggle = document.getElementById('nav-toggle');
+
+    if (toggle && nav) {
+      toggle.addEventListener('click', () => {
+        const open = nav.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        toggle.textContent = open ? '✕' : '☰';
+      });
+      nav.addEventListener('click', e => {
+        if (e.target.tagName === 'A') {
+          nav.classList.remove('open');
+          toggle.setAttribute('aria-expanded', 'false');
+          toggle.textContent = '☰';
+        }
+      });
+    }
+
+    let ticking = false;
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        const y = window.scrollY;
+        if (header) header.classList.toggle('stuck', y > 8);
+        if (rail) {
+          const max = document.documentElement.scrollHeight - window.innerHeight;
+          rail.style.width = (max > 0 ? (y / max) * 100 : 0) + '%';
+        }
+        ticking = false;
+      });
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    const reduced = window.matchMedia &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const targets = document.querySelectorAll(
+      '.section-head, .card, .vs, .callout, .table-scroll, .toc, .answer-card, .how-to');
+
+    if (reduced || !('IntersectionObserver' in window)) {
+      targets.forEach(el => el.classList.add('in'));
+      return;
+    }
+    targets.forEach(el => el.classList.add('reveal'));
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
+    targets.forEach(el => io.observe(el));
   },
 
   /* -------------------------------------------------------------- pillars */
@@ -413,4 +475,5 @@ window.App = App;
 document.addEventListener('DOMContentLoaded', () => {
   Audit.init();
   App.init();
+  if (window.CheckerUI) CheckerUI.init();
 });

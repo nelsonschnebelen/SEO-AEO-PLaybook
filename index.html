@@ -9,16 +9,23 @@
 <meta property="og:title" content="The Restaurant SEO &amp; AEO Playbook">
 <meta property="og:description" content="Get found on Google. Get recommended by AI. A working playbook for restaurant owners, with a free audit and checklists.">
 <meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..700&display=swap">
 <link rel="stylesheet" href="assets/css/styles.css">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍽️</text></svg>">
 </head>
 <body>
 
-<header class="site-header">
+<div class="progress-rail"><i id="read-progress"></i></div>
+
+<header class="site-header" id="site-header">
   <div class="wrap">
-    <a class="logo" href="#top">The Restaurant <span>SEO&nbsp;&amp;&nbsp;AEO</span> Playbook</a>
-    <nav class="nav">
+    <a class="logo" href="#top"><span class="mark" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0l1.5 5.1L14.6 6.6 9.5 8.1 8 13.2 6.5 8.1 1.4 6.6 6.5 5.1z"/><path d="M13 10.4l.6 2 2 .6-2 .6-.6 2-.6-2-2-.6 2-.6z"/></svg></span><span class="txt">The Restaurant SEO&nbsp;&amp;&nbsp;AEO Playbook</span></a>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav class="nav" id="nav">
       <a href="#basics">Basics</a>
+      <a href="#checker">Check my site</a>
       <a href="#pillars">Pillars</a>
       <a href="#playbook">Playbook</a>
       <a href="#checklists">Checklists</a>
@@ -35,21 +42,44 @@
 <!-- =================================================================== HERO -->
 <div class="hero">
   <div class="wrap">
-    <span class="eyebrow">For independent restaurant owners</span>
-    <h1>Get found on Google. Get recommended by AI.</h1>
-    <p class="lede">
-      Two things decide whether a hungry stranger walks through your door: whether Google shows you,
-      and whether the AI assistant they just asked names you. This playbook covers both — in plain
-      English, with a free audit, the exact checklists, and the AI prompts to do the work faster.
-    </p>
-    <div class="hero-actions">
-      <a href="#audit" class="btn btn-primary">Add your restaurant &amp; get your audit →</a>
-      <a href="#basics" class="btn btn-ghost">Start with the basics</a>
+    <div>
+      <span class="eyebrow">For independent restaurant owners</span>
+      <h1>Get found on Google. <br>Get <span class="accent">recommended</span> by AI.</h1>
+      <p class="lede">
+        Two things decide whether a hungry stranger walks through your door: whether Google shows
+        you, and whether the AI assistant they just asked names you. This playbook covers both — in
+        plain English, with a free audit of your own site, the exact checklists, and the AI prompts
+        to do the work faster.
+      </p>
+      <div class="hero-actions">
+        <a href="#audit" class="btn btn-primary">Add your restaurant &amp; get your audit →</a>
+        <a href="#checker" class="btn btn-ghost">Check what I already have</a>
+      </div>
+      <p class="hero-note"><small>
+        <svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M8 1.5 2.5 4v4c0 3 2.3 5.6 5.5 6.5 3.2-.9 5.5-3.5 5.5-6.5V4L8 1.5Z"/><path d="m5.8 8 1.6 1.6 3-3.2"/></svg>
+        Nothing you type ever leaves your browser. The audit and the site checker run entirely on
+        your own device and save to this browser only. No account, no email, no upload.
+      </small></p>
     </div>
-    <p style="margin-top:22px"><small>
-      Nothing you type leaves your browser. The audit runs entirely on your own device and saves
-      to this browser only. No account, no email, no upload.
-    </small></p>
+
+    <div>
+      <div class="answer-card">
+        <p class="ac-q">🧑 <b>&ldquo;Where should I take my parents for dinner Saturday in downtown Asheville?&rdquo;</b></p>
+        <div class="ac-head"><span class="ac-dot"></span> AI assistant</div>
+        <p class="ac-body">
+          For a relaxed dinner with parents, I&rsquo;d suggest <span class="named">Rosa&rsquo;s Trattoria</span>
+          on Main Street — wood-fired Neapolitan pizza and handmade pasta, moderately priced, and
+          reviewers consistently mention the quiet back room and unhurried service. They take
+          reservations and there&rsquo;s free parking behind the building.
+        </p>
+        <div class="ac-sources">
+          <span class="ac-src">rosastrattoria.com</span>
+          <span class="ac-src">Google reviews</span>
+          <span class="ac-src">local food blog</span>
+        </div>
+      </div>
+      <p class="ac-caption">Every fact in that answer came from somewhere.<br>This playbook is about being the somewhere.</p>
+    </div>
   </div>
 </div>
 
@@ -57,6 +87,7 @@
 <section class="band" id="basics">
   <div class="wrap">
     <div class="section-head">
+      <div class="kicker">01 · The basics</div>
       <h2>SEO and AEO, without the jargon</h2>
       <p>
         These are two different jobs. Most restaurants do a little of the first and none of the
@@ -136,10 +167,73 @@
   </div>
 </section>
 
-<!-- ================================================================ PILLARS -->
-<section class="band alt" id="pillars">
+<!-- ================================================================ CHECKER -->
+<section class="band alt" id="checker">
   <div class="wrap">
     <div class="section-head">
+      <div class="kicker">02 · Check what you have</div>
+      <h2>Paste your site. Find out what&rsquo;s missing.</h2>
+      <p>
+        Most restaurants have <em>some</em> of this already — a bit of markup their web person
+        added, a page that half works. Rather than guess, paste in what you&rsquo;ve got and this
+        will tell you exactly what is missing, what is wrong, and what is quietly costing you
+        customers.
+      </p>
+    </div>
+
+    <div class="how-to">
+      <div class="how-step">
+        <span class="n">1</span>
+        <p><b>Open your website</b>Go to your homepage in a normal browser tab.</p>
+      </div>
+      <div class="how-step">
+        <span class="n">2</span>
+        <p><b>View the page source</b>Right-click anywhere and choose <em>View page source</em>, or press Ctrl+U (Cmd+Option+U on a Mac).</p>
+      </div>
+      <div class="how-step">
+        <span class="n">3</span>
+        <p><b>Select all and copy</b>Ctrl+A then Ctrl+C. It will look like gibberish — that is fine, it is meant to.</p>
+      </div>
+      <div class="how-step">
+        <span class="n">4</span>
+        <p><b>Paste it below</b>Or drag in a saved <code>.html</code> file. Then press Check.</p>
+      </div>
+    </div>
+
+    <div class="callout note">
+      <strong>What you can paste</strong>
+      <p>
+        Your <b>whole page source</b> gets you the fullest report — structured data plus the on-page
+        fundamentals. Just a <b>JSON-LD block</b> on its own works too, and so does an uploaded
+        <code>.html</code> or <code>.json</code> file. Have nothing at all? Press Check with the box
+        empty and you will get the list of what to build from scratch.
+      </p>
+    </div>
+
+    <div class="dropzone" id="dropzone">
+      <label for="check-input" class="hidden">Paste your page source or schema markup</label>
+      <textarea id="check-input" spellcheck="false"
+        placeholder="Paste your page source or your JSON-LD here — or drag a .html file onto this box…"></textarea>
+      <div class="dz-foot">
+        <button type="button" class="btn btn-primary btn-sm" id="btn-check">Check my site →</button>
+        <input type="file" id="check-file" accept=".html,.htm,.json,.txt,.md" class="hidden">
+        <button type="button" class="btn btn-ghost btn-sm" id="btn-upload">📂 Upload a file</button>
+        <button type="button" class="btn btn-quiet btn-sm" id="btn-sample">Try it with a sample</button>
+        <span class="spacer"></span>
+        <span class="fname" id="check-fname"></span>
+        <button type="button" class="btn btn-quiet btn-sm" id="btn-clear-check-input">Clear</button>
+      </div>
+    </div>
+
+    <div id="check-results" style="margin-top:34px"></div>
+  </div>
+</section>
+
+<!-- ================================================================ PILLARS -->
+<section class="band" id="pillars">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">03 · How this is scored</div>
       <h2>The seven pillars</h2>
       <p>
         Everything in this playbook sits in one of these seven buckets. The percentage is how much
@@ -152,9 +246,10 @@
 </section>
 
 <!-- ================================================================== AUDIT -->
-<section class="band" id="audit">
+<section class="band alt" id="audit">
   <div class="wrap">
     <div class="section-head">
+      <div class="kicker">04 · Your audit</div>
       <h2>Add your restaurant</h2>
       <p>
         Answer a few questions about your restaurant and work through the checklist. You will get a
@@ -173,6 +268,7 @@
     </div>
 
     <div class="audit-shell">
+      <div class="audit-progress"><i id="audit-bar"></i></div>
       <div class="audit-steps" role="tablist" id="audit-steps"></div>
       <div class="audit-body">
         <form id="audit-form" novalidate>
@@ -272,7 +368,7 @@
           <!-- steps 1..n rendered by audit.js -->
 
           <!-- ---------------------------------------------- results -->
-          <div class="step" data-step="results">
+          <div class="step step-results" data-step="results">
             <div id="results-out"></div>
           </div>
 
@@ -290,9 +386,10 @@
 </section>
 
 <!-- =============================================================== PLAYBOOK -->
-<section class="band alt" id="playbook">
+<section class="band" id="playbook">
   <div class="wrap">
     <div class="section-head">
+      <div class="kicker">05 · The full method</div>
       <h2>The playbook</h2>
       <p>
         The whole thing, in order. If you only have one day, do chapter 1 and stop. If you have a
@@ -995,9 +1092,10 @@
 </section>
 
 <!-- ============================================================ CHECKLISTS -->
-<section class="band" id="checklists">
+<section class="band alt" id="checklists">
   <div class="wrap">
     <div class="section-head">
+      <div class="kicker">06 · The work</div>
       <h2>The checklists</h2>
       <p>
         Two tracks. The SEO checklist gets you found; the AEO checklist gets you recommended. Tick
@@ -1021,9 +1119,10 @@
 </section>
 
 <!-- =============================================================== PROMPTS -->
-<section class="band alt" id="prompts">
+<section class="band" id="prompts">
   <div class="wrap">
     <div class="section-head">
+      <div class="kicker">07 · Do it faster</div>
       <h2>AI prompt library</h2>
       <p>
         Thirty prompts built for restaurant work, written the way that actually gets useful output.
@@ -1037,15 +1136,16 @@
       <p>These prompts are filled in with your restaurant's details. <span id="pp-detail"></span></p>
     </div>
 
-    <div class="prompt-filters" id="prompt-filters"></div>
+    <div class="chips" id="prompt-filters"></div>
     <div id="prompt-out"></div>
   </div>
 </section>
 
 <!-- ================================================================ SCHEMA -->
-<section class="band" id="schema">
+<section class="band alt" id="schema">
   <div class="wrap">
     <div class="section-head">
+      <div class="kicker">08 · The technical bit</div>
       <h2>Schema markup generator</h2>
       <p>
         Fill in the <a href="#audit">Add your restaurant</a> form above, add your hours below, and
@@ -1114,9 +1214,10 @@ https://maps.app.goo.gl/…"></textarea>
 </section>
 
 <!-- ================================================================== PLAN -->
-<section class="band alt" id="plan">
+<section class="band" id="plan">
   <div class="wrap">
     <div class="section-head">
+      <div class="kicker">09 · Sequencing</div>
       <h2>The 90-day plan</h2>
       <p>
         A generic version is below. Run the <a href="#audit">audit</a> and you get this same plan
@@ -1274,6 +1375,8 @@ https://maps.app.goo.gl/…"></textarea>
 <script src="assets/js/data.js"></script>
 <script src="assets/js/prompts.js"></script>
 <script src="assets/js/checklists.js"></script>
+<script src="assets/js/checker-spec.js"></script>
+<script src="assets/js/checker.js"></script>
 <script src="assets/js/audit.js"></script>
 <script src="assets/js/app.js"></script>
 </body>

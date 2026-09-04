@@ -1,8 +1,9 @@
 # The Restaurant SEO &amp; AEO Playbook
 
 A complete, plain-English playbook for getting a restaurant **found on Google** (SEO) and
-**recommended by AI assistants** (AEO) — with a free self-audit, two checklists, 30 ready-to-use AI
-prompts, and a schema markup generator.
+**recommended by AI assistants** (AEO) — with a site checker that tells you what your existing
+pages are missing, a free self-audit, two checklists, 30 ready-to-use AI prompts, and a schema
+markup generator.
 
 Built for independent restaurant owners, not for marketers. No jargon, no account, no upload.
 
@@ -25,6 +26,32 @@ bucket. Nothing needs configuring.
 ---
 
 ## What is in it
+
+### "Check my site" — paste what you have, find out what's missing
+
+Paste your page source (or a JSON-LD block, or drag in an `.html` file) and the checker reports
+back on both layers at once:
+
+- **Your structured data** — every missing field, ranked critical / important / nice-to-have, plus
+  the shape and policy problems that look fine until something actually reads them: an address
+  written as one string, hours as free text, a `hasMenu` link pointing at a PDF, placeholder values
+  still live, invalid JSON, duplicate blocks, and self-serving `aggregateRating` markup (a Google
+  guideline violation and a common cause of manual penalties).
+- **Your on-page fundamentals** — title tag, meta description, a single H1, mobile viewport,
+  tap-to-call link, address as selectable text, alt attributes, a stray `noindex`, mixed content,
+  and whether there is any question-and-answer content for answer engines to quote.
+
+It is deliberately forgiving about input: it repairs smart quotes, trailing commas and byte-order
+marks (and tells you it had to), walks `@graph` containers, and works from a bare JSON block or a
+whole page. Press **Check** with the box empty and you get the list of what to build from scratch.
+
+Then **Build my corrected markup** merges what you already have with your restaurant details,
+strips the policy violations, upgrades the wrong shapes — a string address becomes a
+`PostalAddress`, a PDF menu link gets replaced, a keyword-stuffed name is swapped for your real
+one — and hands back a clean block to paste in. Anything still unknown appears as `FILL_IN` rather
+than being invented.
+
+The full rule set is documented in [What the site checker looks for](docs/08-site-checker.md).
 
 ### "Add your restaurant" — the self-audit
 
@@ -105,13 +132,15 @@ walk-in:
 | [Audit questions](docs/05-audit-questions.md) | The full question set, with how to check each one |
 | [Schema recipes](docs/06-schema-recipes.md) | Copy-paste JSON-LD for restaurant, menu, FAQ, events, multi-location |
 | [Measurement](docs/07-measurement.md) | The monthly loop and how to measure AI visibility |
+| [Site checker rules](docs/08-site-checker.md) | Every check the site checker runs, and why |
 
 ---
 
 ## Privacy
 
 Everything runs client-side. Audit answers, restaurant details and checklist ticks are stored in
-`localStorage` in the visitor's own browser and never leave the device. There is no analytics, no
+`localStorage` in the visitor's own browser and never leave the device. Anything you paste or upload
+into the site checker is parsed in the page and is never stored or transmitted at all. There is no analytics, no
 tracking, no network request of any kind, and no backend to send anything to.
 
 ---
@@ -125,8 +154,10 @@ assets/
   js/data.js                7 pillars, 43 audit questions, score bands
   js/prompts.js             30 AI prompts + categories
   js/checklists.js          118 checklist items across two tracks
+  js/checker-spec.js        What the site checker looks for, and why
+  js/checker.js             Checker engine (parse, analyse, rebuild) + its UI
   js/audit.js               Wizard, scoring, action plan, Markdown export
-  js/app.js                 Checklists, prompt library, schema generator
+  js/app.js                 Page chrome, checklists, prompt library, schema generator
 docs/                       Markdown editions (some generated — see below)
 tools/build-docs.js         Regenerates the generated docs from assets/js/
 ```
@@ -138,9 +169,11 @@ The site is data-driven. To change what it says, edit the data — not the HTML:
 - **Audit questions and pillar weights** → `assets/js/data.js`
 - **AI prompts** → `assets/js/prompts.js`
 - **Checklist items** → `assets/js/checklists.js`
+- **Site checker rules** → `assets/js/checker-spec.js`
 - **Playbook chapters** → the `#playbook` section of `index.html`
 
-`docs/02`, `03`, `04` and `05` are **generated** from those data files so the two cannot drift apart.
+`docs/02`, `03`, `04`, `05` and `08` are **generated** from those data files so the two cannot
+drift apart.
 After editing data, regenerate them:
 
 ```bash

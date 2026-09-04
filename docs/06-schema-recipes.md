@@ -7,8 +7,10 @@ misinterpret. Your page says "Open 5pm till late, Tues–Sun" and a human unders
 For AEO this matters more than it ever did for SEO. Retrieval systems favour facts they can extract
 with confidence, and schema is the highest-confidence format available.
 
-> The generator at `index.html#schema` writes the first block below for you from a form. These
-> recipes are here for the ones it does not cover, and for anyone who prefers to edit code directly.
+> Already have markup? Paste it into the checker at `index.html#checker` first — it will tell you
+> what is missing or wrong before you rewrite anything, and can rebuild a corrected block for you.
+> The generator at `index.html#schema` writes the first block below from a form. These recipes are
+> here for the ones neither covers, and for anyone who prefers to edit code directly.
 
 ---
 
