@@ -789,3 +789,7 @@ unsupervised.
 kitchen checking it line by line. An assistant will describe a dish as gluten-free from the name
 alone. That is a medical and legal risk, and the one place in this playbook where speed is not
 worth it.
+
+---
+
+_From [The Restaurant SEO &amp; AEO Playbook](../README.md) by [Dineline](https://dineline.co/) — done-for-you restaurant marketing, tracked to the dollar._

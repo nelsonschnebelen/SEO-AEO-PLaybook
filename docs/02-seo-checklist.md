@@ -179,3 +179,7 @@ The part where AI genuinely writes the code for you. Validate everything before 
 ---
 
 **68 items total.**
+
+---
+
+_From [The Restaurant SEO &amp; AEO Playbook](../README.md) by [Dineline](https://dineline.co/) — done-for-you restaurant marketing, tracked to the dollar._

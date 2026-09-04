@@ -309,3 +309,7 @@ different photos, different parking, different landmarks, the actual manager's n
 When stuck, paste both your code and the error text into an AI assistant and ask for a corrected
 block. There is a prompt for exactly this in
 [the library](04-ai-prompt-library.md#fix-schema-validation-errors).
+
+---
+
+_From [The Restaurant SEO &amp; AEO Playbook](../README.md) by [Dineline](https://dineline.co/) — done-for-you restaurant marketing, tracked to the dollar._

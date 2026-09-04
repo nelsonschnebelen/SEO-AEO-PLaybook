@@ -124,3 +124,7 @@ you hire help, you will actually be able to tell whether they are adding anythin
 
 Be especially wary of anyone guaranteeing rankings. Nobody controls Google's results, and the people
 who claim to are usually using techniques that eventually cost you.
+
+---
+
+_From [The Restaurant SEO &amp; AEO Playbook](../README.md) by [Dineline](https://dineline.co/) — done-for-you restaurant marketing, tracked to the dollar._

@@ -464,3 +464,8 @@ const BANDS = [
   { min: 0, grade: 'F', label: 'Effectively invisible', tone: 'bad',
     summary: 'Right now search engines and AI assistants have very little to go on. This is common and very fixable — do the first three items on the plan below and you will be past most of your competition.' }
 ];
+
+/* Expose for cross-file access: a top-level const is not a window property. */
+window.PILLARS = PILLARS;
+window.QUESTIONS = QUESTIONS;
+window.BANDS = BANDS;

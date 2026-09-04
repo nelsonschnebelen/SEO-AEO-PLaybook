@@ -407,3 +407,6 @@ Whether ChatGPT, Google AI Overviews, Gemini, Perplexity and Copilot can find, t
 - **How AI helps:** Ask several AI assistants "what do you know about [name] in [city]" and note every error or confusion with another business, then correct it at the source.
 - <sub>Impact: medium · Effort: 1 hour</sub>
 
+---
+
+_From [The Restaurant SEO &amp; AEO Playbook](../README.md) by [Dineline](https://dineline.co/) — done-for-you restaurant marketing, tracked to the dollar._

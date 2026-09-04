@@ -68,7 +68,7 @@ const Checker = {
     const findings = [];
     const wins = [];
     const add = (sev, title, detail, fix) => findings.push({ sev, title, detail, fix });
-    const win = (title, detail) => wins.push({ title, detail });
+    const win = (title, detail, sev) => wins.push({ title, detail, sev: sev || 'important' });
 
     const looksLikeHtml = /<\s*(html|head|body|meta|title|div|script)\b/i.test(input);
     const blocks = this.extractBlocks(input);
@@ -136,7 +136,7 @@ const Checker = {
         if (empty) {
           add(f.sev, 'Missing: ' + f.label, f.why, f.fix);
         } else {
-          win(f.label, this.summarize(v));
+          win(f.label, this.summarize(v), f.sev);
         }
       });
 
@@ -388,12 +388,13 @@ const Checker = {
   checkPage(html, blocks, add, win) {
     const get = (id) => PAGE_CHECKS.find(c => c.id === id);
     const fail = (id, detail) => { const c = get(id); add(c.sev, c.label, detail || c.why, c.fix); };
+    const pass = (id, detail) => { const c = get(id); win(c.label, detail, c.sev); };
 
     const title = (html.match(/<title[^>]*>([\s\S]*?)<\/title>/i) || [])[1];
     if (!title || !title.trim()) fail('title');
     else {
       const t = title.trim();
-      win('Title tag', t);
+      pass('title', t);
       if (t.length > 65 || t.length < 15) {
         const c = get('title-len');
         add(c.sev, c.label, 'Yours is ' + t.length + ' characters. ' + c.why, c.fix);
@@ -403,25 +404,25 @@ const Checker = {
     const desc = (html.match(/<meta[^>]+name\s*=\s*["']description["'][^>]*>/i) || [])[0];
     const descContent = desc && (desc.match(/content\s*=\s*["']([^"']*)["']/i) || [])[1];
     if (!descContent || !descContent.trim()) fail('meta-desc');
-    else win('Meta description', descContent.trim().slice(0, 80) + (descContent.length > 80 ? '…' : ''));
+    else pass('meta-desc', descContent.trim().slice(0, 80) + (descContent.length > 80 ? '…' : ''));
 
     const h1s = html.match(/<h1\b[^>]*>/gi) || [];
     if (h1s.length === 0) fail('h1', 'This page has no H1 at all. ' + get('h1').why);
     else if (h1s.length > 1) fail('h1', 'This page has ' + h1s.length + ' H1 tags. ' + get('h1').why);
-    else win('Heading structure', 'Exactly one H1');
+    else pass('h1', 'Exactly one H1');
 
     if (!/<meta[^>]+name\s*=\s*["']viewport["']/i.test(html)) fail('viewport');
-    else win('Mobile viewport', 'Declared');
+    else pass('viewport', 'Declared');
 
     if (!/<html[^>]+lang\s*=/i.test(html)) fail('lang');
 
     if (!/href\s*=\s*["']tel:/i.test(html)) fail('tel-link');
-    else win('Tap-to-call link', 'Present');
+    else pass('tel-link', 'Present');
 
     const hasZip = /\b\d{5}(-\d{4})?\b/.test(html.replace(/<script[\s\S]*?<\/script>/gi, ''));
     const hasAddrTag = /<address\b/i.test(html);
     if (!hasZip && !hasAddrTag) fail('address-text');
-    else win('Address in page text', 'Found');
+    else pass('address-text', 'Found');
 
     const pdfMenu = html.match(/href\s*=\s*["']([^"']*(menu|carte|speisekarte)[^"']*\.pdf[^"']*)["']/i);
     if (pdfMenu) fail('pdf-menu', 'Found a link to "' + pdfMenu[1].slice(0, 60) + '". ' + get('pdf-menu').why);
@@ -431,12 +432,12 @@ const Checker = {
     if (noAlt.length) {
       const c = get('img-alt');
       add(c.sev, c.label, noAlt.length + ' of ' + imgs.length + ' images have no alt attribute. ' + c.why, c.fix);
-    } else if (imgs.length) win('Image alt text', 'All ' + imgs.length + ' images have alt attributes');
+    } else if (imgs.length) pass('img-alt', 'All ' + imgs.length + ' images have alt attributes');
 
     if (/<meta[^>]+name\s*=\s*["']robots["'][^>]*content\s*=\s*["'][^"']*noindex/i.test(html)) fail('noindex');
 
     if (!blocks.length) fail('jsonld');
-    else win('Structured data', blocks.length + ' JSON-LD block' + (blocks.length === 1 ? '' : 's') + ' found');
+    else pass('jsonld', blocks.length + ' JSON-LD block' + (blocks.length === 1 ? '' : 's') + ' found');
 
     const insecure = (html.match(/(?:src|href)\s*=\s*["']http:\/\/(?!localhost|127\.)/gi) || []);
     if (insecure.length) {
@@ -448,7 +449,7 @@ const Checker = {
     const text = html.replace(/<[^>]+>/g, ' ');
     const questions = (text.match(/\?/g) || []).length;
     if (questions < 3) fail('faq-content');
-    else win('Question-and-answer content', questions + ' questions on the page');
+    else pass('faq-content', questions + ' questions on the page');
   },
 
   /* ---------------------------------------------------------- rebuilding

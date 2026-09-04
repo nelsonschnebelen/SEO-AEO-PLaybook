@@ -1,0 +1,10 @@
+name = "dineline-site-checker"
+main = "worker.js"
+compatibility_date = "2026-01-01"
+
+# The Places key is a secret, not a var:
+#   wrangler secret put GOOGLE_PLACES_API_KEY
+#
+# Optionally lock the endpoint to your own site instead of "*":
+# [vars]
+# ALLOWED_ORIGIN = "https://dineline.co"

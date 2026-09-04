@@ -147,3 +147,7 @@ The checker reads what you give it, in your browser. It cannot fetch your live s
 has no view of your Google Business Profile, your reviews, your directory listings or what
 AI assistants currently say about you. Those are covered by the
 [full audit](05-audit-questions.md) and the [checklists](02-seo-checklist.md).
+
+---
+
+_From [The Restaurant SEO &amp; AEO Playbook](../README.md) by [Dineline](https://dineline.co/) — done-for-you restaurant marketing, tracked to the dollar._

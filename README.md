@@ -1,9 +1,11 @@
 # The Restaurant SEO &amp; AEO Playbook
 
+**By [Dineline](https://dineline.co/)** — done-for-you restaurant marketing, tracked to the dollar.
+
 A complete, plain-English playbook for getting a restaurant **found on Google** (SEO) and
-**recommended by AI assistants** (AEO) — with a site checker that tells you what your existing
-pages are missing, a free self-audit, two checklists, 30 ready-to-use AI prompts, and a schema
-markup generator.
+**recommended by AI assistants** (AEO). An owner types their web address and gets a score for both
+their site and their Google Business Profile, with a ranked list of what to fix — then a full
+self-audit, two checklists, 30 ready-to-use AI prompts, and a schema markup generator.
 
 Built for independent restaurant owners, not for marketers. No jargon, no account, no upload.
 
@@ -20,6 +22,9 @@ cd SEO-AEO-PLaybook
 open index.html          # macOS  ·  xdg-open on Linux  ·  start on Windows
 ```
 
+To switch on the one-click check, deploy [`api/`](api/README.md) and put its URL in
+`assets/js/config.js`.
+
 Or host it anywhere that serves static files — GitHub Pages, Netlify, Cloudflare Pages, an S3
 bucket. Nothing needs configuring.
 
@@ -27,7 +32,29 @@ bucket. Nothing needs configuring.
 
 ## What is in it
 
-### "Check my site" — paste what you have, find out what's missing
+### "Check my restaurant" — type a web address, get a score
+
+The main entry point. An owner types `theirrestaurant.com` and presses one button. Nothing to fill
+in, no signup. The analyser fetches their site and finds their Google Business Profile, and the
+browser scores both together:
+
+- **Google Business Profile (55% of the score)** — 18 checks over the listing Google already
+  publishes: open/closed status, hours, phone, whether the website link points at their own domain
+  or a third-party ordering page, rating, review volume, review recency, photo count, how specific
+  the primary category is, price level, accessibility, dietary options, service options,
+  reservations, description, amenities and meal services.
+- **Website and structured data (45%)** — everything in the site checker below.
+
+Every finding says what is wrong, why it costs them customers, and what to do about it. Scores are
+proportional — the share of weighted checks passed — so a weak site gets a meaningful number rather
+than bottoming out at zero, and improvement actually shows.
+
+This is the one part that needs a server: a browser cannot fetch another site (CORS) or hold a
+Places API key safely. The service is in [`api/`](api/README.md) and deploys to Cloudflare Workers,
+Vercel or Netlify in about ten minutes. **Without it the playbook still works** — the checker falls
+back to the paste flow below, which runs the identical page checks.
+
+### "Paste your source" — the same checks, no backend required
 
 Paste your page source (or a JSON-LD block, or drag in an `.html` file) and the checker reports
 back on both layers at once:
@@ -138,9 +165,13 @@ walk-in:
 
 ## Privacy
 
-Everything runs client-side. Audit answers, restaurant details and checklist ticks are stored in
-`localStorage` in the visitor's own browser and never leave the device. Anything you paste or upload
-into the site checker is parsed in the page and is never stored or transmitted at all. There is no analytics, no
+Audit answers, restaurant details and checklist ticks are stored in `localStorage` in the visitor's
+own browser and never leave the device. Anything pasted or uploaded into the checker is parsed in
+the page and never transmitted.
+
+The one-click check is the single exception, and it is deliberately narrow: the browser sends the
+web address the owner typed to the analyser, which fetches that public page and queries the Places
+API. It stores nothing. There is no analytics, no tracking and no account anywhere in the project. There is no analytics, no
 tracking, no network request of any kind, and no backend to send anything to.
 
 ---
@@ -154,10 +185,15 @@ assets/
   js/data.js                7 pillars, 43 audit questions, score bands
   js/prompts.js             30 AI prompts + categories
   js/checklists.js          118 checklist items across two tracks
+  js/config.js              Where the analyser lives; empty = paste-only mode
   js/checker-spec.js        What the site checker looks for, and why
   js/checker.js             Checker engine (parse, analyse, rebuild) + its UI
+  js/gmb.js                 18 Google Business Profile checks
+  js/analyze.js             One-click flow: combined scoring and report
+  img/dineline.svg          Wordmark (light + dark variants)
   js/audit.js               Wizard, scoring, action plan, Markdown export
   js/app.js                 Page chrome, checklists, prompt library, schema generator
+api/                        The analyser service — see api/README.md
 docs/                       Markdown editions (some generated — see below)
 tools/build-docs.js         Regenerates the generated docs from assets/js/
 ```
@@ -170,6 +206,8 @@ The site is data-driven. To change what it says, edit the data — not the HTML:
 - **AI prompts** → `assets/js/prompts.js`
 - **Checklist items** → `assets/js/checklists.js`
 - **Site checker rules** → `assets/js/checker-spec.js`
+- **Google Business Profile checks** → `assets/js/gmb.js`
+- **Analyser endpoint** → `assets/js/config.js`
 - **Playbook chapters** → the `#playbook` section of `index.html`
 
 `docs/02`, `03`, `04`, `05` and `08` are **generated** from those data files so the two cannot
@@ -192,3 +230,7 @@ against the official documentation before acting on it.
 And treat every AI output as a draft to check, never a fact to publish. The playbook is explicit
 about where AI helps and where it will confidently get you into trouble — particularly allergen and
 dietary information, which must never be published without the kitchen checking it line by line.
+
+---
+
+© 2026 Dineline. Everything here is free to use. When you would rather hand the whole thing over — ads, tracking and a dedicated account manager — that is [what we do](https://dineline.co/).

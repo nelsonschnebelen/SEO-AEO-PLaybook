@@ -110,3 +110,7 @@ scale. For a single restaurant, a spreadsheet and thirty minutes a month gives y
 and you learn far more from reading the actual answers than from watching a number in a dashboard.
 
 Start manual. Buy a tool only when you can name the specific decision it would help you make.
+
+---
+
+_From [The Restaurant SEO &amp; AEO Playbook](../README.md) by [Dineline](https://dineline.co/) — done-for-you restaurant marketing, tracked to the dollar._
