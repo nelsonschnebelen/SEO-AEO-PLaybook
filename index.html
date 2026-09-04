@@ -26,14 +26,12 @@
     <span class="logo-kicker">SEO&nbsp;&amp;&nbsp;AEO Playbook</span>
     <button class="nav-toggle" id="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
     <nav class="nav" id="nav">
-      <a href="#basics">Basics</a>
-      <a href="#pillars">Pillars</a>
+      <a href="#basics">Start here</a>
       <a href="#playbook">Playbook</a>
       <a href="#checklists">Checklists</a>
       <a href="#prompts">AI Prompts</a>
-      <a href="#schema">Schema</a>
-      <a href="#plan">90-Day Plan</a>
-      <a href="#checker" class="cta">Check my site</a>
+      <a href="#plan">90 days</a>
+      <a href="#top" class="cta">Get my score</a>
     </nav>
   </div>
 </header>
@@ -44,36 +42,35 @@
 <div class="hero">
   <div class="wrap">
     <div>
-      <span class="eyebrow">A free playbook from Dineline</span>
-      <h1>Get found on Google. <br>Get <span class="accent">recommended</span> by AI.</h1>
+      <span class="eyebrow">Free from Dineline</span>
+      <h1>Is your restaurant <span class="accent">showing up?</span></h1>
       <p class="lede">
-        Two things decide whether a hungry stranger walks through your door: whether Google shows
-        you, and whether the AI assistant they just asked names you. We build marketing systems for
-        restaurants for a living — this is the part you can do yourself, written out in plain
-        English, with a free check of your own site and the exact checklists we work from.
+        Type your web address. We score your Google listing and your website, then hand you the
+        fix list. Ten seconds, no signup.
       </p>
-      <div class="hero-actions">
-        <a href="#checker" class="btn btn-primary">Check my restaurant free →</a>
-        <a href="#audit" class="btn btn-ghost">Take the full audit</a>
-      </div>
-      <p class="hero-note"><small>
-        <svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M8 1.5 2.5 4v4c0 3 2.3 5.6 5.5 6.5 3.2-.9 5.5-3.5 5.5-6.5V4L8 1.5Z"/><path d="m5.8 8 1.6 1.6 3-3.2"/></svg>
-        No account, no email, no signup. The audit, the checklists and the paste-your-source
-        checker run entirely in your browser and save only to this device. The one-click check
-        sends just your web address to our analyser, so it can read your public pages and look up
-        your Google listing — nothing else, and we keep none of it.
-      </small></p>
+
+      <form class="url-panel" id="url-form">
+        <label for="url-input" class="hidden">Your restaurant&rsquo;s website address</label>
+        <div class="url-row">
+          <span class="url-prefix" aria-hidden="true">https://</span>
+          <input type="text" id="url-input" name="url" inputmode="url" autocomplete="url"
+                 spellcheck="false" placeholder="yourrestaurant.com">
+          <button type="submit" class="btn btn-primary" id="btn-analyze">Score my restaurant</button>
+        </div>
+        <p class="url-note" id="url-note">
+          47 checks across your Google listing and your site. Nothing to fill in.
+        </p>
+      </form>
     </div>
 
     <div>
       <div class="answer-card">
-        <p class="ac-q">🧑 <b>&ldquo;Where should I take my parents for dinner Saturday in downtown Asheville?&rdquo;</b></p>
+        <p class="ac-q">&ldquo;Where should I take my parents for dinner Saturday in downtown Asheville?&rdquo;</p>
         <div class="ac-head"><span class="ac-dot"></span> AI assistant</div>
         <p class="ac-body">
-          For a relaxed dinner with parents, I&rsquo;d suggest <span class="named">Rosa&rsquo;s Trattoria</span>
-          on Main Street — wood-fired Neapolitan pizza and handmade pasta, moderately priced, and
-          reviewers consistently mention the quiet back room and unhurried service. They take
-          reservations and there&rsquo;s free parking behind the building.
+          Try <span class="named">Rosa&rsquo;s Trattoria</span> on Main Street — wood-fired
+          Neapolitan pizza, moderately priced, and reviewers keep mentioning the quiet back room.
+          They take reservations and there&rsquo;s free parking behind the building.
         </p>
         <div class="ac-sources">
           <span class="ac-src">rosastrattoria.com</span>
@@ -81,7 +78,7 @@
           <span class="ac-src">local food blog</span>
         </div>
       </div>
-      <p class="ac-caption">Every fact in that answer came from somewhere.<br>This playbook is about being the somewhere.</p>
+      <p class="ac-caption">Every fact in that answer came from somewhere.<br>Your job is to be the somewhere.</p>
     </div>
   </div>
 </div>
@@ -90,82 +87,40 @@
 <section class="band" id="basics">
   <div class="wrap">
     <div class="section-head">
-      <div class="kicker">01 · The basics</div>
-      <h2>SEO and AEO, without the jargon</h2>
-      <p>
-        These are two different jobs. Most restaurants do a little of the first and none of the
-        second, which is why the second one is currently the easier win.
-      </p>
+      <div class="kicker">01 &middot; The short version</div>
+      <h2>Two ways people find you. You need both.</h2>
+      <p>That is the whole idea. Everything below is detail.</p>
     </div>
 
-    <div class="vs">
+    <div class="split">
       <div>
-        <h4>🔍 SEO — being <em>findable</em></h4>
-        <p style="font-size:.93rem;color:var(--ink-2)">
-          Search Engine Optimization. Someone types <em>"thai food near me"</em>, gets a list of
-          links and a map, and picks one. Your job is to be in that list, near the top.
-        </p>
-        <ul>
-          <li><b>The question is:</b> "Which of these should I click?"</li>
-          <li><b>You are competing for:</b> a position on a page</li>
-          <li><b>What wins:</b> a complete Google profile, proximity, reviews, a fast site, real menu text</li>
-          <li><b>You get:</b> a click, and the chance to convince them</li>
-          <li><b>You can see it:</b> rankings, Search Console, profile views</li>
-        </ul>
+        <h4>&#128269; SEO &mdash; get <em>found</em></h4>
+        <p class="sd">They search. They pick from a list.</p>
+        <dl>
+          <dt>Question</dt><dd>&ldquo;Which one do I click?&rdquo;</dd>
+          <dt>You win</dt><dd>A spot near the top</dd>
+          <dt>Driven by</dt><dd>Your Google listing, reviews, a fast site, a real menu</dd>
+          <dt>You get</dt><dd>A click</dd>
+        </dl>
       </div>
       <div>
-        <h4>🤖 AEO — being <em>recommended</em></h4>
-        <p style="font-size:.93rem;color:var(--ink-2)">
-          Answer Engine Optimization. Someone asks ChatGPT <em>"where should I take my parents
-          for dinner Saturday?"</em> and gets three names and a reason for each. Your job is to be
-          one of the three.
-        </p>
-        <ul>
-          <li><b>The question is:</b> "Where should I go?"</li>
-          <li><b>You are competing for:</b> a mention inside the answer</li>
-          <li><b>What wins:</b> facts stated clearly, agreement across sources, review themes, being cited elsewhere</li>
-          <li><b>You get:</b> a recommendation, which converts far better than a link</li>
-          <li><b>You can see it:</b> only by asking the assistants yourself, on a schedule</li>
-        </ul>
+        <h4>&#129302; AEO &mdash; get <em>recommended</em></h4>
+        <p class="sd">They ask. They get three names.</p>
+        <dl>
+          <dt>Question</dt><dd>&ldquo;Where should I go?&rdquo;</dd>
+          <dt>You win</dt><dd>A mention inside the answer</dd>
+          <dt>Driven by</dt><dd>Clear facts, sources that agree, review themes</dd>
+          <dt>You get</dt><dd>A recommendation &mdash; which converts far better</dd>
+        </dl>
       </div>
     </div>
 
-    <div class="callout tip" style="margin-top:26px">
-      <strong>The good news for restaurants</strong>
+    <div class="callout tip">
+      <strong>Here is the good news</strong>
       <p>
-        These overlap more than the industry likes to admit. Roughly 80% of good AEO <em>is</em>
-        good local SEO — accurate hours, a real menu in text, schema markup, consistent listings,
-        healthy reviews. The extra 20% is mostly about <b>structure</b> (answering questions
-        directly) and <b>completeness</b> (stating facts a machine will never guess). Do the work
-        in this playbook once and you serve both.
+        They are about 80% the same work. Fix your Google listing and your menu once and you show
+        up in both. Most restaurants near you have not done it.
       </p>
-    </div>
-
-    <h3>Why this matters more for restaurants than for almost anyone else</h3>
-    <div class="grid grid-3" style="margin-top:16px">
-      <div class="card">
-        <h4 style="margin-top:0">The decision is fast and local</h4>
-        <p style="font-size:.9rem;margin:0;color:var(--ink-2)">
-          Nobody researches dinner for a week. They search, they decide within a couple of minutes,
-          and they go somewhere within a few miles. That makes your Google profile — not your
-          website — the storefront that matters most.
-        </p>
-      </div>
-      <div class="card">
-        <h4 style="margin-top:0">Your competitors are not doing this</h4>
-        <p style="font-size:.9rem;margin:0;color:var(--ink-2)">
-          Most independent restaurants have a PDF menu, half-finished hours and a profile nobody
-          has touched in two years. The bar is low. A single focused week puts you ahead of the
-          block.
-        </p>
-      </div>
-      <div class="card">
-        <h4 style="margin-top:0">AI answers are winner-take-few</h4>
-        <p style="font-size:.9rem;margin:0;color:var(--ink-2)">
-          A search page shows ten results. An AI answer names three. The upside of being in it is
-          large, and right now the cost of getting there is mostly just doing the basics properly.
-        </p>
-      </div>
     </div>
   </div>
 </section>
@@ -174,51 +129,51 @@
 <section class="band alt" id="checker">
   <div class="wrap">
     <div class="section-head">
-      <div class="kicker">02 · Check your restaurant</div>
-      <h2>Enter your website. We&rsquo;ll do the rest.</h2>
-      <p>
-        We read your site, find your Google Business Profile, and score both — then tell you
-        exactly what to fix, in order. No forms, no signup, nothing to fill in.
-      </p>
+      <div class="kicker">02 &middot; Your score</div>
+      <h2>What we look at</h2>
+      <p>47 checks, weighted the way they actually affect your covers.</p>
     </div>
-
-    <form class="url-panel" id="url-form">
-      <label for="url-input" class="hidden">Your restaurant&rsquo;s website address</label>
-      <div class="url-row">
-        <span class="url-prefix" aria-hidden="true">https://</span>
-        <input type="text" id="url-input" name="url" inputmode="url" autocomplete="url"
-               spellcheck="false" placeholder="yourrestaurant.com">
-        <button type="submit" class="btn btn-primary" id="btn-analyze">Check my restaurant</button>
-      </div>
-      <p class="url-note" id="url-note">
-        Takes about ten seconds. We check your pages and your Google listing together, because
-        that is how a diner actually finds you.
-      </p>
-    </form>
 
     <div id="analyze-status" class="hidden"></div>
     <div id="analyze-results"></div>
 
-    <details class="fallback" id="paste-fallback">
-      <summary>Or paste your page source instead</summary>
-      <div class="fallback-body">
-        <p class="muted" style="font-size:.93rem">
-          Useful when your host blocks automated checks, when the site is not live yet, or when you
-          would rather nothing left your machine at all. This runs the same page and schema checks —
-          it just cannot look up your Google listing.
-        </p>
-
-        <div class="how-to">
-          <div class="how-step"><span class="n">1</span><p><b>Open your website</b>In a normal browser tab.</p></div>
-          <div class="how-step"><span class="n">2</span><p><b>View the page source</b>Right-click and choose <em>View page source</em>, or press Ctrl+U (Cmd+Option+U on a Mac).</p></div>
-          <div class="how-step"><span class="n">3</span><p><b>Select all and copy</b>Ctrl+A then Ctrl+C. It will look like gibberish — that is fine.</p></div>
-          <div class="how-step"><span class="n">4</span><p><b>Paste it below</b>Or drag in a saved <code>.html</code> file, then press Check.</p></div>
+    <div id="checker-preview">
+      <div class="split">
+        <div>
+          <h4>&#128205; Your Google listing</h4>
+          <p class="sd">18 checks &middot; 55% of your score</p>
+          <p style="font-size:.92rem;color:var(--ink-2);margin:0">
+            Hours, phone, photos, category, rating, review flow, price, accessibility, dietary
+            options, and whether your website link goes to <em>you</em> or to a delivery app taking
+            a cut.
+          </p>
         </div>
+        <div>
+          <h4>&#129513; Your website</h4>
+          <p class="sd">29 checks &middot; 45% of your score</p>
+          <p style="font-size:.92rem;color:var(--ink-2);margin:0">
+            Whether your menu is readable text or trapped in a PDF, whether your hours and address
+            are machine-readable, page speed basics, and the markup that decides if AI can quote you.
+          </p>
+        </div>
+      </div>
 
+      <p class="muted" style="margin:22px 0 0;font-size:.93rem">
+        <b>Type your address above to get your score.</b> Nothing to fill in.
+      </p>
+    </div>
+
+    <details class="fallback" id="paste-fallback">
+      <summary>Site not live yet? Paste your page source instead</summary>
+      <div class="fallback-body">
+        <p class="muted" style="font-size:.92rem">
+          Same website checks, no Google lookup. Open your site, right-click &rarr;
+          <em>View page source</em>, select all, copy, paste below.
+        </p>
         <div class="dropzone" id="dropzone">
           <label for="check-input" class="hidden">Paste your page source or schema markup</label>
           <textarea id="check-input" spellcheck="false"
-            placeholder="Paste your page source or your JSON-LD here — or drag a .html file onto this box…"></textarea>
+            placeholder="Paste your page source here — or drag a .html file onto this box…"></textarea>
           <div class="dz-foot">
             <button type="button" class="btn btn-primary btn-sm" id="btn-check">Check this &rarr;</button>
             <input type="file" id="check-file" accept=".html,.htm,.json,.txt,.md" class="hidden">
@@ -232,7 +187,7 @@
       </div>
     </details>
 
-    <div id="check-results" style="margin-top:34px"></div>
+    <div id="check-results" style="margin-top:30px"></div>
   </div>
 </section>
 
@@ -240,15 +195,36 @@
 <section class="band" id="pillars">
   <div class="wrap">
     <div class="section-head">
-      <div class="kicker">03 · How this is scored</div>
-      <h2>The seven pillars</h2>
-      <p>
-        Everything in this playbook sits in one of these seven buckets. The percentage is how much
-        each one counts toward your audit score — weighted for an independent restaurant, not for
-        a software company.
-      </p>
+      <div class="kicker">03 &middot; What actually moves the needle</div>
+      <h2>Not everything counts the same.</h2>
+      <p>How we weight the score, and why. Spend your time left to right.</p>
     </div>
-    <div class="grid grid-2" id="pillar-grid"><!-- rendered by app.js --></div>
+
+    <div class="weight-stack" id="weight-stack"></div>
+    <div class="weight-key" id="weight-key"></div>
+
+    <div class="kpi-row" style="margin-top:34px">
+      <div class="kpi">
+        <div class="kl">Biggest lever</div>
+        <div class="kv">Google</div>
+        <div class="kn">Free, and an afternoon of work. Most owners never finish it.</div>
+      </div>
+      <div class="kpi">
+        <div class="kl">Best hour you can spend</div>
+        <div class="kv">1 hour</div>
+        <div class="kn">Getting your menu out of a PDF and onto a real page.</div>
+      </div>
+      <div class="kpi">
+        <div class="kl">The rating sweet spot</div>
+        <div class="kv">4.3&ndash;4.8</div>
+        <div class="kn">A perfect 5.0 on 30 reviews reads as fake &mdash; to people and to machines.</div>
+      </div>
+      <div class="kpi">
+        <div class="kl">Names in an AI answer</div>
+        <div class="kv">3</div>
+        <div class="kn">A search page lists ten. An assistant names three. Be one.</div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -256,21 +232,11 @@
 <section class="band alt" id="audit">
   <div class="wrap">
     <div class="section-head">
-      <div class="kicker">04 · Your audit</div>
-      <h2>Add your restaurant</h2>
+      <div class="kicker">04 &middot; Go deeper</div>
+      <h2>The full audit</h2>
       <p>
-        Answer a few questions about your restaurant and work through the checklist. You will get a
-        score, a breakdown by pillar, a prioritized list of what to fix first, a 90-day plan, and
-        AI prompts already filled in with your details. Takes about ten minutes.
-      </p>
-    </div>
-
-    <div class="callout note">
-      <strong>Honest answers give useful results</strong>
-      <p>
-        Every question includes a <b>how to check</b> line so you can verify rather than guess.
-        If you genuinely do not know, pick <b>Not sure</b> — those get scored cautiously and show
-        up in your plan as "verify this first", which is a real task worth having on the list.
+        43 questions the automatic check can&rsquo;t see &mdash; your reviews, your listings, what AI
+        says about you today. Every question tells you how to check it.
       </p>
     </div>
 
@@ -396,705 +362,17 @@
 <section class="band" id="playbook">
   <div class="wrap">
     <div class="section-head">
-      <div class="kicker">05 · The full method</div>
-      <h2>The playbook</h2>
-      <p>
-        The whole thing, in order. If you only have one day, do chapter 1 and stop. If you have a
-        month, work down in sequence — it is deliberately ordered by return on effort.
-      </p>
+      <div class="kicker">05 &middot; The playbook</div>
+      <h2>Twelve chapters. Open the ones you need.</h2>
+      <p>Ordered by payoff. If you only have one day, do chapter 1 and stop.</p>
     </div>
 
-    <div class="toc">
-      <h4>Contents</h4>
-      <ol>
-        <li><a href="#ch1">The first afternoon</a></li>
-        <li><a href="#ch2">Google Business Profile, properly</a></li>
-        <li><a href="#ch3">The menu problem</a></li>
-        <li><a href="#ch4">A website that does its job</a></li>
-        <li><a href="#ch5">Content that earns local rankings</a></li>
-        <li><a href="#ch6">Reviews as a system</a></li>
-        <li><a href="#ch7">Structured data without a developer</a></li>
-        <li><a href="#ch8">AEO: how AI actually picks a restaurant</a></li>
-        <li><a href="#ch9">Working with AI without getting burned</a></li>
-        <li><a href="#ch10">Multiple locations</a></li>
-        <li><a href="#ch11">What to ignore</a></li>
-        <li><a href="#ch12">Measuring what matters</a></li>
-      </ol>
-    </div>
+    <div class="rows"><details class="row-item"><summary><span class="rn">01</span><span><span class="rt">The first afternoon</span><span class="rs">Five things. Do these and you beat most of your block.</span></span><span class="rc">&#9656;</span></summary><div class="row-body"><ul><li>Claim and verify your Google Business Profile</li><li>Fix your hours — including every holiday for the next year</li><li>Set the most specific category that fits (not just &ldquo;Restaurant&rdquo;)</li><li>Get your menu out of the PDF</li><li>Start asking every guest for a review, tonight</li></ul><p><b>Before you pay anyone:</b> if they haven&rsquo;t asked to see your Google profile first, they&rsquo;re not doing local SEO.</p></div></details><details class="row-item"><summary><span class="rn">02</span><span><span class="rt">Google Business Profile</span><span class="rs">Free. An afternoon. Bigger than your website.</span></span><span class="rc">&#9656;</span></summary><div class="row-body"><p>Google ranks you on <b>relevance</b>, <b>distance</b> and <b>prominence</b>. You can&rsquo;t move the building — so win on relevance, which is fast.</p><ul><li><b>Category</b> is the biggest lever. &ldquo;Neapolitan pizza restaurant&rdquo; beats &ldquo;Restaurant&rdquo;.</li><li><b>Attributes</b> nobody fills in: dietary, accessibility, parking, payments. Each is a filter you can win.</li><li><b>Photos</b> weekly, not 40 at once.</li><li><b>Check your order buttons.</b> Delivery apps attach their own links and take a cut of orders that were already yours.</li></ul></div></details><details class="row-item"><summary><span class="rn">03</span><span><span class="rt">The menu problem</span><span class="rs">If it&rsquo;s a PDF, it&rsquo;s invisible. This one hour pays for itself.</span></span><span class="rc">&#9656;</span></summary><div class="row-body"><p><b>The test:</b> open your menu and try to select a dish name. Can&rsquo;t? Then neither Google nor any AI can read it — and someone searching for the exact dish you&rsquo;re known for will never find you.</p><p>Rebuild it as a real page: headings per section, dish names as text, a line of description, prices, dietary tags. Keep the PDF as a download if you like.</p><p><b>AI shortcut:</b> photograph your printed menu, hand it to ChatGPT, ask for clean HTML. Fifteen minutes instead of an afternoon — then check every price yourself.</p></div></details><details class="row-item"><summary><span class="rn">04</span><span><span class="rt">A website that does its job</span><span class="rs">Fast on a phone. Menu, hours, directions, book. That&rsquo;s it.</span></span><span class="rc">&#9656;</span></summary><div class="row-body"><ul><li>Under 3 seconds on cellular</li><li>Address, phone and hours as <em>text</em> on every page — not an image</li><li>Tap-to-call number</li><li>Order and Reserve above the fold</li><li>A unique title tag per page with your city in it</li></ul><p>What you don&rsquo;t need: a blog nobody reads, an image slider, or a background video that eats 8MB before the menu loads.</p></div></details><details class="row-item"><summary><span class="rn">05</span><span><span class="rt">Content that wins locally</span><span class="rs">Own your neighbourhood, not your city.</span></span><span class="rc">&#9656;</span></summary><div class="row-body"><p>&ldquo;Restaurants in Chicago&rdquo; is unwinnable. &ldquo;Where to eat near the Music Box Theatre&rdquo; is yours for the taking — and it&rsquo;s what people actually ask.</p><p>Build one <b>Visit page</b>: address, map, parking (what it costs, where to go if the lot&rsquo;s full), transit, landmarks, accessibility, what to expect.</p></div></details><details class="row-item"><summary><span class="rn">06</span><span><span class="rt">Reviews are your sales copy now</span><span class="rs">Written by strangers. Quoted by AI.</span></span><span class="rc">&#9656;</span></summary><div class="row-body"><p>In order: <b>velocity</b> (steady beats spiky), <b>volume</b> vs whoever outranks you, <b>rating</b> (4.3&ndash;4.8 is the sweet spot), <b>response rate</b>, then content.</p><p>Build the ask into the shift — QR on the check, line in the receipt email, link in the booking text. Five a shift is 150 a month.</p><p><b>Three ways to get burned:</b> gating (only asking happy diners), paying, or soliciting on Yelp at all. Each can wipe your review set.</p></div></details><details class="row-item"><summary><span class="rn">07</span><span><span class="rt">Schema, without a developer</span><span class="rs">Describe your restaurant. Let AI write the code.</span></span><span class="rc">&#9656;</span></summary><div class="row-body"><p>Schema states your hours and address in a format machines can&rsquo;t misread. It&rsquo;s the single most technical thing here and it takes five minutes.</p><p>Use the <a href="#schema">generator below</a>, paste the result into Google&rsquo;s Rich Results Test, and if it complains, paste the error back into the AI.</p><p><b>Never</b> mark up your own star rating. Self-serving review markup is against Google&rsquo;s rules and a common cause of penalties.</p></div></details><details class="row-item"><summary><span class="rn">08</span><span><span class="rt">How AI actually picks a restaurant</span><span class="rs">Can it find you, read you, trust you, and quote you?</span></span><span class="rc">&#9656;</span></summary><div class="row-body"><p>The biggest fix is <b>structure</b>: make the question your heading, then answer it completely in the first 40&ndash;60 words. Assistants lift passages, not pages.</p><p>The second is <b>stating the obvious</b>. AI won&rsquo;t guess. If your site never says you take reservations, the answer becomes &ldquo;I&rsquo;m not sure&rdquo; and your diner moves on.</p><p>Then check you&rsquo;re not <b>blocking the crawlers</b> — a security plugin quietly blocking OAI-SearchBot or PerplexityBot removes you from those answers entirely.</p></div></details><details class="row-item"><summary><span class="rn">09</span><span><span class="rt">Using AI without getting burned</span><span class="rs">Brilliant at writing. Confidently wrong about your facts.</span></span><span class="rc">&#9656;</span></summary><div class="row-body"><p><b>Let it:</b> turn a photographed menu into HTML, write dish descriptions, generate schema, draft review replies, summarise 100 reviews into themes.</p><p><b>Never let it:</b> state your hours or prices unchecked, invent dishes, claim awards, or post to your Google profile unsupervised.</p><p><b>The allergen rule:</b> never publish AI-written dietary or allergen info without your kitchen checking it line by line. That&rsquo;s the one place speed isn&rsquo;t worth it.</p></div></details><details class="row-item"><summary><span class="rn">10</span><span><span class="rt">More than one location</span><span class="rs">One profile and one page per location. Always.</span></span><span class="rc">&#9656;</span></summary><div class="row-body"><p>Never one page listing every address — it ranks for none of them. Make each location page genuinely different: its own photos, parking, landmarks, and the actual manager&rsquo;s name.</p><p>After a move, hunt down the old listing. Stale addresses send people to a locked door for years.</p></div></details><details class="row-item"><summary><span class="rn">11</span><span><span class="rt">What to ignore</span><span class="rs">Where restaurant marketing money goes to die.</span></span><span class="rc">&#9656;</span></summary><div class="row-body"><ul><li>Bought backlinks and &ldquo;1,000 directory submissions&rdquo;</li><li>Keyword-stuffing your business name (it&rsquo;s a policy violation)</li><li>Blogging for its own sake</li><li>Chasing city-wide terms you can&rsquo;t win</li><li>Anyone guaranteeing rankings</li></ul></div></details><details class="row-item"><summary><span class="rn">12</span><span><span class="rt">What to measure</span><span class="rs">Rankings are vanity. Count the things that become covers.</span></span><span class="rc">&#9656;</span></summary><div class="row-body"><p>Direction requests, calls, new reviews per month, and online orders. Check them monthly, not daily.</p><p><b>Be patient in the right places:</b> Google profile changes show in days; website and schema take 4&ndash;12 weeks; reviews and authority compound over months. Judge it on a quarter.</p></div></details></div>
 
-    <div class="narrow">
-
-      <!-- ------------------------------------------------------------ CH 1 -->
-      <h3 id="ch1">1. The first afternoon</h3>
-      <p>
-        If you do nothing else in this playbook, do these five things. For a typical independent
-        restaurant they account for the large majority of the available upside, and none of them
-        requires a developer, an agency or a budget.
-      </p>
-      <ol>
-        <li><b>Claim and verify your Google Business Profile.</b> Free. Twenty minutes plus
-          verification time. Everything else in local search depends on it.</li>
-        <li><b>Fix your hours, including holidays for the next twelve months.</b> Wrong hours are
-          the single most expensive small error in this industry — a wasted trip becomes a one-star
-          review that outlives the mistake by years.</li>
-        <li><b>Set the most specific accurate primary category.</b> Thirty seconds of work. One of
-          the strongest ranking levers you have.</li>
-        <li><b>Get your menu out of the PDF and onto a real web page.</b> The highest-value hour
-          of work most restaurants can do. Covered fully in chapter 3.</li>
-        <li><b>Ask every guest for a Google review, starting tonight.</b> Not a campaign — a
-          habit, built into the check drop.</li>
-      </ol>
-      <div class="callout warn">
-        <strong>Before you buy anything</strong>
-        <p>
-          If someone is selling you "SEO services" for a restaurant and has not first asked to see
-          your Google Business Profile, they are not doing local SEO. Do this list yourself first.
-          Then, if you hire help, you will actually be able to tell whether they are adding
-          anything.
-        </p>
-      </div>
-
-      <!-- ------------------------------------------------------------ CH 2 -->
-      <h3 id="ch2">2. Google Business Profile, properly</h3>
-      <p>
-        For most restaurants the profile out-earns the website. It is where the calls, the
-        direction taps and the "open now" decisions happen. Treat it as your primary storefront,
-        not an afterthought.
-      </p>
-
-      <h4>How Google decides who shows up</h4>
-      <p>Google describes local ranking as three factors. In practice they behave like this:</p>
-      <div class="table-scroll">
-        <table>
-          <thead><tr><th>Factor</th><th>What it means</th><th>What you can do</th></tr></thead>
-          <tbody>
-            <tr>
-              <td><b>Relevance</b></td>
-              <td>How well your profile matches what was searched.</td>
-              <td>A lot. Categories, attributes, menu items, description, services, review language.</td>
-            </tr>
-            <tr>
-              <td><b>Distance</b></td>
-              <td>How far you are from the searcher or the place they named.</td>
-              <td>Nothing directly — but relevance and prominence widen the radius you can win in.</td>
-            </tr>
-            <tr>
-              <td><b>Prominence</b></td>
-              <td>How well known and well regarded you are, online and off.</td>
-              <td>A lot, slowly. Reviews, local press, links, citations, brand searches.</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <p>
-        You cannot move your building. So the whole game is relevance (fast to fix) and prominence
-        (slow to build, compounding). Start with relevance.
-      </p>
-
-      <h4>Categories: the highest-leverage field on the profile</h4>
-      <p>
-        Your <b>primary category</b> carries far more weight than the secondaries. The instinct is
-        to pick something broad so you show up for more — that is backwards. "Restaurant" puts you
-        in a pool with every restaurant in the city. "Neapolitan pizza restaurant" puts you in a
-        pool of maybe four, and Google still shows you for broader pizza searches because it
-        understands the relationship.
-      </p>
-      <ul>
-        <li>Pick the <b>single most specific accurate</b> primary category.</li>
-        <li>Add two to five secondaries for genuine secondary services: Caterer, Bar, Breakfast
-          restaurant, Takeout restaurant, Event venue.</li>
-        <li>Do <b>not</b> add categories for things you do not do. It dilutes relevance and can
-          trigger a suspension.</li>
-        <li>Re-check annually — Google adds and retires categories, and a better one may now exist.</li>
-      </ul>
-
-      <h4>The fields nearly everyone leaves blank</h4>
-      <p>
-        These are free, take minutes, and directly determine which filtered searches and AI
-        questions you are eligible for:
-      </p>
-      <ul>
-        <li><b>Attributes</b> — outdoor seating, delivery, takeout, dine-in, wheelchair accessible
-          entrance and restroom, gender-neutral restroom, dog friendly, good for kids, good for
-          groups, LGBTQ+ friendly, free wifi, parking type, payment methods.</li>
-        <li><b>Dietary options</b> — vegetarian, vegan, gluten-free, halal, kosher. These power a
-          large volume of high-intent searches with very little competition.</li>
-        <li><b>More hours</b> — separate kitchen, brunch, happy hour, delivery, takeout and
-          senior-hours windows.</li>
-        <li><b>Services and offerings</b> — reservations, private dining, catering, curbside,
-          no-contact delivery, live music, sports on TV.</li>
-        <li><b>Opening date</b> — helps with entity confidence and shows longevity.</li>
-        <li><b>Menu, order and reserve links</b> — pointed at pages <em>you</em> control.</li>
-      </ul>
-
-      <div class="callout warn">
-        <strong>Watch your ordering links</strong>
-        <p>
-          Third-party delivery platforms can attach their own ordering links to your profile
-          without asking. Every tap through one of those is a commission on an order that was
-          already yours. Check your profile on a phone monthly, tap every button, and set your own
-          ordering provider as the preferred one wherever Google allows it.
-        </p>
-      </div>
-
-      <h4>Photos: freshness beats production value</h4>
-      <p>
-        Profiles with regular new photos get materially more engagement, and a profile whose last
-        photo is three years old reads as closed. A phone camera in good light is completely
-        sufficient. What matters is coverage and cadence.
-      </p>
-      <ul>
-        <li><b>Cover the set:</b> exterior with signage in daylight, exterior at night, the
-          entrance, the dining room full, the dining room empty, the bar, the patio, parking,
-          10 or more hero dishes, the team, the kitchen.</li>
-        <li><b>Shoot dishes from the diner's angle</b>, in natural light where you can, without a
-          filter that changes what the food actually looks like.</li>
-        <li><b>Upload a few every week</b> rather than forty at once. Steady beats spiky.</li>
-        <li><b>Add a cover photo and a logo</b>, and check them on a phone — Google crops hard.</li>
-      </ul>
-
-      <h4>Posts, Q&amp;A and messaging</h4>
-      <p>
-        Posts put your specials directly into search results and signal an active business — aim
-        for two to four a month, always with a photo and a button. The Questions &amp; Answers
-        section deserves more attention than it gets: <b>anyone</b> can answer a question about
-        your business, including people who are wrong or a competitor. Seed it yourself with the
-        ten questions you actually get asked, answer them as the owner, and check it monthly.
-        Those owner answers get quoted by AI assistants unusually often.
-      </p>
-
-      <!-- ------------------------------------------------------------ CH 3 -->
-      <h3 id="ch3">3. The menu problem</h3>
-      <p>
-        This is the most common expensive mistake in the industry, so it gets its own chapter.
-      </p>
-      <p>
-        If your menu is a PDF, a JPEG, a Flash-era slideshow or an image of a chalkboard, then
-        every dish name, every price, every allergen note and every description on it is
-        <b>invisible</b>. Google cannot index it reliably. AI assistants cannot read it. Someone
-        searching for the exact dish you are known for will not find you, because as far as the
-        machines are concerned, you do not serve it.
-      </p>
-
-      <div class="callout tip">
-        <strong>The test</strong>
-        <p>
-          Open your menu on your website and try to select a dish name with your cursor or by
-          long-pressing on a phone. If you cannot select it as text, no search engine and no AI
-          assistant can read it either.
-        </p>
-      </div>
-
-      <h4>What a menu page should be</h4>
-      <ul>
-        <li><b>Real HTML text</b> — dish names, descriptions and prices as selectable text on a
-          normal web page.</li>
-        <li><b>Structured with headings</b> — each menu section as its own heading, so both readers
-          and machines can see the shape of it.</li>
-        <li><b>Described, not just listed</b> — one or two sentences per dish covering the main
-          ingredients and the cooking method. This is what matches specific searches.</li>
-        <li><b>Tagged for diet</b> — vegetarian, vegan, gluten-free, contains nuts. High-intent,
-          low-competition, and genuinely useful.</li>
-        <li><b>Priced</b> — visible prices reduce bounce and feed price-range signals.</li>
-        <li><b>Current</b> — an outdated menu is worse than no menu. Update it the day the kitchen
-          changes.</li>
-        <li><b>Marked up with schema</b> — see chapter 7.</li>
-      </ul>
-      <p>
-        Keep the PDF as a download if your regulars like printing it. But the HTML page is the real
-        menu, and it should be the one your Google profile links to.
-      </p>
-
-      <div class="callout ai">
-        <strong>🤖 The AI shortcut</strong>
-        <p>
-          Photograph each page of your printed menu, hand the images to an AI assistant, and ask it
-          to output clean HTML with sections, dish names, descriptions, prices and dietary tags.
-          What used to be an afternoon of typing becomes about fifteen minutes. <b>Then check every
-          price yourself</b> — this is exactly the kind of detail AI gets subtly wrong, and a wrong
-          price on your website is a fight at the table. The prompt is in the
-          <a href="#prompts">prompt library</a>.
-        </p>
-      </div>
-
-      <!-- ------------------------------------------------------------ CH 4 -->
-      <h3 id="ch4">4. A website that does its job</h3>
-      <p>
-        Your website does not need to win awards. It needs to load fast on a phone with two bars of
-        signal and let a hungry person do one of four things immediately: see the menu, get
-        directions, call you, or book a table.
-      </p>
-
-      <h4>The non-negotiables</h4>
-      <div class="table-scroll">
-        <table>
-          <thead><tr><th>Requirement</th><th>Why</th><th>How to check</th></tr></thead>
-          <tbody>
-            <tr><td><b>Loads in under 3 seconds on mobile</b></td><td>Most of your traffic is on a phone, often in motion and impatient.</td><td>pagespeed.web.dev, or load it on your phone with wifi off</td></tr>
-            <tr><td><b>HTTPS with no warnings</b></td><td>Warning screens kill conversion outright.</td><td>Padlock in the address bar</td></tr>
-            <tr><td><b>Address, phone, hours as text on every page</b></td><td>Machines cannot read an image of your phone number.</td><td>Try to select the text with your cursor</td></tr>
-            <tr><td><b>Tap-to-call phone number</b></td><td>A phone number that is not a link costs you calls.</td><td>Tap it on your phone</td></tr>
-            <tr><td><b>Order and Reserve above the fold</b></td><td>Traffic that cannot convert is a cost.</td><td>Count the taps from homepage to cart</td></tr>
-            <tr><td><b>Unique title tag per page, with your city</b></td><td>Strongest single on-page signal.</td><td>Compare your browser tab text across pages</td></tr>
-            <tr><td><b>In Google's index</b></td><td>If it is not indexed it does not exist.</td><td>Search <code>site:yourdomain.com</code></td></tr>
-            <tr><td><b>Search Console connected</b></td><td>It is the only free view of what people searched before clicking.</td><td>search.google.com/search-console</td></tr>
-          </tbody>
-        </table>
-      </div>
-
-      <h4>The pages that earn their keep</h4>
-      <p>In rough order of value for a single-location restaurant:</p>
-      <ol>
-        <li><b>Homepage</b> — who you are, where you are, hours, and the four buttons.</li>
-        <li><b>Menu</b> — HTML, described, priced, current.</li>
-        <li><b>Visit / Location</b> — address, map, parking, transit, landmarks, accessibility, the
-          practical facts. This page does double duty for AEO.</li>
-        <li><b>FAQ</b> — the highest-leverage AEO page you can build. Chapter 8.</li>
-        <li><b>About</b> — the chef, the story, the sourcing, real names. Credibility signals.</li>
-        <li><b>Private events / catering</b> — if you do it, this is often the highest revenue per
-          visitor page on the whole site.</li>
-        <li><b>Events / specials</b> — freshness, and it captures "what's on tonight" searches.</li>
-      </ol>
-      <p>
-        Notice what is not on that list: a blog nobody reads, an image slider, an intro animation,
-        a background video that eats 8MB before the menu renders, and a popup that covers the phone
-        number.
-      </p>
-
-      <h4>Title tags that work for restaurants</h4>
-      <p>The pattern that performs, roughly 55 characters or fewer:</p>
-      <ul>
-        <li>Homepage: <code>Neapolitan Pizza in Downtown Asheville | Rosa's Trattoria</code></li>
-        <li>Menu: <code>Menu &amp; Prices | Rosa's Trattoria, Asheville NC</code></li>
-        <li>Location: <code>Find Us — Parking, Directions &amp; Hours | Rosa's Trattoria</code></li>
-        <li>Events: <code>Private Dining &amp; Events in Asheville | Rosa's Trattoria</code></li>
-      </ul>
-      <p>
-        Lead with what people search, close with your name. Never leave two pages with the same
-        title, and never let the CMS ship <code>Home | Home</code>.
-      </p>
-
-      <!-- ------------------------------------------------------------ CH 5 -->
-      <h3 id="ch5">5. Content that earns local rankings</h3>
-      <p>
-        Restaurants do not need a content marketing operation. They need a small number of pages
-        that say specific, true, locally-grounded things. Quality and specificity beat volume every
-        time.
-      </p>
-
-      <h4>Write for the neighborhood, not the city</h4>
-      <p>
-        "Restaurants in Chicago" is unwinnable and, for you, nearly worthless. "Where to eat near
-        the Music Box Theatre" is winnable, converts far better, and is exactly the kind of thing
-        people ask an AI assistant. Name your neighborhood, the cross streets, the theater, the
-        stadium, the campus, the hotels, the transit stops. These are the words locals and visitors
-        actually use.
-      </p>
-
-      <h4>The Visit page</h4>
-      <p>
-        One page, and it should answer everything a person needs before getting in the car:
-      </p>
-      <ul>
-        <li>Full address, embedded map, and what the building looks like from the street</li>
-        <li>Parking — lot, street, garage, valet, what it costs, where to go if the lot is full</li>
-        <li>Transit — nearest stops and lines, walking time</li>
-        <li>Landmarks — "two blocks north of the courthouse", "across from the arena"</li>
-        <li>Accessibility — entrance, restroom, seating, service animals</li>
-        <li>What to expect — dress, noise, wait times, whether you take walk-ins</li>
-      </ul>
-
-      <h4>Seasonal and event content that is worth the effort</h4>
-      <p>
-        Only when it is real and timely. A page about your Valentine's prix fixe published in
-        January earns its keep. A generic post about "the history of pasta" does not. Tie content
-        to things that are actually happening: menu changes, local festivals, game days,
-        graduation weekend, restaurant week, holiday hours.
-      </p>
-
-      <div class="callout tip">
-        <strong>The reverse-search trick</strong>
-        <p>
-          Open Search Console, sort your queries by impressions, and read the ones where you show
-          up but rarely get clicked. Those are questions people are asking that your site answers
-          badly or not at all. Each one is a page or a section waiting to be written — and unlike
-          keyword tools, this is your own real demand data.
-        </p>
-      </div>
-
-      <!-- ------------------------------------------------------------ CH 6 -->
-      <h3 id="ch6">6. Reviews as a system</h3>
-      <p>
-        Reviews are now doing three jobs at once: they rank you in the local pack, they persuade
-        the human reading them, and they are the raw material an AI assistant summarizes when
-        somebody asks whether your place is any good. That third job is new, and it changes the
-        stakes. Your reviews have become your sales copy, written by strangers.
-      </p>
-
-      <h4>What actually matters, in order</h4>
-      <ol>
-        <li><b>Velocity</b> — a steady flow of new reviews. Twenty reviews spread over ten months
-          beats twenty in one week, which looks manufactured.</li>
-        <li><b>Volume</b> — relative to the restaurants ranking above you, not in the abstract.</li>
-        <li><b>Rating</b> — 4.3 to 4.8 is the sweet spot. A perfect 5.0 with 30 reviews reads as
-          suspicious to both humans and machines.</li>
-        <li><b>Response rate</b> — replies are public text you control, and they measurably change
-          how a negative review lands.</li>
-        <li><b>Content</b> — reviews that name specific dishes and occasions are worth more than
-          "great food!", because they are what gets quoted.</li>
-      </ol>
-
-      <h4>Building the ask into the shift</h4>
-      <p>
-        The restaurants that win at reviews are not running campaigns. They have made the ask
-        routine: a QR code on the check presenter, a line in the receipt email, a link in the
-        booking confirmation text, and servers who mention it naturally at a good moment. Five asks
-        a shift is 150 a month, and that is a transformed profile within a quarter.
-      </p>
-
-      <div class="callout warn">
-        <strong>Three ways to get yourself penalized</strong>
-        <p>
-          <b>Do not gate.</b> Asking only happy customers for reviews — or screening people to a
-          feedback form first and only the pleased ones to Google — violates platform policy and
-          gets review sets wiped. <b>Do not pay</b>, in cash, discounts, free desserts or entries
-          in a draw. <b>Do not solicit on Yelp at all</b>, which forbids asking entirely; there you
-          improve by responding and by fixing what people complain about.
-        </p>
-      </div>
-
-      <h4>Replying to a bad review</h4>
-      <p>Structure that works, kept under 100 words:</p>
-      <ol>
-        <li>Thank them for the feedback and name the specific issue, so it is clear you read it.</li>
-        <li>Apologize plainly, with no "sorry you feel that way" and no excuses.</li>
-        <li>State the concrete thing you are changing, if there is one.</li>
-        <li>Offer a direct way to continue offline — a real name and email.</li>
-      </ol>
-      <p>
-        Never argue, never blame the guest, never mention a comp in public. Remember your audience
-        is not the reviewer; it is the next hundred people who read that review while deciding.
-      </p>
-
-      <h4>Reviews as free operational data</h4>
-      <p>
-        Once a quarter, read your last hundred reviews and tally the recurring themes. It is the
-        cheapest customer research you will ever get, and it doubles as an AEO diagnostic: whatever
-        those themes are, that is roughly what an AI assistant is telling diners about you. If
-        "slow service on weekends" appears eleven times, fix the weekend service — and know that
-        until you do, that sentence is part of your description in every AI answer.
-      </p>
-
-      <!-- ------------------------------------------------------------ CH 7 -->
-      <h3 id="ch7">7. Structured data without a developer</h3>
-      <p>
-        Schema markup is a block of code in your page that spells out your facts in a format
-        machines cannot misinterpret. Your page says "Open 5pm till late, Tues–Sun" and a human
-        understands it. Schema says <code>opensAt 17:00, closesAt 23:00, dayOfWeek Tuesday</code>
-        and there is nothing left to interpret.
-      </p>
-      <p>
-        For AEO this matters more than it ever did for SEO. Retrieval systems favour facts they can
-        extract with confidence, and schema is the highest-confidence format available.
-      </p>
-
-      <h4>What a restaurant needs</h4>
-      <div class="table-scroll">
-        <table>
-          <thead><tr><th>Type</th><th>Goes on</th><th>What it declares</th><th>Priority</th></tr></thead>
-          <tbody>
-            <tr><td><code>Restaurant</code></td><td>Homepage</td><td>Name, address, geo, phone, hours, cuisine, price range, reservations, sameAs</td><td><b>Essential</b></td></tr>
-            <tr><td><code>Menu</code> / <code>MenuItem</code></td><td>Menu page</td><td>Sections, dishes, descriptions, prices, dietary suitability</td><td>High</td></tr>
-            <tr><td><code>FAQPage</code></td><td>FAQ page</td><td>Question and answer pairs</td><td>High</td></tr>
-            <tr><td><code>LocalBusiness</code> hours</td><td>All pages</td><td>Special and holiday hours</td><td>Medium</td></tr>
-            <tr><td><code>Event</code></td><td>Events page</td><td>Date, time, price, booking link</td><td>Medium, if you host events</td></tr>
-            <tr><td><code>BreadcrumbList</code></td><td>All pages</td><td>Site structure</td><td>Low</td></tr>
-          </tbody>
-        </table>
-      </div>
-
-      <h4>The three-step process, no coding required</h4>
-      <ol>
-        <li>Use the <a href="#schema">generator on this page</a>, or describe your restaurant to an
-          AI assistant and ask for schema.org Restaurant JSON-LD.</li>
-        <li>Paste the result into Google's <b>Rich Results Test</b> at
-          <code>search.google.com/test/rich-results</code>. If it reports errors, paste them back
-          to the AI and ask for a fix.</li>
-        <li>Add the validated block to the <code>&lt;head&gt;</code> of your page. Most platforms
-          have a "custom code" or "header injection" field; on WordPress a schema plugin or the
-          theme's header hook will do it.</li>
-      </ol>
-
-      <div class="callout warn">
-        <strong>Two rules that keep you out of trouble</strong>
-        <p>
-          <b>Only mark up what is visible on the page.</b> Schema describing content a visitor
-          cannot see is a policy violation. <b>Never mark up your own aggregate review rating.</b>
-          Self-serving review markup on your own site is against Google's guidelines and is a
-          common cause of manual penalties — your Google profile handles ratings for you.
-        </p>
-      </div>
-
-      <!-- ------------------------------------------------------------ CH 8 -->
-      <h3 id="ch8">8. AEO: how AI actually picks a restaurant</h3>
-      <p>
-        When someone asks an assistant where to eat, roughly this happens: it works out what they
-        actually want (cuisine, area, occasion, constraints), it retrieves information from sources
-        it can reach — its own index, a live web search, maps and review data, third-party
-        roundups — it decides which of those sources to trust, and it composes an answer naming a
-        small number of places with a reason for each.
-      </p>
-      <p>
-        Every one of those steps is something you can influence.
-      </p>
-
-      <div class="table-scroll">
-        <table>
-          <thead><tr><th>Step</th><th>What decides the outcome</th><th>What you do about it</th></tr></thead>
-          <tbody>
-            <tr><td><b>Can it find you?</b></td><td>Indexed site, crawlers not blocked, claimed profiles, listed on aggregators</td><td>Check robots.txt and your CDN's bot rules; claim every profile</td></tr>
-            <tr><td><b>Can it read you?</b></td><td>Menu in text not PDF, facts in HTML, schema markup</td><td>Chapters 3 and 7</td></tr>
-            <tr><td><b>Does it trust you?</b></td><td>Consistent facts across sources, reviews, third-party mentions, named people</td><td>Reconcile every listing; earn local press</td></tr>
-            <tr><td><b>Can it match you to the question?</b></td><td>Explicit facts about occasions, diets, capacity, parking, atmosphere</td><td>The FAQ and Visit pages</td></tr>
-            <tr><td><b>Will it quote you?</b></td><td>Answer-first structure, self-contained passages</td><td>Structure, below</td></tr>
-          </tbody>
-        </table>
-      </div>
-
-      <h4>Write so a machine can lift a paragraph out</h4>
-      <p>
-        Retrieval systems work with passages, not pages. The single most effective structural
-        change you can make is this:
-      </p>
-      <ul>
-        <li>Make the <b>question the heading</b> — "Do you take reservations for large groups?"</li>
-        <li><b>Answer completely in the first 40 to 60 words</b>, before any context or story.</li>
-        <li>Make each answer <b>stand alone</b> — it should make sense lifted out of the page with
-          no surrounding text.</li>
-        <li>Put the detail, the caveats and the personality <b>after</b> the direct answer.</li>
-      </ul>
-      <p>
-        Compare. Weak: <em>"We're often asked about group bookings. Our dining room has a lovely
-        history — it was a hardware store until 1987 — and over the years we've hosted…"</em>
-        Strong: <em>"Yes. We take reservations for groups up to 12 in the main dining room and up
-        to 30 in the private room downstairs. Book online or call at least 48 hours ahead. Groups
-        of 8 or more have a set menu."</em> The second one gets quoted; the first one does not.
-      </p>
-
-      <h4>State the facts a machine will never infer</h4>
-      <p>
-        This is where most restaurants lose. An assistant will not guess that you take
-        reservations, that there is a parking garage next door, or that the kitchen can handle a
-        celiac diner. If your site does not say it, the answer becomes "I'm not sure" and the
-        diner moves on to a place that did say it. Write these down explicitly, somewhere on the
-        site, in plain text:
-      </p>
-      <ul>
-        <li>Price range and typical spend per person</li>
-        <li>Reservation policy, how far ahead, and the largest party you seat</li>
-        <li>Private dining capacity and what it costs</li>
-        <li>Dietary accommodation — specifically, not just "we have options"</li>
-        <li>Parking, transit and accessibility</li>
-        <li>Kids, dress code, noise level, dogs on the patio</li>
-        <li>Whether you do takeout, delivery, catering — and through whom</li>
-        <li>Last seating and kitchen close, which differ from your posted hours</li>
-      </ul>
-
-      <h4>Consistency is a trust signal</h4>
-      <p>
-        When your website says you close at 10, Google says 11 and Yelp says 9:30, an assistant has
-        three conflicting facts and no way to resolve them. What it usually does is hedge — "hours
-        vary, check ahead" — or leave you out in favour of somewhere unambiguous. Pick your website
-        as the source of truth and reconcile everything else to it, every time something changes.
-      </p>
-
-      <h4>Get onto the pages AI already trusts</h4>
-      <p>
-        Assistants lean heavily on third-party roundups: local publications, "best of" lists,
-        tourism boards, aggregators. Ask Perplexity for the best restaurants in your city and look
-        at what it cites — that citation list <em>is</em> your outreach target list. Getting
-        included on a page an assistant already trusts is usually faster than becoming a trusted
-        source yourself.
-      </p>
-
-      <h4>Check whether you are blocking the crawlers</h4>
-      <p>
-        A surprising number of restaurants are invisible to AI assistants because a security plugin
-        or CDN setting blocks the crawlers. Open <code>yourdomain.com/robots.txt</code> and look
-        for these:
-      </p>
-      <div class="table-scroll">
-        <table>
-          <thead><tr><th>Crawler</th><th>Who</th><th>What it does</th></tr></thead>
-          <tbody>
-            <tr><td><code>OAI-SearchBot</code></td><td>OpenAI</td><td>Powers search results and citations in ChatGPT. Allow this one.</td></tr>
-            <tr><td><code>GPTBot</code></td><td>OpenAI</td><td>Collects data for model training. Optional — separate decision.</td></tr>
-            <tr><td><code>PerplexityBot</code></td><td>Perplexity</td><td>Indexes for Perplexity answers. Allow.</td></tr>
-            <tr><td><code>ClaudeBot</code></td><td>Anthropic</td><td>Crawls for Claude. Allow.</td></tr>
-            <tr><td><code>Google-Extended</code></td><td>Google</td><td>Gemini training. Does not affect normal Search or AI Overviews.</td></tr>
-            <tr><td><code>Bingbot</code></td><td>Microsoft</td><td>Feeds Bing and a share of Copilot answers. Always allow.</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <p>
-        Robots.txt is not the only place this happens — bot-protection rules at your CDN or host
-        can block these regardless of what robots.txt says. If you are unsure, ask whoever manages
-        your hosting to confirm these user agents are not being challenged.
-      </p>
-
-      <h4>Measuring AEO</h4>
-      <p>
-        There is no Search Console for this. You measure it by asking. Build a fixed list of 10 to
-        15 realistic diner questions, run them across ChatGPT, Gemini, Perplexity, Copilot and
-        Google AI Overviews on the same day each month, and record four things: whether you were
-        mentioned, what position, whether the facts stated were correct, and which sources were
-        cited. That is the whole methodology, and it works. There is a
-        <a href="#plan">tracker template</a> further down this page.
-      </p>
-
-      <!-- ------------------------------------------------------------ CH 9 -->
-      <h3 id="ch9">9. Working with AI without getting burned</h3>
-      <p>
-        AI is genuinely useful here, and it is also confidently wrong about local facts in ways
-        that will cost you. The line is clean once you see it.
-      </p>
-      <div class="vs" style="margin:20px 0">
-        <div>
-          <h4>✅ Let AI do this</h4>
-          <ul>
-            <li>Turning a photographed menu into HTML</li>
-            <li>Writing dish descriptions from ingredients you supply</li>
-            <li>Generating and debugging schema markup</li>
-            <li>Drafting FAQ answers from your policies</li>
-            <li>Three versions of a review reply while you are still annoyed</li>
-            <li>Title tags and meta descriptions in bulk</li>
-            <li>Summarizing 100 reviews into themes</li>
-            <li>Translating a PageSpeed report into a work order</li>
-            <li>A month of Google Posts from your specials calendar</li>
-            <li>Telling you what facts your site is missing</li>
-          </ul>
-        </div>
-        <div>
-          <h4>🚫 Never let AI do this</h4>
-          <ul>
-            <li>State your hours, prices or address without you checking</li>
-            <li>Invent dishes, ingredients or allergen information</li>
-            <li>Claim awards, press or credentials you do not have</li>
-            <li>Write reviews, or reply to one without you reading it</li>
-            <li>Publish anything about a health, allergen or dietary claim unverified</li>
-            <li>Name local landmarks or businesses you have not confirmed exist</li>
-            <li>Post to your Google profile unsupervised</li>
-            <li>Produce a page of generic filler to "have content"</li>
-          </ul>
-        </div>
-      </div>
-
-      <h4>What makes a prompt work</h4>
-      <p>Five things, and the prompts in the library below all have them:</p>
-      <ol>
-        <li><b>Role and context</b> — who you are, what restaurant, which city.</li>
-        <li><b>Real inputs</b> — your actual menu, your actual reviews, your actual policies.
-          Generic in, generic out.</li>
-        <li><b>A specific task</b> — "write 8 Google Posts under 1,000 characters with a CTA", not
-          "help me with marketing".</li>
-        <li><b>Required format</b> — a table, HTML, a numbered list, a character limit.</li>
-        <li><b>An anti-hallucination instruction</b> — "do not invent anything; mark what you are
-          unsure about as [UNCLEAR]".</li>
-      </ol>
-
-      <div class="callout warn">
-        <strong>The allergen rule</strong>
-        <p>
-          Never publish AI-generated allergen or dietary information without your kitchen checking
-          it line by line. An AI assistant will cheerfully describe a dish as gluten-free based on
-          the name alone. That is a medical risk and a legal one, and it is the one place in this
-          entire playbook where being fast is not worth it.
-        </p>
-      </div>
-
-      <!-- ----------------------------------------------------------- CH 10 -->
-      <h3 id="ch10">10. Multiple locations</h3>
-      <p>
-        Everything above still applies, once per location. What changes is the structure.
-      </p>
-      <ul>
-        <li><b>One Google Business Profile per physical location.</b> Never one profile for the
-          group. Each needs its own hours, photos, posts and review responses.</li>
-        <li><b>One website page per location</b>, on a clean URL like
-          <code>/locations/riverside/</code>. A single page listing all your addresses ranks for
-          none of them.</li>
-        <li><b>Make the location pages genuinely different.</b> Different photos, different
-          neighborhood context, different parking, different landmarks, the actual manager's name,
-          location-specific specials. Near-duplicate location pages get filtered out of results.</li>
-        <li><b>Location-specific schema</b> on each page, with that location's address, geo
-          coordinates and hours.</li>
-        <li><b>Route reviews to the right location</b> and reply from that location's profile.</li>
-        <li><b>Watch for duplicates after a move.</b> Old addresses linger in directories for
-          years and quietly send people to a locked door.</li>
-      </ul>
-
-      <!-- ----------------------------------------------------------- CH 11 -->
-      <h3 id="ch11">11. What to ignore</h3>
-      <p>
-        Things that consume restaurant marketing budgets and return very little:
-      </p>
-      <ul>
-        <li><b>Buying backlinks or "1,000 directory submissions".</b> Low-quality link packages
-          range from useless to actively harmful. Local relevance beats link volume.</li>
-        <li><b>Keyword stuffing your business name.</b> "Rosa's Trattoria - Best Italian Restaurant
-          Asheville NC" in your Google profile name violates policy and gets reported by
-          competitors. Use your real name.</li>
-        <li><b>Blogging for its own sake.</b> Nobody is reading "10 Fun Facts About Olive Oil".
-          Spend that hour on your menu page instead.</li>
-        <li><b>Chasing city-wide head terms.</b> "Restaurants in Chicago" is not a realistic or
-          even valuable target for one independent. Neighborhood and dish terms are.</li>
-        <li><b>Review gating and paid reviews.</b> Covered above. The downside is losing your
-          entire review set.</li>
-        <li><b>Rebuilding a working website to fix SEO.</b> Almost always the fix is content,
-          speed and schema — not a new theme.</li>
-        <li><b>Agencies that will not show you the Google profile first.</b> If local SEO is not
-          the first conversation, it is not local SEO.</li>
-        <li><b>Anyone guaranteeing rankings.</b> Nobody controls Google's results, and the ones
-          who claim to are usually using techniques that eventually cost you.</li>
-      </ul>
-
-      <!-- ----------------------------------------------------------- CH 12 -->
-      <h3 id="ch12">12. Measuring what matters</h3>
-      <p>
-        Rankings are a vanity number — they change by device, by location, by the hour. Measure
-        things that connect to covers.
-      </p>
-      <div class="table-scroll">
-        <table>
-          <thead><tr><th>Metric</th><th>Where</th><th>How often</th><th>What good looks like</th></tr></thead>
-          <tbody>
-            <tr><td>Direction requests</td><td>Google profile</td><td>Monthly</td><td>Trending up; strong intent to visit</td></tr>
-            <tr><td>Calls from the profile</td><td>Google profile</td><td>Monthly</td><td>Up, and answered</td></tr>
-            <tr><td>Website clicks from profile</td><td>Google profile</td><td>Monthly</td><td>Up alongside views</td></tr>
-            <tr><td>Discovery vs direct searches</td><td>Google profile</td><td>Monthly</td><td>Discovery growing = new people finding you</td></tr>
-            <tr><td>New reviews per month</td><td>Google profile</td><td>Weekly</td><td>Steady, never zero</td></tr>
-            <tr><td>Average rating</td><td>Google profile</td><td>Monthly</td><td>4.3 to 4.8, stable or rising</td></tr>
-            <tr><td>Review response rate</td><td>Google profile</td><td>Weekly</td><td>100%</td></tr>
-            <tr><td>Clicks and impressions</td><td>Search Console</td><td>Monthly</td><td>Up, especially non-brand queries</td></tr>
-            <tr><td>Queries in positions 8–20</td><td>Search Console</td><td>Monthly</td><td>Your cheapest wins list</td></tr>
-            <tr><td>AI mention rate</td><td>Manual test</td><td>Monthly</td><td>Rising share of your 15 test questions</td></tr>
-            <tr><td>AI fact accuracy</td><td>Manual test</td><td>Monthly</td><td>Zero errors — chase every one to its source</td></tr>
-            <tr><td>Online orders / bookings</td><td>Your own system</td><td>Weekly</td><td>The number that actually pays wages</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="callout note">
-        <strong>Set expectations honestly</strong>
-        <p>
-          Google Business Profile changes can show up within days to a couple of weeks. Website
-          content and schema typically take four to twelve weeks to settle. Reviews and local
-          authority compound over months. AI assistant answers can lag further still, because some
-          of them are working from indexes refreshed on their own schedule. Do the work, keep the
-          monthly loop, and judge it on a quarter — not on a Tuesday.
-        </p>
-      </div>
-
-    </div>
+    <p class="muted" style="margin-top:20px;font-size:.92rem">
+      Want the long version, with the tables and the reasoning?
+      <a href="docs/09-the-playbook.md">Read all twelve in full &rarr;</a>
+    </p>
   </div>
 </section>
 
@@ -1103,12 +381,10 @@
   <div class="wrap">
     <div class="section-head">
       <div class="kicker">06 · The work</div>
-      <h2>The checklists</h2>
+      <h2>118 things to tick off</h2>
       <p>
-        Two tracks. The SEO checklist gets you found; the AEO checklist gets you recommended. Tick
-        items off as you go — your progress saves in this browser, so you can close the tab and
-        come back to it. Items tagged <b style="color:var(--info)">🤖 AI prompt</b> have a
-        ready-made prompt waiting in the library below — click the tag to jump straight to it.
+        Two tracks: get found, then get recommended. Progress saves in this browser. Anything tagged
+        <b style="color:var(--info)">AI prompt</b> has the wording written for you.
       </p>
     </div>
 
@@ -1130,11 +406,10 @@
   <div class="wrap">
     <div class="section-head">
       <div class="kicker">07 · Do it faster</div>
-      <h2>AI prompt library</h2>
+      <h2>30 prompts. Copy, paste, done.</h2>
       <p>
-        Thirty prompts built for restaurant work, written the way that actually gets useful output.
-        If you filled in the <a href="#audit">Add your restaurant</a> form, your details are
-        already dropped into them. Paste into ChatGPT, Claude, Gemini or whatever you use.
+        Fill in the audit above and these arrive with your restaurant&rsquo;s details already in them.
+        Works in ChatGPT, Claude, Gemini &mdash; whatever you use.
       </p>
     </div>
 
@@ -1153,12 +428,10 @@
   <div class="wrap">
     <div class="section-head">
       <div class="kicker">08 · The technical bit</div>
-      <h2>Schema markup generator</h2>
+      <h2>We&rsquo;ll write the code for you</h2>
       <p>
-        Fill in the <a href="#audit">Add your restaurant</a> form above, add your hours below, and
-        this writes the structured data for you. Paste the result into the
-        <code>&lt;head&gt;</code> of your homepage. This is the single most technical item in the
-        playbook and it takes about five minutes.
+        The most technical thing here, and it takes five minutes. Add your hours, press the button,
+        paste the result into your homepage.
       </p>
     </div>
 
@@ -1224,106 +497,74 @@ https://maps.app.goo.gl/…"></textarea>
 <section class="band" id="plan">
   <div class="wrap">
     <div class="section-head">
-      <div class="kicker">09 · Sequencing</div>
-      <h2>The 90-day plan</h2>
-      <p>
-        A generic version is below. Run the <a href="#audit">audit</a> and you get this same plan
-        rebuilt around your own gaps, in your own priority order.
-      </p>
+      <div class="kicker">09 &middot; The plan</div>
+      <h2>90 days. Three moves.</h2>
+      <p>Run your score first and you get this rebuilt around your own gaps.</p>
     </div>
 
-    <div class="grid grid-3">
-      <div class="card">
-        <div class="phase" style="margin:0">
-          <h4><span class="pill">Days 1–30</span> Fix the foundation</h4>
-          <p class="goal">Goal: stop losing customers you have already earned.</p>
-          <ol>
-            <li>Claim and verify your Google Business Profile</li>
-            <li>Correct hours, including twelve months of holidays</li>
-            <li>Set the most specific primary category and up to five secondaries</li>
-            <li>Fill in every attribute, including dietary options</li>
-            <li>Upload 20+ real photos across the full shot list</li>
-            <li>Load the menu into the profile with prices</li>
-            <li>Get the menu onto a real HTML page on your site</li>
-            <li>Add address, phone and hours as text in your site footer</li>
-            <li>Set up Google Search Console</li>
-            <li>Start asking every guest for a review</li>
-          </ol>
-        </div>
+    <div class="timeline">
+      <div class="tl-phase">
+        <div class="tp">Days 1&ndash;30</div>
+        <h4>Stop the leaks</h4>
+        <p>Free, fast, mostly inside your Google profile.</p>
+        <ul>
+          <li>Claim and verify the profile</li>
+          <li>Fix hours + a year of holidays</li>
+          <li>Set a specific category</li>
+          <li>20 photos, every attribute ticked</li>
+          <li>Menu out of the PDF</li>
+          <li>Start asking for reviews</li>
+        </ul>
       </div>
-      <div class="card">
-        <div class="phase" style="margin:0">
-          <h4><span class="pill">Days 31–60</span> Build the answers</h4>
-          <p class="goal">Goal: give machines something specific to quote.</p>
-          <ol>
-            <li>Write the FAQ page — 15 to 25 real questions, answer-first</li>
-            <li>Build the Visit page with parking, transit and landmarks</li>
-            <li>Add Restaurant schema to the homepage and validate it</li>
-            <li>Add FAQPage and Menu schema and validate them</li>
-            <li>Write descriptions for every dish</li>
-            <li>Claim Apple Business Connect and Bing Places</li>
-            <li>Reconcile name, address and phone across every directory</li>
-            <li>Find and remove duplicate listings</li>
-            <li>Reply to every outstanding review</li>
-            <li>Run your first AI visibility test and record the baseline</li>
-          </ol>
-        </div>
+      <div class="tl-phase">
+        <div class="tp">Days 31&ndash;60</div>
+        <h4>Give AI something to quote</h4>
+        <p>Build the pages and markup that get you named.</p>
+        <ul>
+          <li>FAQ page, answers first</li>
+          <li>Visit page: parking, transit, landmarks</li>
+          <li>Schema on the homepage and menu</li>
+          <li>Claim Apple Maps and Bing</li>
+          <li>Same name, address and phone everywhere</li>
+          <li>Reply to every review</li>
+        </ul>
       </div>
-      <div class="card">
-        <div class="phase" style="margin:0">
-          <h4><span class="pill">Days 61–90</span> Build authority</h4>
-          <p class="goal">Goal: become a source AI and Google already trust.</p>
-          <ol>
-            <li>Identify the sources AI cites for your city and cuisine</li>
-            <li>Pitch two local publications with a real story</li>
-            <li>Get listed by the chamber, tourism board and neighborhood association</li>
-            <li>Publish an About page naming the chef and the sourcing</li>
-            <li>Seed and answer ten Google Q&amp;A entries</li>
-            <li>Establish a twice-monthly Google Posts rhythm</li>
-            <li>Run a review-theme analysis and fix the top complaint</li>
-            <li>Re-run the AI visibility test and compare to the baseline</li>
-            <li>Fix any fact an assistant is getting wrong, at its source</li>
-            <li>Set up the monthly 30-minute review as a recurring task</li>
-          </ol>
-        </div>
+      <div class="tl-phase">
+        <div class="tp">Days 61&ndash;90</div>
+        <h4>Build authority</h4>
+        <p>The slow compounding stuff. Start it now.</p>
+        <ul>
+          <li>Find the sources AI cites for your city</li>
+          <li>Pitch two local writers</li>
+          <li>Get on the chamber and tourism lists</li>
+          <li>Seed your Google Q&amp;A</li>
+          <li>Post twice a month</li>
+          <li>Re-run your score and compare</li>
+        </ul>
       </div>
     </div>
 
-    <h3 style="margin-top:44px">The monthly loop, once the 90 days are done</h3>
-    <p class="narrow" style="color:var(--ink-2)">
-      Thirty minutes, same day every month. This is what keeps everything from drifting back.
-    </p>
-    <div class="table-scroll narrow" style="max-width:820px">
-      <table>
-        <thead><tr><th>Minutes</th><th>Task</th></tr></thead>
-        <tbody>
-          <tr><td><b>5</b></td><td>Check Google profile performance: views, calls, directions, website clicks, discovery vs direct</td></tr>
-          <tr><td><b>5</b></td><td>Reply to every unanswered review; note any recurring complaint</td></tr>
-          <tr><td><b>5</b></td><td>Verify hours for the coming month, including any holiday or private event closure</td></tr>
-          <tr><td><b>5</b></td><td>Run your 15 AI test questions across the assistants; log mentions and any wrong facts</td></tr>
-          <tr><td><b>5</b></td><td>Search Console: check the position 8–20 list for cheap wins</td></tr>
-          <tr><td><b>5</b></td><td>Upload new photos and schedule the month's Google Posts</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <h3 style="margin-top:44px">AI visibility tracker</h3>
-    <p class="narrow" style="color:var(--ink-2)">
-      Copy this into a spreadsheet. Same questions, same day each month, one row per question per
-      assistant. It is unglamorous and it is the only reliable way to know whether your AEO work is
-      landing.
-    </p>
-    <div class="table-scroll">
-      <table>
-        <thead>
-          <tr><th>Date</th><th>Question asked</th><th>Assistant</th><th>Mentioned?</th><th>Position</th><th>Facts correct?</th><th>Sources it cited</th><th>Action</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>2026-01-05</td><td>best neapolitan pizza in asheville</td><td>ChatGPT</td><td>No</td><td>—</td><td>n/a</td><td>eater.com, local blog</td><td>Pitch that blog</td></tr>
-          <tr><td>2026-01-05</td><td>where to eat near the arena</td><td>Perplexity</td><td>Yes</td><td>2nd</td><td>Hours wrong</td><td>our site, Yelp</td><td>Fix Yelp hours</td></tr>
-          <tr><td>2026-01-05</td><td>gluten free pizza asheville</td><td>Gemini</td><td>No</td><td>—</td><td>n/a</td><td>tripadvisor</td><td>Add GF to menu page + attributes</td></tr>
-        </tbody>
-      </table>
+    <div class="kpi-row" style="margin-top:34px">
+      <div class="kpi">
+        <div class="kl">Every month, forever</div>
+        <div class="kv">30 min</div>
+        <div class="kn">Profile stats &middot; reply to reviews &middot; check next month&rsquo;s hours &middot; ask 5 assistants about you.</div>
+      </div>
+      <div class="kpi">
+        <div class="kl">Google changes land in</div>
+        <div class="kv">Days</div>
+        <div class="kn">The fastest feedback you get. Start here.</div>
+      </div>
+      <div class="kpi">
+        <div class="kl">Website &amp; schema settle in</div>
+        <div class="kv">4&ndash;12 wks</div>
+        <div class="kn">Don&rsquo;t panic on day three.</div>
+      </div>
+      <div class="kpi">
+        <div class="kl">Judge the whole thing at</div>
+        <div class="kv">1 quarter</div>
+        <div class="kn">Reviews and authority compound. Not on a Tuesday.</div>
+      </div>
     </div>
   </div>
 </section>

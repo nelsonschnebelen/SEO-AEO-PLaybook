@@ -160,6 +160,7 @@ walk-in:
 | [Schema recipes](docs/06-schema-recipes.md) | Copy-paste JSON-LD for restaurant, menu, FAQ, events, multi-location |
 | [Measurement](docs/07-measurement.md) | The monthly loop and how to measure AI visibility |
 | [Site checker rules](docs/08-site-checker.md) | Every check the site checker runs, and why |
+| [The playbook in full](docs/09-the-playbook.md) | All twelve chapters, long form |
 
 ---
 
@@ -211,7 +212,7 @@ The site is data-driven. To change what it says, edit the data — not the HTML:
 - **Playbook chapters** → the `#playbook` section of `index.html`
 
 `docs/02`, `03`, `04`, `05` and `08` are **generated** from those data files so the two cannot
-drift apart.
+drift apart. `docs/09` holds the long-form chapters; the site shows a short version of each.
 After editing data, regenerate them:
 
 ```bash

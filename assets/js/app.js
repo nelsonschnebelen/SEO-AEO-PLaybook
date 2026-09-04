@@ -66,7 +66,8 @@ const App = {
     const reduced = window.matchMedia &&
       window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const targets = document.querySelectorAll(
-      '.section-head, .card, .vs, .callout, .table-scroll, .toc, .answer-card, .how-to');
+      '.section-head, .card, .split, .callout, .table-scroll, .answer-card, ' +
+      '.kpi-row, .weight-stack, .timeline, .rows');
 
     if (reduced || !('IntersectionObserver' in window)) {
       targets.forEach(el => el.classList.add('in'));
@@ -83,14 +84,30 @@ const App = {
     targets.forEach(el => io.observe(el));
   },
 
-  /* -------------------------------------------------------------- pillars */
+  /* -------------------------------------------------------------- pillars
+     One weighted stack instead of seven paragraphs. Sequential ramp — the
+     job is magnitude, not identity — so weight reads off lightness, and
+     every segment is labelled rather than relying on colour. */
   renderPillars() {
-    document.getElementById('pillar-grid').innerHTML = PILLARS.map(p =>
-      '<div class="card pillar-card">' +
-        '<h3>' + p.icon + ' ' + p.name + '<span class="w">' + p.weight + '%</span></h3>' +
-        '<p>' + p.blurb + '</p>' +
-        '<p class="owner-note">' + p.ownerNote + '</p>' +
-      '</div>'
+    const stack = document.getElementById('weight-stack');
+    const key = document.getElementById('weight-key');
+    if (!stack || !key) return;
+
+    const sorted = [...PILLARS].sort((a, b) => b.weight - a.weight);
+    const shade = i => {
+      const t = i / Math.max(1, sorted.length - 1);          // 0 = heaviest
+      return 'color-mix(in srgb, var(--brand) ' + Math.round(100 - t * 62) + '%, var(--ink-4))';
+    };
+
+    stack.innerHTML = sorted.map((p, i) =>
+      '<div class="weight-seg" style="flex:' + p.weight + ';background:' + shade(i) + '" ' +
+      'title="' + p.name + ' — ' + p.weight + '% of your score">' +
+      (p.weight >= 12 ? p.weight + '%' : '') + '</div>'
+    ).join('');
+
+    key.innerHTML = sorted.map((p, i) =>
+      '<div><span class="sw" style="background:' + shade(i) + '"></span>' +
+      '<b>' + p.weight + '%</b>&nbsp;' + p.short + '</div>'
     ).join('');
   },
 
