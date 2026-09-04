@@ -1,0 +1,670 @@
+/* ==========================================================================
+   AI Prompt Library
+   Copy-paste prompts for restaurant owners. Placeholders in {{braces}} are
+   filled from the "Add your restaurant" form, so the prompts arrive
+   pre-written with the owner's own details.
+
+   Every prompt follows the same shape that makes AI useful rather than
+   generic: role, real context, specific task, required format, and an
+   explicit instruction not to invent facts.
+   ========================================================================== */
+
+const PROMPT_CATEGORIES = [
+  { id: 'start',    name: 'Start Here',           blurb: 'Run these first. They tell you where you actually stand.' },
+  { id: 'gbp',      name: 'Google Profile',       blurb: 'Category selection, descriptions, posts, Q&A.' },
+  { id: 'content',  name: 'Menu & Content',       blurb: 'Turning a paper menu into pages that rank and get quoted.' },
+  { id: 'reviews',  name: 'Reviews',              blurb: 'Asking, replying, and mining reviews for what to fix.' },
+  { id: 'schema',   name: 'Schema & Technical',   blurb: 'Where AI genuinely writes the code for you.' },
+  { id: 'aeo',      name: 'AI Visibility',        blurb: 'Testing and improving how assistants describe you.' },
+  { id: 'local',    name: 'Local & Outreach',     blurb: 'Getting onto the pages that AI already trusts.' },
+  { id: 'measure',  name: 'Measurement',          blurb: 'Making sense of Search Console and profile data.' }
+];
+
+const PROMPTS = [
+
+  /* ------------------------------- START HERE ---------------------------- */
+  {
+    id: 'p-baseline', cat: 'start', title: 'Find out what AI already says about you',
+    when: 'Do this before anything else. Run it in ChatGPT, Gemini, Perplexity and Copilot separately — the answers differ.',
+    why: 'This is your baseline. Whatever these assistants say today is what a diner asking about you is being told today.',
+    prompt:
+`What do you know about {{name}}, a {{cuisine}} restaurant in {{city}}?
+
+Tell me specifically:
+1. What kind of food and what price range you believe it serves
+2. Its hours, address and phone number as you understand them
+3. What its reviews generally say — the praise and the complaints
+4. Whether you would recommend it, and for what kind of occasion
+5. Which sources you are drawing this from
+
+If you are unsure about any of it, say so explicitly rather than guessing.
+I am the owner and I am checking what is accurate.`
+  },
+  {
+    id: 'p-competitors', cat: 'start', title: 'See who AI recommends instead of you',
+    when: 'Right after the baseline prompt. Run in each assistant.',
+    why: 'The restaurants that come back are your real competitive set in AI answers, which is often different from who you think you compete with.',
+    prompt:
+`I am visiting {{city}} and want {{cuisine}} food tonight.
+
+Recommend five restaurants. For each one tell me why you picked it,
+what it is known for, roughly what it costs, and what source you are
+basing that on.
+
+Then tell me: what makes the top choice stand out from the others in
+the information available to you?`
+  },
+  {
+    id: 'p-gap', cat: 'start', title: 'Ask AI what is missing from your online presence',
+    when: 'Once you have a website live.',
+    why: 'Answer engines are unusually good at telling you what they could not find, which is exactly the list of things to publish next.',
+    prompt:
+`Visit {{url}} and read it as if you were an AI assistant trying to
+decide whether to recommend this restaurant to someone.
+
+Then answer:
+1. What facts about this restaurant are clearly stated and easy to find?
+2. What would a diner want to know that this site does not answer?
+3. If someone asked you "can I book a table for 8 there on a Saturday",
+   "do they have vegan options" or "is there parking", could you answer
+   from this site? For each, say yes or no and quote the text you used.
+4. List the ten most important missing facts, in priority order.
+
+Be blunt. Do not pad the list with things that are already covered.`
+  },
+
+  /* ------------------------------- GBP ----------------------------------- */
+  {
+    id: 'p-category', cat: 'gbp', title: 'Pick the right Google category',
+    when: 'When setting up or auditing your Google Business Profile.',
+    why: 'Primary category is one of the strongest local ranking levers, and most owners leave it on something far too broad.',
+    prompt:
+`Here is my restaurant menu and concept:
+
+[PASTE YOUR MENU OR DESCRIBE YOUR CONCEPT HERE]
+
+I run {{name}} in {{city}}.
+
+From the official Google Business Profile category list, recommend:
+1. The single best PRIMARY category, with your reasoning
+2. Up to five SECONDARY categories that genuinely apply
+3. Any category I might be tempted to add that would actually hurt me
+   or misrepresent the business
+
+Explain the tradeoff for the primary category between being specific
+(less competition, fewer searches) and being broad (more searches,
+more competition).`
+  },
+  {
+    id: 'p-description', cat: 'gbp', title: 'Write the 750-character business description',
+    when: 'Google profile description field.',
+    why: 'Both Google and AI assistants read this when summarizing what kind of place you are.',
+    prompt:
+`Write a Google Business Profile description for {{name}}, a {{cuisine}}
+restaurant in {{city}}.
+
+Facts to use:
+- Signature dishes: [LIST 3-5]
+- Neighborhood and setting: [DESCRIBE]
+- What makes us different: [DESCRIBE]
+- Who we suit: [DATE NIGHT / FAMILIES / GROUPS / SOLO / BUSINESS]
+- Any credentials, awards or press: [LIST]
+
+Requirements:
+- Maximum 750 characters
+- Name specific dishes, not adjectives about quality
+- Mention the neighborhood naturally, once
+- No URLs, no phone numbers, no promotional offers (Google removes them)
+- No phrases like "best in town", "award-winning" unless I gave you the award
+- Write it plainly, the way I would describe it to a neighbor
+
+Give me two versions with different emphasis.`
+  },
+  {
+    id: 'p-posts', cat: 'gbp', title: 'Draft a month of Google Posts in one sitting',
+    when: 'Once a month, 20 minutes.',
+    why: 'Posting regularly is a freshness and engagement signal, and it is the fastest way to surface specials in search.',
+    prompt:
+`Draft 8 Google Business Profile posts for {{name}} in {{city}},
+covering the next month.
+
+Here is what is happening:
+[LIST SPECIALS, EVENTS, NEW DISHES, SEASONAL CHANGES, HOLIDAY HOURS]
+
+For each post give me:
+- The post text, under 1,000 characters, with the key point first
+- A suggested call-to-action button (Order / Book / Call / Learn more)
+- What photo to shoot for it
+
+Vary the type: specials, events, new items, behind-the-scenes,
+holiday hours, staff spotlight. Keep the tone {{tone}}.
+No hashtags — Google Posts do not use them.`
+  },
+  {
+    id: 'p-qa', cat: 'gbp', title: 'Seed your Google Q&A section',
+    when: 'Once, then review monthly.',
+    why: 'Anyone can answer questions about your business. Get there first with correct answers.',
+    prompt:
+`Generate the 15 questions that diners most commonly ask before visiting
+a {{cuisine}} restaurant like {{name}} in {{city}}.
+
+Focus on the practical decision-blockers: parking, reservations, group
+size, dietary restrictions, kids, dress code, wait times, payment,
+accessibility, corkage, private events.
+
+Format as a numbered list of questions only — I will write the answers
+myself from my own policies. Order them by how likely they are to stop
+someone from visiting if unanswered.`
+  },
+
+  {
+    id: 'p-photos', cat: 'gbp', title: 'Build your photo shot list',
+    when: 'Before a photo session, and again each season.',
+    why: 'Photo coverage and freshness drive profile engagement, and most owners shoot the same three dishes over and over.',
+    prompt:
+`I need to photograph {{name}}, a {{cuisine}} restaurant in {{city}},
+for my Google Business Profile and website.
+
+Here is my menu and a description of the space:
+[PASTE MENU + DESCRIBE THE ROOM, BAR, PATIO, EXTERIOR]
+
+Build me a prioritized shot list covering exterior, interior, food,
+drinks, team and details. For each shot tell me:
+- What is in frame
+- Best time of day and lighting
+- Why it matters for the profile
+- Where it should be used (profile cover, menu page, About page, posts)
+
+Then give me a short descriptive filename and a one-line caption for
+each. Assume I am shooting on a phone, not hiring a photographer.
+Order the list so the first ten shots are the ones that matter most.`
+  },
+
+  /* ------------------------------- CONTENT ------------------------------- */
+  {
+    id: 'p-menu-html', cat: 'content', title: 'Turn a photographed menu into a real web page',
+    when: 'The single highest-value AI task on this list if your menu is a PDF or image.',
+    why: 'A menu in a PDF is invisible to search and to every AI assistant. This converts it in minutes instead of hours.',
+    prompt:
+`I am attaching photos of my restaurant menu. Convert it into clean,
+accessible HTML for a web page.
+
+Requirements:
+- Each menu section becomes an h2 heading
+- Each dish: name in a heading or strong tag, description as text,
+  price as text
+- Add dietary tags where the menu indicates them (V, VG, GF)
+- Semantic HTML only, no inline styles, no framework classes
+- Do not invent dishes, descriptions or prices — if a photo is unclear,
+  mark it [UNCLEAR] and I will fill it in
+- Preserve my exact wording for dish names
+
+After the HTML, list anything you could not read clearly.`
+  },
+  {
+    id: 'p-dish-desc', cat: 'content', title: 'Write dish descriptions that match how people search',
+    when: 'When your menu is a list of names and prices.',
+    why: 'Descriptions are what match specific searches and give AI assistants something to quote.',
+    prompt:
+`Write menu descriptions for these dishes at {{name}}, a {{cuisine}}
+restaurant in {{city}}:
+
+[DISH NAME] — ingredients: [LIST] — method: [GRILLED/BRAISED/etc]
+[repeat for each dish]
+
+Rules:
+- One to two sentences each, 15 to 30 words
+- Lead with the main ingredient and the cooking method
+- Use the words a diner would actually search for
+- Note spice level and dietary status where it applies
+- No empty adjectives: no "delicious", "mouthwatering", "our famous"
+- Do not add any ingredient I did not list
+
+Tone: {{tone}}.`
+  },
+  {
+    id: 'p-faq', cat: 'content', title: 'Build the FAQ page that AI assistants quote',
+    when: 'High priority. This is the most AEO-effective page you can build.',
+    why: 'Question-and-answer format is what answer engines extract from most readily.',
+    prompt:
+`Help me build an FAQ page for {{name}}, a {{cuisine}} restaurant in
+{{city}}.
+
+Step 1: List the 20 questions diners most need answered before booking
+or visiting a restaurant like mine. Include the awkward practical ones
+most restaurants leave out.
+
+Step 2: For each question, tell me exactly what information you need
+from me to write a good answer.
+
+Do not write the answers yet — I will give you my real policies first.
+Then in a later message you will write each answer in this format:
+the question as a heading, then a complete 40-to-60-word answer that
+stands alone without the rest of the page, then any extra detail below.`
+  },
+  {
+    id: 'p-location', cat: 'content', title: 'Research your neighborhood for a location page',
+    when: 'When building a location or Visit page.',
+    why: 'Landmarks and neighborhood names are exactly what locals and visitors type and ask.',
+    prompt:
+`My restaurant {{name}} is at {{address}} in {{city}}.
+
+List what is within roughly one mile that a diner might use to describe
+or find my location:
+- Neighborhood and district names locals actually use
+- Major landmarks, theaters, stadiums, museums, parks
+- Hotels
+- Transit stops and lines
+- Universities, hospitals, large employers
+- Notable cross streets
+
+For each, note how a diner might phrase a search involving it
+(for example "restaurants near [landmark]").
+
+Flag anything you are not confident about — I will verify before
+publishing. Do not invent local businesses or landmarks.`
+  },
+  {
+    id: 'p-calendar', cat: 'content', title: 'Build a 12-month content calendar',
+    when: 'Once a year.',
+    why: 'Freshness is a signal, and seasonal content captures searches that spike predictably.',
+    prompt:
+`Build a 12-month content calendar for {{name}}, a {{cuisine}} restaurant
+in {{city}}.
+
+For each month include:
+- One website content piece (page or post) with a working title
+- The seasonal or local hook it is tied to
+- Two Google Post ideas
+- One photo shoot theme
+- Any holiday hours or menu changes to prepare for
+
+Anchor it to: seasonal menu changes, local events in {{city}}, holidays
+that drive restaurant traffic, and the slow periods where promotion
+matters most.
+
+Format as a table. Keep each item to something one busy owner can do
+in under two hours.`
+  },
+
+  {
+    id: 'p-titles', cat: 'content', title: 'Write title tags and meta descriptions in bulk',
+    when: 'Once, when your page list is settled.',
+    why: 'The title tag is the strongest on-page signal and the blue line people decide to click. Writing them one at a time is why most sites never do it.',
+    prompt:
+`Write a title tag and meta description for every page on my restaurant
+website.
+
+Restaurant: {{name}}
+Cuisine: {{cuisine}}
+City / neighborhood: {{city}}
+Pages: [LIST YOUR PAGES — homepage, menu, visit, about, events,
+private dining, contact, any others]
+
+Rules:
+- Title tag under 60 characters, lead with what people search, end with
+  the restaurant name
+- Include the city or neighborhood where it fits naturally, once
+- Meta description 140 to 155 characters, written to earn the click,
+  with a reason to choose us and a clear next step
+- Every title must be unique
+- No keyword stuffing, no ALL CAPS, no "Best" unless I gave you an award
+
+Format as a table: Page | Title tag | Character count | Meta description.`
+  },
+
+  /* ------------------------------- REVIEWS ------------------------------- */
+  {
+    id: 'p-rev-analysis', cat: 'reviews', title: 'Mine your reviews for what to fix and what to promote',
+    when: 'Quarterly. Genuinely one of the highest-value hours you can spend.',
+    why: 'Your reviews are both a free operations report and the raw material AI uses to describe you.',
+    prompt:
+`Below are my last 100 Google reviews for {{name}}.
+
+[PASTE REVIEWS]
+
+Analyze and give me:
+1. The five most-mentioned positives, with how often each appears
+2. The five most-mentioned complaints, with frequency and severity
+3. The dishes mentioned most often, positive and negative
+4. Any pattern by day, time, or party size
+5. Words and phrases diners repeatedly use to describe us — these are
+   the words we should be using in our own copy
+6. A two-sentence summary of this restaurant based only on these
+   reviews, written the way an AI assistant would summarize it for
+   someone asking whether to go
+
+Item 6 matters most: that is approximately what assistants are telling
+diners about us right now.`
+  },
+  {
+    id: 'p-rev-reply', cat: 'reviews', title: 'Draft a reply to a hard review',
+    when: 'Whenever a negative review lands and you are annoyed.',
+    why: 'Your reply is read by everyone who reads that review. Writing it while angry is expensive.',
+    prompt:
+`Here is a negative review of {{name}}:
+
+[PASTE REVIEW]
+
+Here is what actually happened, from my side:
+[YOUR CONTEXT]
+
+Write three reply options at different tones: warm and apologetic,
+brief and professional, and one that politely corrects a factual error
+without being defensive.
+
+Every version must:
+- Acknowledge the specific issue, not a generic apology
+- Avoid excuses, avoid blaming the diner, avoid arguing
+- Name the concrete change we are making, if there is one
+- Offer a way to continue offline with a real contact
+- Stay under 100 words
+- Never mention a discount as compensation in public
+
+Do not use the phrase "we are sorry you feel that way".`
+  },
+  {
+    id: 'p-rev-ask', cat: 'reviews', title: 'Write the review request messages',
+    when: 'Once, then put them everywhere.',
+    why: 'Review volume and velocity are heavily weighted, and the ask has to be frictionless.',
+    prompt:
+`Write review request messages for {{name}} in {{city}}, for these
+moments:
+
+1. A line printed on the check presenter, next to a QR code (under 15 words)
+2. A receipt email footer (under 40 words)
+3. A post-visit text message, 24 hours later (under 200 characters)
+4. A line for a server to say out loud at the table (natural, not scripted)
+
+Rules:
+- Never suggest the diner should only review if they had a good time
+- Never offer anything in exchange for a review
+- Make the specific ask clear: leave a Google review
+- Tone: {{tone}}
+
+These have to comply with Google and Yelp policy — flag anything in my
+brief that would not.`
+  },
+
+  /* ------------------------------- SCHEMA -------------------------------- */
+  {
+    id: 'p-schema-restaurant', cat: 'schema', title: 'Generate Restaurant schema markup',
+    when: 'Once, on your homepage. The generator on this site does a first pass for you.',
+    why: 'Schema states your facts in a format machines cannot misread — the foundation of AI retrieval.',
+    prompt:
+`Generate valid schema.org Restaurant JSON-LD for this restaurant:
+
+Name: {{name}}
+Address: {{address}}
+City/State/ZIP: {{city}}
+Phone: {{phone}}
+Website: {{url}}
+Cuisine: {{cuisine}}
+Price range: {{price}}
+Hours: [LIST DAY BY DAY, INCLUDING SPLIT SHIFTS]
+Accepts reservations: [YES/NO + BOOKING URL]
+Menu URL: [URL]
+Social and review profiles: [LIST ALL URLs]
+
+Requirements:
+- JSON-LD in a script tag, ready to paste into the head
+- Use openingHoursSpecification, not a plain text string
+- Include geo coordinates if you can derive them from the address;
+  if not, tell me and I will supply them
+- Include servesCuisine, priceRange, acceptsReservations, hasMenu,
+  and a sameAs array
+- Valid against the Rich Results Test
+- Do not invent any value. Leave a clear [FILL IN] placeholder for
+  anything I did not give you.`
+  },
+  {
+    id: 'p-schema-debug', cat: 'schema', title: 'Fix schema validation errors',
+    when: 'After the Rich Results Test flags something.',
+    why: 'Broken schema is worse than none — it can suppress rich results entirely.',
+    prompt:
+`Here is my JSON-LD:
+
+[PASTE YOUR SCHEMA]
+
+Here are the errors and warnings from the Google Rich Results Test:
+
+[PASTE ERRORS]
+
+Fix every error, explain in one line what each one meant, and return
+the corrected complete block. Also tell me which warnings are safe to
+ignore and which are worth fixing.`
+  },
+  {
+    id: 'p-speed', cat: 'schema', title: 'Translate a PageSpeed report into a work order',
+    when: 'After running pagespeed.web.dev on your site.',
+    why: 'The report is written for developers. This turns it into instructions you can hand to whoever maintains the site.',
+    prompt:
+`Here is the PageSpeed Insights report for {{url}}:
+
+[PASTE THE REPORT OR THE KEY FINDINGS]
+
+Rewrite this as a prioritized work order for a non-technical restaurant
+owner to hand to a web developer.
+
+For each item give me:
+- What is wrong, in plain English
+- How much it likely matters for a restaurant site (high/medium/low)
+- What to actually do
+- Roughly how long it should take
+- Whether I could do it myself or need a developer
+
+Put the highest-impact, lowest-effort items first. Ignore anything
+that will not meaningfully change how fast the page feels on a phone.`
+  },
+
+  /* ------------------------------- AEO ----------------------------------- */
+  {
+    id: 'p-aeo-questions', cat: 'aeo', title: 'Build your AI visibility test set',
+    when: 'Once, then run the same questions monthly.',
+    why: 'You need a fixed set of questions to track over time, or you cannot tell whether anything improved.',
+    prompt:
+`I own {{name}}, a {{cuisine}} restaurant in {{city}}.
+
+Generate 15 realistic questions a diner might ask an AI assistant that
+should surface my restaurant. Cover a range:
+- Direct cuisine + location searches
+- Occasion-based (date night, business dinner, birthday, family)
+- Constraint-based (vegan, gluten-free, late night, outdoor, groups)
+- Dish-specific
+- Comparison ("better than X for Y")
+
+Phrase them the way a real person types into a chat window, not the
+way an SEO writes a keyword. Number them so I can track results
+month over month.`
+  },
+  {
+    id: 'p-aeo-rewrite', cat: 'aeo', title: 'Rewrite a page in answer-first structure',
+    when: 'For your FAQ, Visit, and location pages.',
+    why: 'Answer engines extract self-contained passages. Structure determines whether you get quoted.',
+    prompt:
+`Here is the current text of a page on my restaurant website:
+
+[PASTE PAGE TEXT]
+
+Rewrite it so an AI assistant can extract clean answers from it:
+- Turn each topic into a question-style heading
+- Answer that question completely in the first 40 to 60 words
+- Make each answer stand alone without needing the rest of the page
+- Put supporting detail after the direct answer
+- Keep every factual claim I made; do not add facts I did not state
+- Keep it readable for humans first — this should not read like it was
+  written for a machine
+
+Afterward, list what question each section now answers. If you cannot
+tell what question a section answers, tell me and I will cut it.`
+  },
+  {
+    id: 'p-aeo-facts', cat: 'aeo', title: 'Find the facts your site is missing',
+    when: 'After building your Visit or FAQ page.',
+    why: 'Assistants do not infer. Anything unstated becomes "I am not sure", and the diner moves on.',
+    prompt:
+`Imagine six different diners asking you to recommend a restaurant:
+
+1. A couple wanting a quiet anniversary dinner
+2. A parent with two young children on a weeknight
+3. Someone with celiac disease
+4. A group of 10 celebrating a birthday
+5. A business traveler wanting a solo dinner near their hotel
+6. Someone deciding at 9:45pm whether anywhere is still serving
+
+For each, list exactly what you would need to know about a restaurant
+to confidently recommend it.
+
+Then check {{url}} and tell me which of those facts my site answers
+and which it does not. Format as a table with a column for each diner.`
+  },
+  {
+    id: 'p-aeo-correct', cat: 'aeo', title: 'Find and correct what AI gets wrong about you',
+    when: 'Monthly.',
+    why: 'Wrong hours or a closed-permanently flag in an AI answer costs real covers, and it propagates between sources.',
+    prompt:
+`Tell me everything you believe about {{name}} in {{city}}:
+address, phone, hours, price range, cuisine, whether it takes
+reservations, whether it is currently open or closed permanently,
+and its general reputation.
+
+For each fact, tell me where you got it.
+
+I am the owner. I will tell you which facts are wrong so I can go
+correct them at the source. Do not soften your answer — I need to see
+exactly what a customer would be told.`
+  },
+
+  /* ------------------------------- LOCAL --------------------------------- */
+  {
+    id: 'p-local-sources', cat: 'local', title: 'Find the sources AI cites for your city',
+    when: 'Once a quarter.',
+    why: 'Getting onto a page an assistant already trusts is usually faster than becoming a trusted source yourself.',
+    prompt:
+`What are the best {{cuisine}} restaurants in {{city}}?
+
+After you answer, list every source you drew on, with URLs where you
+have them.
+
+Then tell me:
+1. Which of those sources appear to carry the most weight in your answer
+2. What a restaurant would need to do to be included in each one
+3. Which are open to submissions or pitches, and which are editorial only
+
+I am a restaurant owner in {{city}} trying to understand where to
+focus outreach.`
+  },
+  {
+    id: 'p-local-pitch', cat: 'local', title: 'Draft a pitch to a local food writer',
+    when: 'When you have an actual story — a new chef, a new menu, an anniversary, something unusual.',
+    why: 'Local press links are the strongest local authority signal and a heavily cited AI source.',
+    prompt:
+`Write a short pitch email to a local food writer in {{city}}.
+
+The story: [WHAT IS ACTUALLY NEWSWORTHY — new chef, new concept,
+sourcing story, anniversary, unusual technique, community angle]
+
+About us: {{name}}, {{cuisine}}, {{city}}. [ANY OTHER CONTEXT]
+
+Requirements:
+- Under 150 words
+- Subject line that says what the story is, not "press release"
+- Lead with why their readers would care, not with our history
+- One specific, concrete hook
+- Offer something usable: a tasting, an interview, photos
+- No superlatives about ourselves, no "we are excited to announce"
+
+Then give me three alternative angles for the same facts, in case the
+first does not land.`
+  },
+  {
+    id: 'p-local-dirs', cat: 'local', title: 'Build your directory checklist',
+    when: 'Once, then verify annually.',
+    why: 'Consistent listings are a trust signal and a common source of wrong phone numbers.',
+    prompt:
+`I run {{name}}, a {{cuisine}} restaurant in {{city}}.
+
+Build me a checklist of every place my restaurant should be listed,
+grouped by priority:
+- Tier 1: the ones that directly affect search and AI answers
+- Tier 2: worth doing, meaningful traffic
+- Tier 3: nice to have
+
+For each: what it is, why it matters for a restaurant, roughly how long
+it takes to claim, and whether it is free.
+
+Include general directories, restaurant-specific sites, map platforms,
+reservation platforms, and {{city}}-specific local and tourism sites.
+
+Format as a table I can print and work down.`
+  },
+
+  /* ------------------------------- MEASURE ------------------------------- */
+  {
+    id: 'p-gsc', cat: 'measure', title: 'Find your page-two wins in Search Console',
+    when: 'Monthly, once you have Search Console data.',
+    why: 'Queries ranking 8-20 are the cheapest possible wins — you are already close.',
+    prompt:
+`Here is my Google Search Console query export for {{url}}:
+
+[PASTE CSV OR THE TOP 100 ROWS]
+
+Analyze it and tell me:
+1. Queries ranking between position 8 and 20 with real impressions —
+   these are my cheapest wins. For each, what content change would
+   likely push it onto page one?
+2. Queries with high impressions but a low click-through rate — my
+   titles and descriptions are probably the problem. Suggest rewrites.
+3. Any query pattern showing diner intent I am not currently serving
+   with a page
+4. Anything surprising
+
+Prioritize by realistic revenue impact for a restaurant, not by
+search volume.`
+  },
+  {
+    id: 'p-gbp-insights', cat: 'measure', title: 'Interpret your Google Profile performance',
+    when: 'Monthly.',
+    why: 'Profile data tells you what people did after finding you, which is closer to revenue than rankings are.',
+    prompt:
+`Here is the performance data from my Google Business Profile for
+{{name}}:
+
+[PASTE: searches, views, calls, direction requests, website clicks,
+bookings, and the discovery-vs-direct split]
+
+Explain in plain English:
+1. What is going well and what is not
+2. What the discovery-versus-direct split tells me about whether new
+   people are finding me
+3. Whether my conversion from views to actions is healthy for a
+   restaurant, and what a good number looks like
+4. The three things I should change next month, in priority order
+
+Do not just describe the numbers back to me — tell me what to do.`
+  },
+  {
+    id: 'p-monthly', cat: 'measure', title: 'Run your monthly 30-minute review',
+    when: 'Same day every month.',
+    why: 'Consistency beats intensity. A short monthly loop keeps everything from drifting.',
+    prompt:
+`Act as my SEO and AI-visibility advisor for {{name}}, a {{cuisine}}
+restaurant in {{city}}. Run my monthly review.
+
+Here is this month's data:
+- Google Business Profile: [VIEWS, CALLS, DIRECTIONS, CLICKS]
+- New reviews: [COUNT] — average rating: [RATING]
+- Search Console: [CLICKS, IMPRESSIONS, TOP QUERIES]
+- AI visibility test: [WHICH ASSISTANTS MENTIONED US, OUT OF HOW MANY
+  QUESTIONS]
+- What I shipped last month: [LIST]
+
+Give me:
+1. What moved and, as best you can tell, why
+2. What is stalled and what is blocking it
+3. The three highest-impact things to do next month
+4. One thing I am doing that I should stop
+
+Be direct. I would rather hear what is not working.`
+  }
+];
