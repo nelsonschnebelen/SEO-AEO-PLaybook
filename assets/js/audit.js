@@ -486,14 +486,7 @@ const Audit = {
     const slug = (p.name || 'restaurant').toLowerCase()
       .replace(/['\u2019"]/g, '')
       .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
-    const blob = new Blob([md], { type: 'text/markdown;charset=utf-8' });
-    const a = document.createElement('a');
-    a.href = URL.createObjectURL(blob);
-    a.download = slug + '-seo-aeo-audit.md';
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+    saveTextFile(slug + '-seo-aeo-audit.md', md);
   },
 
   esc(s) {

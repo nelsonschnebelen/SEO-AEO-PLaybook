@@ -613,6 +613,13 @@ select {
 .win b { display: block; color: var(--ink); font-size: .885rem; }
 .win span { color: var(--ink-3); font-size: .81rem; word-break: break-word; }
 
+.sample-flag {
+  background: var(--brass-wash); border: 1px solid color-mix(in srgb, var(--brass) 30%, transparent);
+  color: var(--ink-2); border-radius: var(--r); padding: 14px 18px; margin: 0 0 20px;
+  font-size: .92rem; line-height: 1.55;
+}
+.sample-flag b { color: var(--ink); }
+
 /* ----------------------------------------------------- one-click check */
 .url-panel { margin: 0 0 22px; }
 .url-row {

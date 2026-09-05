@@ -25,7 +25,15 @@ const Analyzer = {
       this.run(document.getElementById('url-input').value);
     });
 
+    const sampleBtn = document.getElementById('btn-sample-report');
+    if (sampleBtn) sampleBtn.addEventListener('click', () => this.runSample());
+
     if (!this.apiBase()) this.showUnconfigured();
+
+    /* Single-file builds open on the example so the page shows what it
+       does rather than an empty shell. */
+    const cfg = window.DINELINE_CONFIG || {};
+    if (cfg.autoSample && window.SAMPLE_REPORT) this.runSample(true);
   },
 
   apiBase() {
@@ -37,10 +45,10 @@ const Analyzer = {
      rather than letting the button fail silently. */
   showUnconfigured() {
     document.getElementById('url-note').innerHTML =
-      '<b>The automatic check is not switched on for this copy of the playbook yet.</b> ' +
-      'Everything else works — use <a href="#paste-fallback" id="open-paste">paste your page source</a> ' +
-      'below, which runs the same page and schema checks. Setting up the one-click version takes ' +
-      'about ten minutes and is documented in <code>api/README.md</code>.';
+      '<b>Live scoring is not switched on for this copy yet</b> &mdash; see the sample report below ' +
+      'for what you get, or <a href="#paste-fallback" id="open-paste">paste your page source</a> ' +
+      'to run the website checks right now. Turning on the one-click version takes about ten ' +
+      'minutes (<code>api/README.md</code>).';
     const open = document.getElementById('open-paste');
     if (open) open.addEventListener('click', e => {
       e.preventDefault();
@@ -55,6 +63,16 @@ const Analyzer = {
     el.className = 'analyze-status ' + (tone || '');
     el.innerHTML = html;
     el.classList.remove('hidden');
+  },
+
+  /* Render the bundled example. Marked as a sample in the UI so it can
+     never be mistaken for the visitor's own restaurant. */
+  runSample(quiet) {
+    if (!window.SAMPLE_REPORT) return;
+    document.getElementById('analyze-status').classList.add('hidden');
+    const preview = document.getElementById('checker-preview');
+    if (preview) preview.classList.add('hidden');
+    this.render(window.SAMPLE_REPORT, quiet);
   },
 
   async run(rawUrl) {
@@ -93,6 +111,8 @@ const Analyzer = {
 
     btn.disabled = false;
     document.getElementById('analyze-status').classList.add('hidden');
+    const preview = document.getElementById('checker-preview');
+    if (preview) preview.classList.add('hidden');
     this.render(data);
   },
 
@@ -105,7 +125,7 @@ const Analyzer = {
     return Math.max(0, Math.min(100, Math.round((kept / total) * 100)));
   },
 
-  render(data) {
+  render(data, quiet) {
     const site = Checker.analyze(data.html || '');
     const gmb = window.analyzeGmb
       ? analyzeGmb(data.gmb, { domain: (data.identity || {}).domain })
@@ -139,6 +159,11 @@ const Analyzer = {
       nice: all.filter(f => f.sev === 'nice').length
     };
     out.innerHTML =
+      (data.isSample
+        ? '<div class="sample-flag"><b>This is a sample.</b> Rosa&rsquo;s Trattoria is a made-up ' +
+          'restaurant, shown so you can see what the report looks like. Type your own address ' +
+          'above for your real score.</div>'
+        : '') +
       this.headerHtml(id, data, overall, band, gmbScore, siteScore, counts, wins.length) +
       this.gmbNoticeHtml(data, gmb) +
       this.breakdownHtml(all, wins) +
@@ -155,7 +180,9 @@ const Analyzer = {
     };
     if (reduced) paint(); else requestAnimationFrame(() => requestAnimationFrame(paint));
 
-    out.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    /* Auto-loaded samples must not scroll: the top of the page is what a
+       shared link and a thumbnail show. */
+    if (!quiet) out.scrollIntoView({ behavior: 'smooth', block: 'start' });
   },
 
   headerHtml(id, data, overall, band, gmbScore, siteScore, counts, passing) {
@@ -362,14 +389,7 @@ const Analyzer = {
 
     const slug = (id.name || id.domain || 'restaurant').toLowerCase()
       .replace(/['’"]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
-    const blob = new Blob([md], { type: 'text/markdown;charset=utf-8' });
-    const a = document.createElement('a');
-    a.href = URL.createObjectURL(blob);
-    a.download = slug + '-dineline-check.md';
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+    saveTextFile(slug + '-dineline-check.md', md);
   },
 
   esc(s) {

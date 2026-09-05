@@ -25,6 +25,9 @@ open index.html          # macOS  ·  xdg-open on Linux  ·  start on Windows
 To switch on the one-click check, deploy [`api/`](api/README.md) and put its URL in
 `assets/js/config.js`.
 
+Need a single file to email or drop on any host? `node tools/build-single-file.js` inlines the CSS,
+JS and logo into one self-contained `dist/playbook.html` that opens on a labelled sample report.
+
 Or host it anywhere that serves static files — GitHub Pages, Netlify, Cloudflare Pages, an S3
 bucket. Nothing needs configuring.
 
@@ -195,6 +198,7 @@ assets/
   js/audit.js               Wizard, scoring, action plan, Markdown export
   js/app.js                 Page chrome, checklists, prompt library, schema generator
 api/                        The analyser service — see api/README.md
+tools/build-single-file.js  Bundles everything into one shareable .html
 docs/                       Markdown editions (some generated — see below)
 tools/build-docs.js         Regenerates the generated docs from assets/js/
 ```
