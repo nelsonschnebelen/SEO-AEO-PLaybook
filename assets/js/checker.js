@@ -67,7 +67,12 @@ const Checker = {
   analyze(input) {
     const findings = [];
     const wins = [];
-    const add = (sev, title, detail, fix) => findings.push({ sev, title, detail, fix });
+    const add = (sev, title, detail, fix, meta) => findings.push({
+      sev, title, detail, fix,
+      doIn: (meta && meta.doIn) || 'code',
+      mins: (meta && meta.mins) || 15,
+      topic: (meta && meta.topic) || null
+    });
     const win = (title, detail, sev) => wins.push({ title, detail, sev: sev || 'important' });
 
     const looksLikeHtml = /<\s*(html|head|body|meta|title|div|script)\b/i.test(input);
@@ -80,19 +85,19 @@ const Checker = {
       const r = this.parseBlock(raw);
       if (!r.ok) {
         parseFailures++;
-        add('critical', 'Structured data block ' + (i + 1) + ' is not valid JSON',
+        add('critical', 'Fix the broken code block (' + (i + 1) + ')',
           'This block cannot be read by anything — search engines skip it silently, so it looks fine until you check. The parser said: ' + r.error,
           'Paste the block and that error message into an AI assistant and ask for a corrected version, then re-validate it in the Rich Results Test.');
         return;
       }
       if (r.repaired) {
-        add('important', 'Structured data block ' + (i + 1) + ' only parses after cleanup',
+        add('important', 'Clean up the odd characters in code block ' + (i + 1),
           'It contains smart quotes, trailing commas or a stray byte-order mark. Some parsers cope and some do not, which makes this the kind of bug that works in testing and fails in production.',
           'Re-save the block as plain text with straight quotes and no trailing commas. This usually comes from pasting through a word processor or a rich-text CMS field.');
       }
       this.flatten(r.data, nodes);
       if (!r.data['@context'] && !Array.isArray(r.data)) {
-        add('important', 'Block ' + (i + 1) + ' is missing @context',
+        add('important', 'Add the missing @context line to block ' + (i + 1),
           'Without "@context": "https://schema.org" the vocabulary is undefined and the block may be ignored entirely.',
           'Add "@context": "https://schema.org" as the first line of the block.');
       }
@@ -105,9 +110,10 @@ const Checker = {
     const restaurant = foodNodes[0] || localOnly[0] || null;
 
     if (!blocks.length) {
-      add('critical', 'No structured data found at all',
+      add('critical', 'Add structured data to your site',
         'There is no JSON-LD in what you pasted. This is the most common state for an independent restaurant, and it means engines and AI assistants are working entirely from guesswork about your hours, location and offering.',
-        'Use the generator below to produce a Restaurant block, validate it in the Rich Results Test, and paste it into the <head> of your homepage.');
+        'Use the generator below to produce a Restaurant block, validate it in the Rich Results Test, and paste it into the <head> of your homepage.',
+        { topic: 'no-schema' });
     } else if (!restaurant) {
       add('critical', 'Structured data exists, but nothing identifies you as a restaurant',
         'Found ' + nodes.length + ' structured data ' + (nodes.length === 1 ? 'item' : 'items') +
@@ -115,13 +121,13 @@ const Checker = {
         ') but no Restaurant or food-business type among them.',
         'Add a Restaurant block. Most of what you need is probably already on the page — it just is not labelled in a way a machine can use.');
     } else if (!this.isType(restaurant, FOOD_TYPES)) {
-      add('important', 'You are marked up as a generic business, not a restaurant',
+      add('important', 'Mark your site up as a restaurant',
         'The type is "' + this.typesOf(restaurant).join(', ') + '". Google supports restaurant-specific fields — menu, cuisine, reservations, price range — and none of them apply to a generic LocalBusiness.',
         'Change "@type" to "Restaurant" (or CafeOrCoffeeShop, BarOrPub, Bakery, FastFoodRestaurant — whichever fits) and add the restaurant fields.');
     }
 
     if (foodNodes.length > 1) {
-      add('important', 'More than one restaurant block on the page',
+      add('important', 'Remove the duplicate restaurant block',
         'Found ' + foodNodes.length + '. Duplicate or conflicting blocks make it ambiguous which set of facts is authoritative, and machines resolve that ambiguity by hedging or ignoring both.',
         'Keep exactly one Restaurant block per page. If you have several locations, give each one its own page and its own block.');
     }
@@ -134,7 +140,9 @@ const Checker = {
                       (Array.isArray(v) && v.length === 0) ||
                       (typeof v === 'object' && !Array.isArray(v) && Object.keys(v).length === 0);
         if (empty) {
-          add(f.sev, 'Missing: ' + f.label, f.why, f.fix);
+          // lowercase the first word only, so "Website URL" keeps its acronym
+          add(f.sev, 'Add your ' + f.label.charAt(0).toLowerCase() + f.label.slice(1),
+              f.why, f.fix, f);
         } else {
           win(f.label, this.summarize(v), f.sev);
         }
@@ -154,7 +162,7 @@ const Checker = {
 
     /* ---- microdata note ---- */
     if (/itemtype\s*=\s*["'][^"']*schema\.org/i.test(input) && !blocks.length) {
-      add('important', 'You are using microdata rather than JSON-LD',
+      add('important', 'Move your markup over to JSON-LD',
         'Microdata works, but it is tangled into your HTML, which makes it easy to break during a redesign and hard to check.',
         'Move to a JSON-LD block in the <head>. It is self-contained, easy to validate and the format Google recommends.');
     }
@@ -177,7 +185,7 @@ const Checker = {
     const a = r.address;
     if (!a) return;
     if (typeof a === 'string') {
-      add('critical', 'Address is a single line of text, not a structured object',
+      add('critical', 'Split your address into proper fields',
         'Written as one string, a machine has to guess where the street ends and the city begins. That guess is how you end up on the wrong side of a map.',
         'Replace it with a PostalAddress object: streetAddress, addressLocality, addressRegion, postalCode and addressCountry as separate fields.');
       return;
@@ -189,7 +197,7 @@ const Checker = {
     ];
     const missing = need.filter(([k]) => !a[k]).map(([, l]) => l);
     if (missing.length) {
-      add('important', 'Address is incomplete',
+      add('important', 'Complete your address fields',
         'Missing: ' + missing.join(', ') + '. Partial addresses are a common cause of a business being placed imprecisely or matched to the wrong area.',
         'Fill in every part of the PostalAddress object, including addressCountry.');
     } else {
@@ -199,7 +207,7 @@ const Checker = {
 
   checkHours(r, add, win) {
     if (typeof r.openingHours === 'string' || Array.isArray(r.openingHours)) {
-      add('important', 'Hours are written as free text',
+      add('important', 'Publish hours in a format machines can read',
         'The older "openingHours" shorthand ("Mo-Fr 17:00-22:00") is far easier to get subtly wrong than the structured form, and it cannot express split shifts or holiday exceptions.',
         'Replace it with "openingHoursSpecification", one entry per distinct block of time.');
     }
@@ -222,14 +230,14 @@ const Checker = {
     });
 
     if (badTime) {
-      add('important', 'Some opening times are not in HH:MM format',
+      add('important', 'Fix your opening time format',
         badTime + ' ' + (badTime === 1 ? 'value is' : 'values are') + ' malformed. "5pm" or "17.00" will not parse; it has to be "17:00".',
         'Write every opens and closes value as 24-hour HH:MM, zero-padded — "09:00", not "9:00".');
     }
 
     const missingDays = DAYS.filter(d => !seen.has(d));
     if (missingDays.length && missingDays.length < 7) {
-      add('nice', 'Some days are absent from your hours',
+      add('nice', 'Cover every day in your hours',
         'No entry for: ' + missingDays.join(', ') + '. If you are closed those days that is fine, but an absent day is ambiguous — it can read as "unknown" rather than "closed".',
         'Either add an entry for each closed day with opens and closes both set to "00:00", or confirm you are happy leaving them undeclared.');
     } else if (!missingDays.length) {
@@ -238,9 +246,10 @@ const Checker = {
 
     const hasSpecial = arr.some(s => s.validFrom || s.validThrough);
     if (!hasSpecial) {
-      add('nice', 'No holiday or special hours declared',
+      add('nice', 'Add your holiday hours',
         'Regular hours are set, but nothing covers holidays and closures. A wasted trip on a public holiday is the fastest route to a one-star review.',
-        'Add openingHoursSpecification entries with validFrom and validThrough for each holiday and planned closure over the next twelve months.');
+        'Add openingHoursSpecification entries with validFrom and validThrough for each holiday and planned closure over the next twelve months.',
+        { doIn: 'google', mins: 20 });
     }
   },
 
@@ -259,18 +268,18 @@ const Checker = {
     walk(r);
     if (hits.length) {
       const uniq = [...new Set(hits)].slice(0, 5);
-      add('critical', 'Placeholder values are still in your markup',
+      add('critical', 'Replace the placeholder text in your code',
         'Found: ' + uniq.map(h => '"' + h + '"').join(', ') +
         '. This is live, machine-readable text telling the world your details are unfinished.',
         'Replace every placeholder with a real value, or remove the field entirely. An absent field is much better than a fake one.');
     }
 
     if (r.telephone && !/^\+?[\d\s\-().]{7,}$/.test(String(r.telephone))) {
-      add('nice', 'Phone number format looks unusual',
+      add('nice', 'Tidy up your phone number format',
         'Got "' + r.telephone + '". Non-standard formatting can prevent tap-to-call from working in some results.',
         'Use international format: "+1-828-555-0142".');
     } else if (r.telephone && !/^\+/.test(String(r.telephone).trim())) {
-      add('nice', 'Phone number has no country code',
+      add('nice', 'Add the country code to your phone number',
         'International format is more reliably parsed, and it matters if you get any out-of-country traffic.',
         'Prefix the number with your country code, for example "+1".');
     }
@@ -279,21 +288,23 @@ const Checker = {
       const v = r[k];
       const s = typeof v === 'string' ? v : (v && v.url);
       if (s && /^http:\/\//i.test(s)) {
-        add('important', 'Insecure URL in "' + k + '"',
+        add('important', 'Switch your ' + k + ' link to https',
           '"' + s + '" uses http rather than https. Browsers flag insecure pages, and that warning screen costs you customers before they see the menu.',
-          'Switch the URL to https, and make sure your whole site redirects to the secure version.');
+          'Switch the URL to https, and make sure your whole site redirects to the secure version.',
+        { topic: 'https' });
       }
     });
 
     const menu = typeof r.hasMenu === 'string' ? r.hasMenu : (r.hasMenu && r.hasMenu.url);
     if (menu && /\.pdf(\?|$)/i.test(menu)) {
-      add('critical', 'Your menu link points at a PDF',
+      add('critical', 'Get your menu out of the PDF',
         'Every dish name, price and allergen note in that PDF is invisible. Someone searching for the exact dish you are known for will not find you, because as far as the machines are concerned you do not serve it. This is the single most expensive mistake in restaurant SEO.',
-        'Rebuild the menu as an HTML page and point hasMenu at that. Keep the PDF as an optional download if your regulars like it.');
+        'Rebuild the menu as an HTML page and point hasMenu at that. Keep the PDF as an optional download if your regulars like it.',
+        { doIn: 'site', mins: 60, topic: 'menu-pdf' });
     }
 
     if (r.priceRange && !/^\${1,4}$|^\$?\d+\s*[-–]\s*\$?\d+$/.test(String(r.priceRange).trim())) {
-      add('nice', 'Price range is in an unusual format',
+      add('nice', 'Tidy up your price range',
         'Got "' + r.priceRange + '". Google expects either dollar signs or a numeric range.',
         'Use "$", "$$", "$$$" or "$$$$", or a range like "$15-$30".');
     }
@@ -311,16 +322,17 @@ const Checker = {
   /* Policy risks — the ones that get people penalized. */
   checkPolicy(r, nodes, add) {
     if (r.aggregateRating || r.review) {
-      add('critical', 'You are marking up your own review rating',
+      add('critical', 'Remove your own star rating from the code',
         'Self-serving review markup — your own rating, on your own site, about yourself — is against Google\'s structured data guidelines and is a well-known cause of manual penalties. Your Google Business Profile already handles ratings for you.',
         'Remove "aggregateRating" and "review" from your own Restaurant markup entirely.');
     }
 
     const name = String(r.name || '');
     if (/\b(best|top|#1|number one|cheapest|award[- ]winning)\b/i.test(name)) {
-      add('important', 'Your business name contains marketing language',
+      add('important', 'Use your real business name',
         '"' + name + '" is not a plain business name. Keyword-stuffed names violate Google Business Profile policy, get reported by competitors, and cause mismatches between your markup and your listing.',
-        'Use your real registered business name, exactly as it appears on your Google profile and your signage.');
+        'Use your real registered business name, exactly as it appears on your Google profile and your signage.',
+        { doIn: 'google', mins: 3 });
     }
   },
 
@@ -347,9 +359,10 @@ const Checker = {
           'Aim for 40 to 60 words per answer, complete enough to stand alone without the rest of the page.');
       }
     } else {
-      add('nice', 'No FAQ markup found',
+      add('nice', 'Add a page of real diner questions',
         'Question-and-answer content is the format AI assistants quote from most readily — it is the highest-leverage AEO content a restaurant can publish.',
-        'Build an FAQ page with 15 to 25 real diner questions, then mark it up with FAQPage schema.');
+        'Build an FAQ page with 15 to 25 real diner questions, then mark it up with FAQPage schema.',
+        { doIn: 'site', mins: 90, topic: 'faq' });
     }
 
     if (has('Menu')) {
@@ -387,7 +400,7 @@ const Checker = {
   /* -------------------------------------------------------- page source */
   checkPage(html, blocks, add, win) {
     const get = (id) => PAGE_CHECKS.find(c => c.id === id);
-    const fail = (id, detail) => { const c = get(id); add(c.sev, c.label, detail || c.why, c.fix); };
+    const fail = (id, detail) => { const c = get(id); add(c.sev, c.todo || c.label, detail || c.why, c.fix, c); };
     const pass = (id, detail) => { const c = get(id); win(c.label, detail, c.sev); };
 
     const title = (html.match(/<title[^>]*>([\s\S]*?)<\/title>/i) || [])[1];
@@ -397,7 +410,7 @@ const Checker = {
       pass('title', t);
       if (t.length > 65 || t.length < 15) {
         const c = get('title-len');
-        add(c.sev, c.label, 'Yours is ' + t.length + ' characters. ' + c.why, c.fix);
+        add(c.sev, c.todo || c.label, 'Yours is ' + t.length + ' characters. ' + c.why, c.fix, c);
       }
     }
 
@@ -431,7 +444,7 @@ const Checker = {
     const noAlt = imgs.filter(i => !/\balt\s*=/i.test(i));
     if (noAlt.length) {
       const c = get('img-alt');
-      add(c.sev, c.label, noAlt.length + ' of ' + imgs.length + ' images have no alt attribute. ' + c.why, c.fix);
+      add(c.sev, c.todo || c.label, noAlt.length + ' of ' + imgs.length + ' images have no alt attribute. ' + c.why, c.fix, c);
     } else if (imgs.length) pass('img-alt', 'All ' + imgs.length + ' images have alt attributes');
 
     if (/<meta[^>]+name\s*=\s*["']robots["'][^>]*content\s*=\s*["'][^"']*noindex/i.test(html)) fail('noindex');
@@ -442,8 +455,8 @@ const Checker = {
     const insecure = (html.match(/(?:src|href)\s*=\s*["']http:\/\/(?!localhost|127\.)/gi) || []);
     if (insecure.length) {
       const c = get('https-assets');
-      add(c.sev, c.label, insecure.length + ' resource' + (insecure.length === 1 ? '' : 's') +
-        ' still load over http. ' + c.why, c.fix);
+      add(c.sev, c.todo || c.label, insecure.length + ' resource' + (insecure.length === 1 ? '' : 's') +
+        ' still load over http. ' + c.why, c.fix, c);
     }
 
     const text = html.replace(/<[^>]+>/g, ' ');

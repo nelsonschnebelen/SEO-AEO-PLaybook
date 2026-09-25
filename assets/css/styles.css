@@ -837,6 +837,60 @@ select {
 .split dt { font-weight: 700; color: var(--ink-3); font-size: .74rem; letter-spacing: .07em; text-transform: uppercase; padding-top: 3px; }
 .split dd { margin: 0; color: var(--ink-2); }
 
+/* ------------------------------------------------------------- top ten
+   The fix list is the product. Numbered because it is genuinely ranked —
+   work it top down — and every row says where the work happens and how
+   long, so "can I do this myself" is answered before the detail is read. */
+.top-head {
+  display: flex; align-items: flex-end; gap: 20px; flex-wrap: wrap;
+  margin: 34px 0 18px; padding-bottom: 14px; border-bottom: 2px solid var(--ink);
+}
+.top-head h3 { margin: 0 0 4px; font-size: clamp(1.3rem, 2.6vw, 1.7rem); }
+.top-head p { margin: 0; font-size: .93rem; color: var(--ink-2); }
+.top-legend { margin-left: auto; display: flex; gap: 16px; flex-wrap: wrap; font-size: .82rem; color: var(--ink-3); }
+.top-legend span { display: flex; align-items: center; gap: 7px; }
+.wdot { width: 10px; height: 10px; border-radius: 3px; flex: 0 0 auto; }
+.wdot.google { background: var(--brand); }
+.wdot.code { background: var(--ink-4); }
+
+.fixlist { list-style: none; margin: 0; padding: 0; counter-reset: fix; }
+.fix {
+  display: grid; grid-template-columns: 42px 1fr; gap: 16px; align-items: start;
+  padding: 18px 0; border-bottom: 1px solid var(--line); margin: 0;
+}
+.fix:last-child { border-bottom: 0; }
+.fix-n {
+  font: 800 1.25rem/1 var(--sans); color: var(--ink-4);
+  font-variant-numeric: tabular-nums; padding-top: 3px; text-align: right;
+}
+.fix-body { min-width: 0; }
+.fix-top { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 7px; }
+.fix-top h4 { margin: 0; font-size: 1.05rem; letter-spacing: -.02em; flex: 1 1 auto; min-width: 200px; }
+.fix-what { margin: 0 0 9px; font-size: .93rem; color: var(--ink-2); line-height: 1.55; }
+.fix-do {
+  margin: 0; font-size: .92rem; color: var(--ink-2); line-height: 1.55;
+  background: var(--paper-3); border-radius: var(--r-sm); padding: 11px 13px;
+}
+.fix-do b { color: var(--ink); }
+
+.chip {
+  font: 700 .715rem/1 var(--sans); padding: 5px 10px; border-radius: var(--r-pill);
+  white-space: nowrap; flex: 0 0 auto;
+}
+.chip.where.google, .chip.where.site { background: var(--brand-wash); color: var(--brand-2); }
+.chip.where.ops { background: var(--brass-wash); color: var(--brass); }
+.chip.where.code { background: var(--paper-3); color: var(--ink-3); border: 1px solid var(--line); }
+.chip.time { background: var(--paper-3); color: var(--ink-2); font-weight: 600; }
+.chip.urgent { background: var(--bad); color: #fff; }
+
+@media (max-width: 560px) {
+  .fix { grid-template-columns: 30px 1fr; gap: 12px; }
+  .fix-n { font-size: 1.05rem; }
+  .fix-top h4 { min-width: 100%; }
+}
+
+.finding h4 .chip.where { margin-left: auto; }
+
 /* ---------------------------------------------------------- checklist */
 .check-toolbar { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-bottom: 24px; }
 .check-toolbar .prog { font-size: .885rem; color: var(--ink-2); font-weight: 600; font-variant-numeric: tabular-nums; }

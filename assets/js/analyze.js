@@ -153,10 +153,13 @@ const Analyzer = {
     const id = data.identity || {};
     const out = document.getElementById('analyze-results');
 
+    const ranked = this.rank(all);
     const counts = {
       critical: all.filter(f => f.sev === 'critical').length,
       important: all.filter(f => f.sev === 'important').length,
-      nice: all.filter(f => f.sev === 'nice').length
+      nice: all.filter(f => f.sev === 'nice').length,
+      diy: all.filter(f => f.doIn === 'google' || f.doIn === 'site').length,
+      top10Quick: ranked.slice(0, 10).filter(f => f.mins && f.mins <= 15).length
     };
     out.innerHTML =
       (data.isSample
@@ -166,7 +169,6 @@ const Analyzer = {
         : '') +
       this.headerHtml(id, data, overall, band, gmbScore, siteScore, counts, wins.length) +
       this.gmbNoticeHtml(data, gmb) +
-      this.breakdownHtml(all, wins) +
       this.findingsHtml(all) +
       this.winsHtml(wins) +
       this.ctaHtml(all);
@@ -211,6 +213,7 @@ const Analyzer = {
       '<div class="kpi"><div class="kl"><span class="dot ' + cls + '"></span>' + label + '</div>' +
       '<div class="kv">' + n + '</div><div class="kn">' + note + '</div></div>';
 
+    const diy = counts.diy || 0;
     return '<div class="result-head">' +
       '<div class="score-hero tone-' + tone + '">' +
         '<div class="hero-figure">' +
@@ -231,9 +234,9 @@ const Analyzer = {
       '</div>' +
     '</div>' +
     '<div class="kpi-row">' +
-      kpi('critical', counts.critical, 'Fix now', 'Costing you covers today.') +
-      kpi('important', counts.important, 'Fix next', 'Visibility you are leaving behind.') +
-      kpi('nice', counts.nice, 'Nice to have', 'Once the rest is done.') +
+      kpi('critical', counts.critical, 'Urgent', 'Costing you covers today.') +
+      kpi('important', counts.top10Quick, 'Under 15 min', 'Of your top ten, done in a coffee break.') +
+      kpi('nice', counts.diy, 'You can do yourself', 'No developer needed.') +
       kpi('good', passing, 'Already right', 'Keep it that way.') +
     '</div>';
   },
@@ -261,29 +264,42 @@ const Analyzer = {
       'The lookup did not complete this time, so this score covers your website only.</p></div>';
   },
 
-  /* Where the points actually went — sequential magnitude, one hue, every
-     bar labelled so nothing rests on colour alone. */
-  breakdownHtml(all, wins) {
-    const AREAS = [
-      { key: 'gmb', label: 'Google listing' },
-      { key: 'site', label: 'Website & markup' }
-    ];
-    const rows = AREAS.map(a => {
-      const lost = all.filter(f => (f.source === 'gmb') === (a.key === 'gmb')).length;
-      const won = wins.filter(w => (w.source === 'gmb') === (a.key === 'gmb')).length;
-      const total = lost + won;
-      return { label: a.label, lost, total, pct: total ? Math.round((lost / total) * 100) : 0 };
-    }).sort((x, y) => y.pct - x.pct);
+  /* Ten things, ranked by what they are worth divided by how hard they
+     are. An owner with a shift starting in an hour needs a short list they
+     can actually work, not forty-four findings. */
+  rank(all) {
+    /* Severity leads; ease lifts the work an owner can do today over the
+       same-value work that needs booking a developer. Weighting ease any
+       harder puts trivia above real money. */
+    const SEV = { critical: 6, important: 3, nice: 1 };
+    const EASE = { google: 2, site: 1.6, ops: 1.2, code: 1 };
+    const ranked = [...all]
+      .map(f => ({ ...f, weight: (SEV[f.sev] || 1) * (EASE[f.doIn] || 1) }))
+      .sort((a, b) => b.weight - a.weight || (a.mins || 99) - (b.mins || 99));
 
-    const max = Math.max(1, ...rows.map(r => r.pct));
-    return '<div class="chart"><p class="chart-title">Where the problems are</p>' +
-      '<p class="chart-sub">Share of checks you are failing in each area. Longer bar = more to gain.</p>' +
-      '<div class="hbars">' + rows.map((r, i) =>
-        '<div class="hbar"><span class="hl">' + r.label + '</span>' +
-        '<span class="ht"><span class="hf' + (i === 0 ? '' : ' dim') + '" data-w="' +
-          Math.round((r.pct / max) * 100) + '"></span></span>' +
-        '<span class="hv">' + r.lost + ' of ' + r.total + '</span></div>'
-      ).join('') + '</div></div>';
+    /* Two detectors can raise the same issue from different angles — the
+       menu PDF shows up in both the markup and the page itself. Keep the
+       strongest and drop the echo, so ten slots hold ten problems. */
+    const seen = new Set();
+    return ranked.filter(f => {
+      if (!f.topic) return true;
+      if (seen.has(f.topic)) return false;
+      seen.add(f.topic);
+      return true;
+    });
+  },
+
+  WHERE: {
+    google: { label: 'Google profile', hint: 'Edit it yourself' },
+    site:   { label: 'Your website',   hint: 'Edit it yourself' },
+    ops:    { label: 'In the shift',   hint: 'A habit, not an edit' },
+    code:   { label: 'Web person',     hint: 'Send them the line' }
+  },
+
+  time(m) {
+    if (!m) return 'ongoing';
+    if (m < 60) return m + ' min';
+    return (m / 60) + (m === 60 ? ' hour' : ' hours');
   },
 
   findingsHtml(all) {
@@ -292,28 +308,63 @@ const Analyzer = {
         '<p>Your site and your Google listing pass every check. Take the <a href="#audit">full ' +
         'audit</a> next &mdash; it covers what no automatic check can see.</p></div>';
     }
-    const ICON = { critical: '!', important: '&#9650;', nice: '+' };
-    const titles = { critical: 'Fix now', important: 'Fix next', nice: 'Nice to have' };
-    let html = '';
-    ['critical', 'important', 'nice'].forEach(sev => {
-      const list = all.filter(f => f.sev === sev);
-      if (!list.length) return;
-      const cards = list.map(f =>
-        '<div class="finding ' + sev + '">' +
-          '<h4><span class="sev ' + sev + '"><span aria-hidden="true">' + ICON[sev] + '</span> ' + sev + '</span> ' +
-          this.esc(f.title) +
-          '<span class="src ' + (f.source === 'gmb' ? 'g' : 's') + '">' +
-          (f.source === 'gmb' ? 'Google' : 'Website') + '</span></h4>' +
+
+    const ranked = this.rank(all);
+    const top = ranked.slice(0, 10);
+    const rest = ranked.slice(10);
+    const quick = top.filter(f => f.mins && f.mins <= 15).length;
+
+    let html = '<div class="top-head">' +
+      '<div>' +
+        '<h3>Your top ' + top.length + '</h3>' +
+        '<p>Ranked by payoff against how hard it is. ' +
+        (quick ? '<b>' + quick + ' of them take under 15 minutes.</b>' : '') + '</p>' +
+      '</div>' +
+      '<div class="top-legend">' +
+        '<span><span class="wdot google"></span>You can edit</span>' +
+        '<span><span class="wdot code"></span>Needs your web person</span>' +
+      '</div>' +
+    '</div>';
+
+    html += '<ol class="fixlist">' + top.map((f, i) => {
+      const w = this.WHERE[f.doIn] || this.WHERE.code;
+      const diy = f.doIn === 'google' || f.doIn === 'site';
+      return '<li class="fix">' +
+        '<span class="fix-n">' + (i + 1) + '</span>' +
+        '<div class="fix-body">' +
+          '<div class="fix-top">' +
+            '<h4>' + this.esc(f.title) + '</h4>' +
+            '<span class="chip where ' + f.doIn + '">' + w.label + '</span>' +
+            '<span class="chip time">' + this.time(f.mins) + '</span>' +
+            (f.sev === 'critical' ? '<span class="chip urgent">Costing you covers</span>' : '') +
+          '</div>' +
+          '<p class="fix-what">' + this.esc(f.detail) + '</p>' +
+          '<p class="fix-do"><b>' + (diy ? 'Do this:' : 'Send them this:') + '</b> ' +
+            this.esc(this.firstSentence(f.fix)) + '</p>' +
+        '</div>' +
+      '</li>';
+    }).join('') + '</ol>';
+
+    if (rest.length) {
+      const cards = rest.map(f => {
+        const w = this.WHERE[f.doIn] || this.WHERE.code;
+        return '<div class="finding ' + f.sev + '">' +
+          '<h4>' + this.esc(f.title) +
+          '<span class="chip where ' + f.doIn + '">' + w.label + '</span></h4>' +
           '<p>' + this.esc(f.detail) + '</p>' +
           '<p class="do"><b>Do this:</b> ' + this.esc(this.firstSentence(f.fix)) + '</p>' +
-        '</div>').join('');
-
-      const heading = titles[sev] + ' <span class="count-note">(' + list.length + ')</span>';
-      html += (sev === 'nice')
-        ? '<details class="fallback" style="margin-top:26px"><summary>' + heading +
-          '</summary><div class="fallback-body" style="padding-top:16px">' + cards + '</div></details>'
-        : '<h3 style="margin-top:32px">' + heading + '</h3>' + cards;
-    });
+        '</div>';
+      }).join('');
+      /* Say what is actually down there — criticals can fall below the cut
+         when they need a developer, and claiming otherwise is a lie. */
+      const restCrit = rest.filter(f => f.sev === 'critical').length;
+      const tail = restCrit
+        ? ' &mdash; ' + restCrit + ' still worth doing, just slower'
+        : ' &mdash; none of them urgent';
+      html += '<details class="fallback" style="margin-top:24px"><summary>' +
+        'We found ' + rest.length + ' more' + tail +
+        '</summary><div class="fallback-body" style="padding-top:16px">' + cards + '</div></details>';
+    }
     return html;
   },
 
@@ -368,17 +419,26 @@ const Analyzer = {
     if (r.gmbScore !== null) md += '- **Google Business Profile:** ' + r.gmbScore + '/100' + nl;
     md += '- **Website & structured data:** ' + r.siteScore + '/100' + nl + nl;
 
-    ['critical', 'important', 'nice'].forEach(sev => {
-      const list = r.all.filter(f => f.sev === sev);
-      if (!list.length) return;
-      md += '## ' + sev[0].toUpperCase() + sev.slice(1) + nl + nl;
-      list.forEach((f, i) => {
-        md += '### ' + (i + 1) + '. ' + f.title + ' (' + (f.source === 'gmb' ? 'Google listing' : 'Website') + ')' + nl + nl;
-        md += f.detail + nl + nl;
-        if (f.why) md += '_Why it matters:_ ' + f.why + nl + nl;
-        md += '**What to do:** ' + f.fix + nl + nl;
-      });
+    const ranked = this.rank(r.all);
+    md += '## Your top 10' + nl + nl;
+    ranked.slice(0, 10).forEach((f, i) => {
+      const w = this.WHERE[f.doIn] || this.WHERE.code;
+      md += '### ' + (i + 1) + '. ' + f.title + nl + nl;
+      md += '- **Where:** ' + w.label + '  |  **Time:** ' + this.time(f.mins) +
+            '  |  **Source:** ' + (f.source === 'gmb' ? 'Google listing' : 'Website') + nl;
+      md += '- **What is wrong:** ' + f.detail + nl;
+      md += '- **Do this:** ' + f.fix + nl + nl;
     });
+
+    const rest = ranked.slice(10);
+    if (rest.length) {
+      md += '## Everything else we found (' + rest.length + ')' + nl + nl;
+      rest.forEach(f => {
+        const w = this.WHERE[f.doIn] || this.WHERE.code;
+        md += '- **' + f.title + '** (' + w.label + ') — ' + f.detail + nl;
+      });
+      md += nl;
+    }
 
     if (r.wins.length) {
       md += '## Already in place' + nl + nl;
