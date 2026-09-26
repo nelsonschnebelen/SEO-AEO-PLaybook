@@ -107,8 +107,8 @@ Three ways to get yourself penalized, so do not do them:
 |---|---|
 | An afternoon | The five items above |
 | A weekend | Add attributes, 20 photos, and the business description |
-| A week | The full [SEO checklist](02-seo-checklist.md) |
-| A month | The [AEO checklist](03-aeo-checklist.md) on top |
+| A week | The full [the checklist](02-checklist.md) |
+| A month | The [the checklist](02-checklist.md) on top |
 | Ongoing | The [monthly loop](07-measurement.md) — 30 minutes, same day each month |
 
 Run the interactive audit at `index.html` to find out which of these you actually need, in what
@@ -127,4 +127,4 @@ who claim to are usually using techniques that eventually cost you.
 
 ---
 
-_From [The Restaurant SEO &amp; AEO Playbook](../README.md) by [Dineline](https://dineline.co/) — done-for-you restaurant marketing, tracked to the dollar._
+_From [The Restaurant AEO Playbook](../README.md) by [Dineline](https://dineline.co/) — done-for-you restaurant marketing, tracked to the dollar._

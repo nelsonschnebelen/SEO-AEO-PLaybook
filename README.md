@@ -1,11 +1,16 @@
-# The Restaurant SEO &amp; AEO Playbook
+# The Restaurant AEO Playbook
 
 **By [Dineline](https://dineline.co/)** — done-for-you restaurant marketing, tracked to the dollar.
 
-A complete, plain-English playbook for getting a restaurant **found on Google** (SEO) and
-**recommended by AI assistants** (AEO). An owner types their web address and gets a score for both
-their site and their Google Business Profile, with a ranked list of what to fix — then a full
-self-audit, two checklists, 30 ready-to-use AI prompts, and a schema markup generator.
+A plain-English playbook for getting a restaurant **named when people ask an AI where to eat**.
+An owner types their web address and gets a score for the two sources assistants actually read —
+their Google listing and their own site — with a ranked list of the ten things worth fixing, then a
+full self-audit, a checklist, 27 AI prompts, and a schema markup generator.
+
+**Answer engines, not search rankings.** Title-tag lengths, meta descriptions and page-one
+positioning are out of scope. The Google Business Profile very much is *in* scope: when an
+assistant says "they take reservations and there's parking behind the building", that is where it
+came from.
 
 Built for independent restaurant owners, not for marketers. No jargon, no account, no upload.
 
@@ -111,7 +116,7 @@ locations, what to ignore, and what to measure.
 
 ### Two checklists
 
-**118 tickable tasks** across an SEO track (getting found) and an AEO track (getting recommended).
+**74 tickable tasks**, ordered the way an assistant meets you: can it reach you, read you, trust you, quote you.
 Progress saves to the browser. Items with a 🤖 tag link straight to a matching AI prompt.
 
 ### AI prompt library
@@ -132,21 +137,15 @@ and flags anything still missing as `FILL_IN` rather than inventing it.
 
 ---
 
-## How SEO and AEO differ here
+## What it weighs
 
-|  | SEO — being *findable* | AEO — being *recommended* |
-|---|---|---|
-| The question | "Which of these should I click?" | "Where should I go?" |
-| Competing for | A position on a page | A mention inside the answer |
-| What wins | Complete Google profile, proximity, reviews, fast site, real menu text | Facts stated clearly, agreement across sources, review themes, being cited elsewhere |
-| You get | A click | A recommendation |
-| Visible in | Rankings, Search Console, profile views | Only by asking the assistants yourself |
+|  | Source | Weight | What it decides |
+|---|---|---|---|
+| **Your Google listing** | Places API | 55% | The facts an assistant repeats — hours, category, price, dietary, accessibility, reservations, and the review themes it paraphrases |
+| **Your own site** | Fetched page + robots.txt | 45% | Whether crawlers are allowed in at all, whether your menu and facts are readable, and whether your pages answer questions in a form that can be lifted |
 
-Roughly 80% of good AEO *is* good local SEO. The extra 20% is **structure** (answering questions
-directly, in self-contained passages) and **completeness** (stating facts a machine will never
-guess). The playbook covers both together rather than treating them as separate projects.
-
----
+Deliberately out of scope: title-tag lengths, meta descriptions, page speed, rankings. Those are
+search-performance concerns and none of them change whether an assistant names you.
 
 ## Read it as documents instead
 
@@ -156,9 +155,8 @@ walk-in:
 | Document | What it is |
 |---|---|
 | [Quick start](docs/01-quick-start.md) | The five things to do this afternoon |
-| [SEO checklist](docs/02-seo-checklist.md) | 68 tasks for getting found |
-| [AEO checklist](docs/03-aeo-checklist.md) | 50 tasks for getting recommended |
-| [AI prompt library](docs/04-ai-prompt-library.md) | All 30 prompts, with when and why to use each |
+| [The checklist](docs/02-checklist.md) | 74 tasks, in the order an assistant meets you |
+| [AI prompt library](docs/04-ai-prompt-library.md) | All 27 prompts, with when and why to use each |
 | [Audit questions](docs/05-audit-questions.md) | The full question set, with how to check each one |
 | [Schema recipes](docs/06-schema-recipes.md) | Copy-paste JSON-LD for restaurant, menu, FAQ, events, multi-location |
 | [Measurement](docs/07-measurement.md) | The monthly loop and how to measure AI visibility |
@@ -193,6 +191,7 @@ assets/
   js/checker-spec.js        What the site checker looks for, and why
   js/checker.js             Checker engine (parse, analyse, rebuild) + its UI
   js/gmb.js                 18 Google Business Profile checks
+  js/aeo.js                 Crawler access + answer-readiness checks
   js/analyze.js             One-click flow: combined scoring and report
   img/dineline.svg          Wordmark (light + dark variants)
   js/audit.js               Wizard, scoring, action plan, Markdown export

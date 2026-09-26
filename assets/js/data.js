@@ -13,52 +13,43 @@
 const PILLARS = [
   {
     id: 'gbp',
-    name: 'Google Business Profile',
-    short: 'Google Profile',
-    weight: 24,
+    name: 'Your Google listing',
+    short: 'Google listing',
+    weight: 26,
     icon: '📍',
     blurb: 'Your free Google listing. For most restaurants this outranks the website itself and is the single biggest source of calls, direction requests and walk-ins.',
     ownerNote: 'This is the one thing to fix first. It is free, it takes an afternoon, and it is where hungry people 2 miles away actually find you.'
   },
   {
-    id: 'site',
-    name: 'Website Foundations',
-    short: 'Website',
-    weight: 14,
-    icon: '🧱',
-    blurb: 'Speed, mobile usability, crawlability and the basic pages Google needs to understand who you are and where you are.',
-    ownerNote: 'Your site does not need to be beautiful. It needs to load fast on a phone, say where you are, and let someone order or book in two taps.'
-  },
-  {
     id: 'content',
-    name: 'Menu & Content',
-    short: 'Menu & Content',
-    weight: 15,
+    name: 'What AI can read',
+    short: 'Readable',
+    weight: 20,
     icon: '🍽️',
     blurb: 'A real HTML menu, dish pages, location pages and the questions-and-answers content that both Google and AI assistants read.',
     ownerNote: 'A menu trapped in a PDF or an image is invisible. Fixing that one thing is often the highest-return hour of work on this whole list.'
   },
   {
     id: 'reviews',
-    name: 'Reviews & Reputation',
+    name: 'Reviews AI paraphrases',
     short: 'Reviews',
-    weight: 12,
+    weight: 14,
     icon: '⭐',
     blurb: 'Review volume, velocity, rating, response rate, and the specific words diners use — which AI assistants quote back almost verbatim.',
     ownerNote: 'AI assistants summarize your reviews when someone asks "is it good?". Your reviews are now your sales copy, written by strangers.'
   },
   {
     id: 'citations',
-    name: 'Listings & Consistency',
-    short: 'Listings',
-    weight: 8,
+    name: 'Sources that agree',
+    short: 'Consistency',
+    weight: 10,
     icon: '🗂️',
     blurb: 'Your name, address, phone and hours matching everywhere they appear — Yelp, Apple Maps, TripAdvisor, delivery apps, the local paper.',
     ownerNote: 'Boring, but a wrong phone number on one big directory can quietly cost you covers every week.'
   },
   {
     id: 'schema',
-    name: 'Structured Data',
+    name: 'Facts in code',
     short: 'Schema',
     weight: 12,
     icon: '🏷️',
@@ -67,9 +58,9 @@ const PILLARS = [
   },
   {
     id: 'aeo',
-    name: 'AI Answer Readiness',
-    short: 'AEO',
-    weight: 15,
+    name: 'Answer readiness',
+    short: 'Quotable',
+    weight: 18,
     icon: '🤖',
     blurb: 'Whether ChatGPT, Google AI Overviews, Gemini, Perplexity and Copilot can find, trust and correctly recommend you when someone asks for a place to eat.',
     ownerNote: 'A growing share of "where should we eat" now happens in a chat window. If the answer never names you, the ranking underneath it does not matter.'
@@ -174,7 +165,7 @@ const QUESTIONS = [
 
   /* ---------------------------- WEBSITE FOUNDATIONS ---------------------- */
   {
-    id: 'site-exists', pillar: 'site', weight: 5, impact: 'high', effort: 'varies',
+    id: 'site-exists', pillar: 'content', weight: 5, impact: 'high', effort: 'varies',
     q: 'Do you own a real website on your own domain (not only a Facebook page or a delivery-app storefront)?',
     check: 'Type your domain into a browser. Does your own site load?',
     why: 'Rented platforms can change rules, add commissions or disappear. Search engines and AI assistants both treat an owned domain as the authoritative source about you.',
@@ -182,15 +173,7 @@ const QUESTIONS = [
     ai: 'Have AI draft the full copy for a one-page restaurant site from your menu and story, then hand it to whoever builds the page.'
   },
   {
-    id: 'site-mobile', pillar: 'site', weight: 5, impact: 'high', effort: 'varies',
-    q: 'Does your site load in under 3 seconds on a phone on cellular data?',
-    check: 'Run your URL through PageSpeed Insights (pagespeed.web.dev) and look at the mobile score, or just load it on your own phone with wifi off.',
-    why: 'Most restaurant searches are on a phone, often hungry and in motion. Slow pages lose people before the menu renders, and speed is a confirmed ranking factor.',
-    fix: 'Compress every image to under 200KB, remove unused plugins and sliders, avoid autoplay video on the landing page, and lazy-load anything below the fold.',
-    ai: 'Paste your PageSpeed Insights report into an AI assistant and ask for the fixes ranked by impact, written as instructions your web person can act on.'
-  },
-  {
-    id: 'site-nap', pillar: 'site', weight: 4, impact: 'high', effort: '15 min',
+    id: 'site-nap', pillar: 'content', weight: 4, impact: 'high', effort: '15 min',
     q: 'Are your address, phone and hours in text on every page (usually the footer)?',
     check: 'Load your site, try to select the phone number with your cursor. If you cannot select it, it is an image.',
     why: 'Text can be read, indexed and quoted. An image of your address cannot, and neither engines nor AI assistants will guess.',
@@ -198,36 +181,12 @@ const QUESTIONS = [
     ai: 'Ask AI to write the exact footer HTML block with the correct tel: link format and an address marked up properly.'
   },
   {
-    id: 'site-titles', pillar: 'site', weight: 3, impact: 'medium', effort: '45 min',
-    q: 'Does every page have a unique title tag that includes your city or neighborhood?',
-    check: 'Look at your browser tab text on three different pages. Are they different and descriptive?',
-    why: 'The title tag is still the strongest on-page signal, and it is what shows as the blue clickable line in results.',
-    fix: 'Pattern: Primary Dish or Cuisine in Neighborhood, City | Restaurant Name. Keep under about 60 characters. One unique title per page.',
-    ai: 'Give AI your page list and location and ask for title tags and meta descriptions for every page, respecting character limits.'
-  },
-  {
-    id: 'site-https', pillar: 'site', weight: 3, impact: 'medium', effort: '30 min',
+    id: 'site-https', pillar: 'schema', weight: 3, impact: 'medium', effort: '30 min',
     q: 'Is your site on HTTPS with no browser security warnings?',
     check: 'Look for the padlock in the address bar. Also try the non-www and www versions.',
     why: 'Insecure sites get warning screens that kill conversion, and HTTPS is a baseline ranking signal.',
     fix: 'Install an SSL certificate (free through most hosts and Let’s Encrypt) and force all traffic to a single canonical HTTPS version.',
     ai: 'Ask AI for the redirect rules for your specific host or platform to force HTTPS and one canonical domain.'
-  },
-  {
-    id: 'site-indexed', pillar: 'site', weight: 4, impact: 'high', effort: '30 min',
-    q: 'Is your site actually in Google’s index, and do you have Search Console set up?',
-    check: 'Google site:yourdomain.com and count results. Then check whether you have access to search.google.com/search-console for the property.',
-    why: 'You cannot fix what you cannot see. Search Console tells you what people searched before they clicked, and warns you when pages fall out of the index.',
-    fix: 'Verify the domain in Google Search Console, submit an XML sitemap, and check the Pages report for anything excluded that should not be.',
-    ai: 'Export your Search Console queries to CSV, hand them to an AI assistant, and ask which searches you rank on page two for — those are your cheapest wins.'
-  },
-  {
-    id: 'site-booking', pillar: 'site', weight: 3, impact: 'high', effort: '30 min',
-    q: 'Can someone order or book within two taps from your homepage on a phone?',
-    check: 'Open your homepage on a phone and count the taps to a completed booking or a full cart.',
-    why: 'Traffic that cannot convert is a cost, not an asset. Every extra tap loses a meaningful share of people.',
-    fix: 'Put Order and Reserve buttons in the sticky header and above the fold. Make the phone number tap-to-call. Do not hide either behind a hamburger menu.',
-    ai: 'Describe your current homepage to an AI assistant and ask it to map the tap path for the three top diner tasks and where people drop out.'
   },
 
   /* ---------------------------- MENU & CONTENT --------------------------- */
@@ -270,14 +229,6 @@ const QUESTIONS = [
     why: 'Experience and credibility signals matter for how both Google and AI assistants judge whether to trust and recommend you.',
     fix: 'Name the owner and chef, describe their background and training, explain your sourcing and technique, and add press mentions and awards with links.',
     ai: 'Interview yourself with AI: ask it to ask you ten questions about your background, then have it turn your answers into an About page draft.'
-  },
-  {
-    id: 'content-fresh', pillar: 'content', weight: 2, impact: 'medium', effort: 'ongoing',
-    q: 'Has anything on your website been updated in the last 90 days?',
-    check: 'When did you last change a page? Seasonal menu changes count only if they are on the site.',
-    why: 'Stale sites drift down. More practically, an outdated menu or an expired event page actively misleads people.',
-    fix: 'Set a recurring monthly task: update the menu, refresh the events page, add one new post, and check that everything time-sensitive is still true.',
-    ai: 'Ask AI to build you a 12-month restaurant content calendar tied to your seasonal menu changes and local events.'
   },
 
   /* ---------------------------- REVIEWS ---------------------------------- */
@@ -346,14 +297,6 @@ const QUESTIONS = [
     why: 'Duplicates split your reviews and ranking signals, and send some customers to a dead phone number or a former address.',
     fix: 'Report duplicates through the Google Business Profile support flow to merge or remove them. Do the same on Yelp and Apple. Prioritize any duplicate carrying reviews.',
     ai: 'Ask AI to explain the current Google process for merging duplicate listings and what evidence to have ready.'
-  },
-  {
-    id: 'cit-links', pillar: 'citations', weight: 2, impact: 'medium', effort: 'ongoing',
-    q: 'Do local sites link to you — press, food blogs, the neighborhood association, event partners?',
-    check: 'Search your restaurant name in quotes and see who mentions you.',
-    why: 'Local links are the main authority signal in local search, and they are also how AI assistants discover you through sources they already trust.',
-    fix: 'Get listed by the chamber of commerce, tourism board, neighborhood association and BID. Host or sponsor something. Pitch local food writers with a real story, not a press release.',
-    ai: 'Ask AI to build a list of local blogs, newsletters, tourism sites and community organizations in your city that cover restaurants, with a short pitch angle for each.'
   },
 
   /* ---------------------------- SCHEMA ----------------------------------- */

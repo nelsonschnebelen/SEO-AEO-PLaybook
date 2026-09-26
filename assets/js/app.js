@@ -7,7 +7,7 @@ const CHECK_KEY = 'rsap.checks.v1';
 const DAYS = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
 
 const App = {
-  track: 'seo',
+  track: 'aeo',
   promptFilter: 'all',
   checks: {},
 
@@ -372,16 +372,6 @@ const App = {
 
   /* --------------------------------------------------------------- events */
   bind() {
-    // checklist track switch
-    document.querySelectorAll('[data-track]').forEach(b => {
-      b.addEventListener('click', () => {
-        document.querySelectorAll('[data-track]').forEach(x => x.classList.remove('on'));
-        b.classList.add('on');
-        this.track = b.dataset.track;
-        this.renderChecklist();
-      });
-    });
-
     // ticking items
     document.getElementById('checklist-out').addEventListener('change', e => {
       if (e.target.type !== 'checkbox') return;

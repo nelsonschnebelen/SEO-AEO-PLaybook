@@ -15,21 +15,20 @@ still scores honestly.
 
 | Pillar | Weight | Questions | Why it carries that weight |
 |---|---|---|---|
-| 📍 Google Business Profile | 24% | 10 | This is the one thing to fix first. It is free, it takes an afternoon, and it is where hungry people 2 miles away actually find you. |
-| 🧱 Website Foundations | 14% | 7 | Your site does not need to be beautiful. It needs to load fast on a phone, say where you are, and let someone order or book in two taps. |
-| 🍽️ Menu & Content | 15% | 6 | A menu trapped in a PDF or an image is invisible. Fixing that one thing is often the highest-return hour of work on this whole list. |
-| ⭐ Reviews & Reputation | 12% | 5 | AI assistants summarize your reviews when someone asks "is it good?". Your reviews are now your sales copy, written by strangers. |
-| 🗂️ Listings & Consistency | 8% | 4 | Boring, but a wrong phone number on one big directory can quietly cost you covers every week. |
-| 🏷️ Structured Data | 12% | 4 | This is the part where AI can genuinely do the work for you. You describe the restaurant in plain English, the AI writes the code, you paste it in. |
-| 🤖 AI Answer Readiness | 15% | 7 | A growing share of "where should we eat" now happens in a chat window. If the answer never names you, the ranking underneath it does not matter. |
+| 📍 Your Google listing | 26% | 10 | This is the one thing to fix first. It is free, it takes an afternoon, and it is where hungry people 2 miles away actually find you. |
+| 🍽️ What AI can read | 20% | 7 | A menu trapped in a PDF or an image is invisible. Fixing that one thing is often the highest-return hour of work on this whole list. |
+| ⭐ Reviews AI paraphrases | 14% | 5 | AI assistants summarize your reviews when someone asks "is it good?". Your reviews are now your sales copy, written by strangers. |
+| 🗂️ Sources that agree | 10% | 3 | Boring, but a wrong phone number on one big directory can quietly cost you covers every week. |
+| 🏷️ Facts in code | 12% | 5 | This is the part where AI can genuinely do the work for you. You describe the restaurant in plain English, the AI writes the code, you paste it in. |
+| 🤖 Answer readiness | 18% | 7 | A growing share of "where should we eat" now happens in a chat window. If the answer never names you, the ranking underneath it does not matter. |
 
 **Score bands:** 85+ Strong · 70–84 Solid with gaps · 50–69 Half built · 30–49 Losing
 customers · under 30 Effectively invisible.
 
 ---
 
-## 📍 Google Business Profile  
-<sub>24% of your score</sub>
+## 📍 Your Google listing  
+<sub>26% of your score</sub>
 
 Your free Google listing. For most restaurants this outranks the website itself and is the single biggest source of calls, direction requests and walk-ins.
 
@@ -113,10 +112,10 @@ Your free Google listing. For most restaurants this outranks the website itself 
 - **How AI helps:** Ask AI to generate the 15 questions diners most commonly ask a restaurant like yours, then draft your answers from your own facts.
 - <sub>Impact: medium · Effort: 30 min</sub>
 
-## 🧱 Website Foundations  
-<sub>14% of your score</sub>
+## 🍽️ What AI can read  
+<sub>20% of your score</sub>
 
-Speed, mobile usability, crawlability and the basic pages Google needs to understand who you are and where you are.
+A real HTML menu, dish pages, location pages and the questions-and-answers content that both Google and AI assistants read.
 
 ### Do you own a real website on your own domain (not only a Facebook page or a delivery-app storefront)?
 
@@ -126,14 +125,6 @@ Speed, mobile usability, crawlability and the basic pages Google needs to unders
 - **How AI helps:** Have AI draft the full copy for a one-page restaurant site from your menu and story, then hand it to whoever builds the page.
 - <sub>Impact: high · Effort: varies</sub>
 
-### Does your site load in under 3 seconds on a phone on cellular data?
-
-- **How to check:** Run your URL through PageSpeed Insights (pagespeed.web.dev) and look at the mobile score, or just load it on your own phone with wifi off.
-- **Why it matters:** Most restaurant searches are on a phone, often hungry and in motion. Slow pages lose people before the menu renders, and speed is a confirmed ranking factor.
-- **What to do:** Compress every image to under 200KB, remove unused plugins and sliders, avoid autoplay video on the landing page, and lazy-load anything below the fold.
-- **How AI helps:** Paste your PageSpeed Insights report into an AI assistant and ask for the fixes ranked by impact, written as instructions your web person can act on.
-- <sub>Impact: high · Effort: varies</sub>
-
 ### Are your address, phone and hours in text on every page (usually the footer)?
 
 - **How to check:** Load your site, try to select the phone number with your cursor. If you cannot select it, it is an image.
@@ -141,43 +132,6 @@ Speed, mobile usability, crawlability and the basic pages Google needs to unders
 - **What to do:** Put full name, street address, city, state, ZIP, phone as a clickable tel: link, and hours in the footer of every page as real text.
 - **How AI helps:** Ask AI to write the exact footer HTML block with the correct tel: link format and an address marked up properly.
 - <sub>Impact: high · Effort: 15 min</sub>
-
-### Does every page have a unique title tag that includes your city or neighborhood?
-
-- **How to check:** Look at your browser tab text on three different pages. Are they different and descriptive?
-- **Why it matters:** The title tag is still the strongest on-page signal, and it is what shows as the blue clickable line in results.
-- **What to do:** Pattern: Primary Dish or Cuisine in Neighborhood, City | Restaurant Name. Keep under about 60 characters. One unique title per page.
-- **How AI helps:** Give AI your page list and location and ask for title tags and meta descriptions for every page, respecting character limits.
-- <sub>Impact: medium · Effort: 45 min</sub>
-
-### Is your site on HTTPS with no browser security warnings?
-
-- **How to check:** Look for the padlock in the address bar. Also try the non-www and www versions.
-- **Why it matters:** Insecure sites get warning screens that kill conversion, and HTTPS is a baseline ranking signal.
-- **What to do:** Install an SSL certificate (free through most hosts and Let’s Encrypt) and force all traffic to a single canonical HTTPS version.
-- **How AI helps:** Ask AI for the redirect rules for your specific host or platform to force HTTPS and one canonical domain.
-- <sub>Impact: medium · Effort: 30 min</sub>
-
-### Is your site actually in Google’s index, and do you have Search Console set up?
-
-- **How to check:** Google site:yourdomain.com and count results. Then check whether you have access to search.google.com/search-console for the property.
-- **Why it matters:** You cannot fix what you cannot see. Search Console tells you what people searched before they clicked, and warns you when pages fall out of the index.
-- **What to do:** Verify the domain in Google Search Console, submit an XML sitemap, and check the Pages report for anything excluded that should not be.
-- **How AI helps:** Export your Search Console queries to CSV, hand them to an AI assistant, and ask which searches you rank on page two for — those are your cheapest wins.
-- <sub>Impact: high · Effort: 30 min</sub>
-
-### Can someone order or book within two taps from your homepage on a phone?
-
-- **How to check:** Open your homepage on a phone and count the taps to a completed booking or a full cart.
-- **Why it matters:** Traffic that cannot convert is a cost, not an asset. Every extra tap loses a meaningful share of people.
-- **What to do:** Put Order and Reserve buttons in the sticky header and above the fold. Make the phone number tap-to-call. Do not hide either behind a hamburger menu.
-- **How AI helps:** Describe your current homepage to an AI assistant and ask it to map the tap path for the three top diner tasks and where people drop out.
-- <sub>Impact: high · Effort: 30 min</sub>
-
-## 🍽️ Menu & Content  
-<sub>15% of your score</sub>
-
-A real HTML menu, dish pages, location pages and the questions-and-answers content that both Google and AI assistants read.
 
 ### Is your menu real text on a web page (not a PDF, image or JPEG)?
 
@@ -219,16 +173,8 @@ A real HTML menu, dish pages, location pages and the questions-and-answers conte
 - **How AI helps:** Interview yourself with AI: ask it to ask you ten questions about your background, then have it turn your answers into an About page draft.
 - <sub>Impact: medium · Effort: 1 hour</sub>
 
-### Has anything on your website been updated in the last 90 days?
-
-- **How to check:** When did you last change a page? Seasonal menu changes count only if they are on the site.
-- **Why it matters:** Stale sites drift down. More practically, an outdated menu or an expired event page actively misleads people.
-- **What to do:** Set a recurring monthly task: update the menu, refresh the events page, add one new post, and check that everything time-sensitive is still true.
-- **How AI helps:** Ask AI to build you a 12-month restaurant content calendar tied to your seasonal menu changes and local events.
-- <sub>Impact: medium · Effort: ongoing</sub>
-
-## ⭐ Reviews & Reputation  
-<sub>12% of your score</sub>
+## ⭐ Reviews AI paraphrases  
+<sub>14% of your score</sub>
 
 Review volume, velocity, rating, response rate, and the specific words diners use — which AI assistants quote back almost verbatim.
 
@@ -272,8 +218,8 @@ Review volume, velocity, rating, response rate, and the specific words diners us
 - **How AI helps:** Ask an AI assistant to summarize what it can find about your restaurant across review sites and tell you which source it trusts most — that is a direct read on your reputation as machines see it.
 - <sub>Impact: medium · Effort: 1 hour</sub>
 
-## 🗂️ Listings & Consistency  
-<sub>8% of your score</sub>
+## 🗂️ Sources that agree  
+<sub>10% of your score</sub>
 
 Your name, address, phone and hours matching everywhere they appear — Yelp, Apple Maps, TripAdvisor, delivery apps, the local paper.
 
@@ -301,18 +247,18 @@ Your name, address, phone and hours matching everywhere they appear — Yelp, Ap
 - **How AI helps:** Ask AI to explain the current Google process for merging duplicate listings and what evidence to have ready.
 - <sub>Impact: medium · Effort: 1 hour</sub>
 
-### Do local sites link to you — press, food blogs, the neighborhood association, event partners?
-
-- **How to check:** Search your restaurant name in quotes and see who mentions you.
-- **Why it matters:** Local links are the main authority signal in local search, and they are also how AI assistants discover you through sources they already trust.
-- **What to do:** Get listed by the chamber of commerce, tourism board, neighborhood association and BID. Host or sponsor something. Pitch local food writers with a real story, not a press release.
-- **How AI helps:** Ask AI to build a list of local blogs, newsletters, tourism sites and community organizations in your city that cover restaurants, with a short pitch angle for each.
-- <sub>Impact: medium · Effort: ongoing</sub>
-
-## 🏷️ Structured Data  
+## 🏷️ Facts in code  
 <sub>12% of your score</sub>
 
 Invisible labels in your page code that spell out your hours, menu, prices and reservation link in a format machines cannot misread.
+
+### Is your site on HTTPS with no browser security warnings?
+
+- **How to check:** Look for the padlock in the address bar. Also try the non-www and www versions.
+- **Why it matters:** Insecure sites get warning screens that kill conversion, and HTTPS is a baseline ranking signal.
+- **What to do:** Install an SSL certificate (free through most hosts and Let’s Encrypt) and force all traffic to a single canonical HTTPS version.
+- **How AI helps:** Ask AI for the redirect rules for your specific host or platform to force HTTPS and one canonical domain.
+- <sub>Impact: medium · Effort: 30 min</sub>
 
 ### Does your site have Restaurant schema markup with address, hours, phone and price range?
 
@@ -346,8 +292,8 @@ Invisible labels in your page code that spell out your hours, menu, prices and r
 - **How AI helps:** Ask AI to assemble the sameAs array from the profile URLs you paste in, formatted as valid JSON-LD.
 - <sub>Impact: medium · Effort: 20 min</sub>
 
-## 🤖 AI Answer Readiness  
-<sub>15% of your score</sub>
+## 🤖 Answer readiness  
+<sub>18% of your score</sub>
 
 Whether ChatGPT, Google AI Overviews, Gemini, Perplexity and Copilot can find, trust and correctly recommend you when someone asks for a place to eat.
 
@@ -409,4 +355,4 @@ Whether ChatGPT, Google AI Overviews, Gemini, Perplexity and Copilot can find, t
 
 ---
 
-_From [The Restaurant SEO &amp; AEO Playbook](../README.md) by [Dineline](https://dineline.co/) — done-for-you restaurant marketing, tracked to the dollar._
+_From [The Restaurant AEO Playbook](../README.md) by [Dineline](https://dineline.co/) — done-for-you restaurant marketing, tracked to the dollar._

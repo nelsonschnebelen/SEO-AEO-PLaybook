@@ -16,6 +16,13 @@ const SAMPLE_REPORT = {
     locality: 'Asheville', region: 'NC', postal: '28801',
     domain: 'rosastrattoria.example'
   },
+  /* A real and very common mistake: a security plugin blanket-blocking
+     everything that is not Googlebot, which removes the restaurant from
+     every AI answer at once. */
+  robots: {
+    found: true,
+    text: 'User-agent: Googlebot\nAllow: /\n\nUser-agent: *\nDisallow: /\n'
+  },
   gmbConfigured: true,
   gmbMatchedOn: 'name',
   /* The kind of markup a restaurant site actually ships with: a generic

@@ -175,6 +175,28 @@ function identify(html, finalUrl) {
   return out;
 }
 
+/* ------------------------------------------------------------------ robots
+   Whether an assistant can reach the site at all is the first AEO
+   question, and it is answered in one small file. Absent robots.txt means
+   everything is allowed, which is a pass — not an error. */
+async function fetchRobots(origin) {
+  try {
+    const ctl = new AbortController();
+    const timer = setTimeout(() => ctl.abort(), 8000);
+    const res = await fetch(new URL('/robots.txt', origin).toString(), {
+      signal: ctl.signal,
+      headers: { 'User-Agent': 'DinelineSiteChecker/1.0 (+https://dineline.co)' }
+    });
+    clearTimeout(timer);
+    if (res.status === 404) return { found: false, text: '' };
+    if (!res.ok) return { found: false, text: '', error: 'http-' + res.status };
+    const text = (await res.text()).slice(0, 200000);
+    return { found: true, text };
+  } catch (e) {
+    return { found: false, text: '', error: 'unreachable' };
+  }
+}
+
 /* ------------------------------------------------------------------- places
    Google Places API (v1). Text search to find them, then details for the
    full attribute set. Returns null when no key is configured, so the whole
@@ -240,7 +262,10 @@ async function analyze(rawUrl, env) {
   const url = normaliseUrl(rawUrl);
   const { html, finalUrl } = await fetchPage(url);
   const identity = identify(html, finalUrl);
-  const places = await lookupPlace(identity, env && env.GOOGLE_PLACES_API_KEY);
+  const [places, robots] = await Promise.all([
+    lookupPlace(identity, env && env.GOOGLE_PLACES_API_KEY),
+    fetchRobots(finalUrl)
+  ]);
 
   return {
     ok: true,
@@ -248,6 +273,7 @@ async function analyze(rawUrl, env) {
     fetchedAt: new Date().toISOString(),
     identity,
     html,
+    robots,
     gmb: places.place || null,
     gmbConfigured: places.configured,
     gmbReason: places.reason || null,
@@ -281,5 +307,5 @@ async function handleRequest(request, env) {
   }
 }
 
-export { analyze, handleRequest, identify, normaliseUrl, HttpError };
+export { analyze, handleRequest, identify, normaliseUrl, fetchRobots, HttpError };
 export default { fetch: handleRequest };

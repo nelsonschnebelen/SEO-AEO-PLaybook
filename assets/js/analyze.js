@@ -126,7 +126,16 @@ const Analyzer = {
   },
 
   render(data, quiet) {
-    const site = Checker.analyze(data.html || '');
+    const markup = Checker.analyze(data.html || '');
+    const aeo = window.analyzeAeo
+      ? analyzeAeo(data.html || '', data.robots)
+      : { findings: [], wins: [] };
+    /* Markup and answer-readiness are both "what an assistant finds on
+       your site", so they score and report as one side. */
+    const site = {
+      findings: [...aeo.findings, ...markup.findings],
+      wins: [...aeo.wins, ...markup.wins]
+    };
     const gmb = window.analyzeGmb
       ? analyzeGmb(data.gmb, { domain: (data.identity || {}).domain })
       : { findings: [], wins: [], present: false };
@@ -229,8 +238,8 @@ const Analyzer = {
       '</div>' +
       '<div class="subscores">' +
         meter('Your Google listing', gmbScore,
-              gmbScore === null ? 'No listing found.' : 'Where most customers find you. 55% of the score.') +
-        meter('Your website', siteScore, 'What Google and AI can actually read. 45%.') +
+              gmbScore === null ? 'No listing found.' : 'Where assistants get your facts. 55% of the score.') +
+        meter('Your site', siteScore, 'What assistants can read and quote. 45%.') +
       '</div>' +
     '</div>' +
     '<div class="kpi-row">' +
@@ -275,7 +284,11 @@ const Analyzer = {
     const EASE = { google: 2, site: 1.6, ops: 1.2, code: 1 };
     const ranked = [...all]
       .map(f => ({ ...f, weight: (SEV[f.sev] || 1) * (EASE[f.doIn] || 1) }))
-      .sort((a, b) => b.weight - a.weight || (a.mins || 99) - (b.mins || 99));
+      /* A blocked crawler is not one item among many — while it stands,
+         every other fix is invisible to that assistant. It leads. */
+      .sort((a, b) => (b.blocker ? 1 : 0) - (a.blocker ? 1 : 0) ||
+                      b.weight - a.weight ||
+                      (a.mins || 99) - (b.mins || 99));
 
     /* Two detectors can raise the same issue from different angles — the
        menu PDF shows up in both the markup and the page itself. Keep the

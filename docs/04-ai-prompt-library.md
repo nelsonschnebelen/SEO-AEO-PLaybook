@@ -11,20 +11,20 @@ format, and an instruction not to invent facts.
 
 ## Contents
 
-- **Start Here** (3) — Run these first. They tell you where you actually stand.
+- **Start Here** (3) — Run these first. They tell you what AI says about you today.
 - **Google Profile** (5) — Category selection, descriptions, posts, Q&A.
-- **Menu & Content** (6) — Turning a paper menu into pages that rank and get quoted.
+- **Menu & Content** (5) — Turning a paper menu into pages that rank and get quoted.
 - **Reviews** (3) — Asking, replying, and mining reviews for what to fix.
-- **Schema & Technical** (3) — Where AI genuinely writes the code for you.
+- **Schema & Code** (2) — Where AI genuinely writes the code for you.
 - **AI Visibility** (4) — Testing and improving how assistants describe you.
 - **Local & Outreach** (3) — Getting onto the pages that AI already trusts.
-- **Measurement** (3) — Making sense of Search Console and profile data.
+- **Measurement** (2) — Tracking whether assistants are naming you, month over month.
 
 ---
 
 ## Start Here
 
-Run these first. They tell you where you actually stand.
+Run these first. They tell you what AI says about you today.
 
 ### Find out what AI already says about you
 
@@ -331,34 +331,6 @@ Format as a table. Keep each item to something one busy owner can do
 in under two hours.
 ```
 
-### Write title tags and meta descriptions in bulk
-
-**When:** Once, when your page list is settled.
-
-**Why it works:** The title tag is the strongest on-page signal and the blue line people decide to click. Writing them one at a time is why most sites never do it.
-
-```text
-Write a title tag and meta description for every page on my restaurant
-website.
-
-Restaurant: {{name}}
-Cuisine: {{cuisine}}
-City / neighborhood: {{city}}
-Pages: [LIST YOUR PAGES — homepage, menu, visit, about, events,
-private dining, contact, any others]
-
-Rules:
-- Title tag under 60 characters, lead with what people search, end with
-  the restaurant name
-- Include the city or neighborhood where it fits naturally, once
-- Meta description 140 to 155 characters, written to earn the click,
-  with a reason to choose us and a clear next step
-- Every title must be unique
-- No keyword stuffing, no ALL CAPS, no "Best" unless I gave you an award
-
-Format as a table: Page | Title tag | Character count | Meta description.
-```
-
 ## Reviews
 
 Asking, replying, and mining reviews for what to fix.
@@ -443,7 +415,7 @@ These have to comply with Google and Yelp policy — flag anything in my
 brief that would not.
 ```
 
-## Schema & Technical
+## Schema & Code
 
 Where AI genuinely writes the code for you.
 
@@ -498,31 +470,6 @@ Here are the errors and warnings from the Google Rich Results Test:
 Fix every error, explain in one line what each one meant, and return
 the corrected complete block. Also tell me which warnings are safe to
 ignore and which are worth fixing.
-```
-
-### Translate a PageSpeed report into a work order
-
-**When:** After running pagespeed.web.dev on your site.
-
-**Why it works:** The report is written for developers. This turns it into instructions you can hand to whoever maintains the site.
-
-```text
-Here is the PageSpeed Insights report for {{url}}:
-
-[PASTE THE REPORT OR THE KEY FINDINGS]
-
-Rewrite this as a prioritized work order for a non-technical restaurant
-owner to hand to a web developer.
-
-For each item give me:
-- What is wrong, in plain English
-- How much it likely matters for a restaurant site (high/medium/low)
-- What to actually do
-- Roughly how long it should take
-- Whether I could do it myself or need a developer
-
-Put the highest-impact, lowest-effort items first. Ignore anything
-that will not meaningfully change how fast the page feels on a phone.
 ```
 
 ## AI Visibility
@@ -694,32 +641,7 @@ Format as a table I can print and work down.
 
 ## Measurement
 
-Making sense of Search Console and profile data.
-
-### Find your page-two wins in Search Console
-
-**When:** Monthly, once you have Search Console data.
-
-**Why it works:** Queries ranking 8-20 are the cheapest possible wins — you are already close.
-
-```text
-Here is my Google Search Console query export for {{url}}:
-
-[PASTE CSV OR THE TOP 100 ROWS]
-
-Analyze it and tell me:
-1. Queries ranking between position 8 and 20 with real impressions —
-   these are my cheapest wins. For each, what content change would
-   likely push it onto page one?
-2. Queries with high impressions but a low click-through rate — my
-   titles and descriptions are probably the problem. Suggest rewrites.
-3. Any query pattern showing diner intent I am not currently serving
-   with a page
-4. Anything surprising
-
-Prioritize by realistic revenue impact for a restaurant, not by
-search volume.
-```
+Tracking whether assistants are naming you, month over month.
 
 ### Interpret your Google Profile performance
 
@@ -792,4 +714,4 @@ worth it.
 
 ---
 
-_From [The Restaurant SEO &amp; AEO Playbook](../README.md) by [Dineline](https://dineline.co/) — done-for-you restaurant marketing, tracked to the dollar._
+_From [The Restaurant AEO Playbook](../README.md) by [Dineline](https://dineline.co/) — done-for-you restaurant marketing, tracked to the dollar._

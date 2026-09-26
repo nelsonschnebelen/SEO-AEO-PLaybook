@@ -406,31 +406,14 @@ const Checker = {
     const title = (html.match(/<title[^>]*>([\s\S]*?)<\/title>/i) || [])[1];
     if (!title || !title.trim()) fail('title');
     else {
-      const t = title.trim();
-      pass('title', t);
-      if (t.length > 65 || t.length < 15) {
-        const c = get('title-len');
-        add(c.sev, c.todo || c.label, 'Yours is ' + t.length + ' characters. ' + c.why, c.fix, c);
-      }
     }
-
-    const desc = (html.match(/<meta[^>]+name\s*=\s*["']description["'][^>]*>/i) || [])[0];
-    const descContent = desc && (desc.match(/content\s*=\s*["']([^"']*)["']/i) || [])[1];
-    if (!descContent || !descContent.trim()) fail('meta-desc');
-    else pass('meta-desc', descContent.trim().slice(0, 80) + (descContent.length > 80 ? '…' : ''));
 
     const h1s = html.match(/<h1\b[^>]*>/gi) || [];
     if (h1s.length === 0) fail('h1', 'This page has no H1 at all. ' + get('h1').why);
     else if (h1s.length > 1) fail('h1', 'This page has ' + h1s.length + ' H1 tags. ' + get('h1').why);
     else pass('h1', 'Exactly one H1');
 
-    if (!/<meta[^>]+name\s*=\s*["']viewport["']/i.test(html)) fail('viewport');
-    else pass('viewport', 'Declared');
-
     if (!/<html[^>]+lang\s*=/i.test(html)) fail('lang');
-
-    if (!/href\s*=\s*["']tel:/i.test(html)) fail('tel-link');
-    else pass('tel-link', 'Present');
 
     const hasZip = /\b\d{5}(-\d{4})?\b/.test(html.replace(/<script[\s\S]*?<\/script>/gi, ''));
     const hasAddrTag = /<address\b/i.test(html);
@@ -439,13 +422,6 @@ const Checker = {
 
     const pdfMenu = html.match(/href\s*=\s*["']([^"']*(menu|carte|speisekarte)[^"']*\.pdf[^"']*)["']/i);
     if (pdfMenu) fail('pdf-menu', 'Found a link to "' + pdfMenu[1].slice(0, 60) + '". ' + get('pdf-menu').why);
-
-    const imgs = html.match(/<img\b[^>]*>/gi) || [];
-    const noAlt = imgs.filter(i => !/\balt\s*=/i.test(i));
-    if (noAlt.length) {
-      const c = get('img-alt');
-      add(c.sev, c.todo || c.label, noAlt.length + ' of ' + imgs.length + ' images have no alt attribute. ' + c.why, c.fix, c);
-    } else if (imgs.length) pass('img-alt', 'All ' + imgs.length + ' images have alt attributes');
 
     if (/<meta[^>]+name\s*=\s*["']robots["'][^>]*content\s*=\s*["'][^"']*noindex/i.test(html)) fail('noindex');
 
@@ -459,10 +435,6 @@ const Checker = {
         ' still load over http. ' + c.why, c.fix, c);
     }
 
-    const text = html.replace(/<[^>]+>/g, ' ');
-    const questions = (text.match(/\?/g) || []).length;
-    if (questions < 3) fail('faq-content');
-    else pass('faq-content', questions + ' questions on the page');
   },
 
   /* ---------------------------------------------------------- rebuilding

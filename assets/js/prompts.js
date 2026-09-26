@@ -10,14 +10,14 @@
    ========================================================================== */
 
 const PROMPT_CATEGORIES = [
-  { id: 'start',    name: 'Start Here',           blurb: 'Run these first. They tell you where you actually stand.' },
+  { id: 'start',    name: 'Start Here',           blurb: 'Run these first. They tell you what AI says about you today.' },
   { id: 'gbp',      name: 'Google Profile',       blurb: 'Category selection, descriptions, posts, Q&A.' },
   { id: 'content',  name: 'Menu & Content',       blurb: 'Turning a paper menu into pages that rank and get quoted.' },
   { id: 'reviews',  name: 'Reviews',              blurb: 'Asking, replying, and mining reviews for what to fix.' },
-  { id: 'schema',   name: 'Schema & Technical',   blurb: 'Where AI genuinely writes the code for you.' },
+  { id: 'schema',   name: 'Schema & Code',        blurb: 'Where AI genuinely writes the code for you.' },
   { id: 'aeo',      name: 'AI Visibility',        blurb: 'Testing and improving how assistants describe you.' },
   { id: 'local',    name: 'Local & Outreach',     blurb: 'Getting onto the pages that AI already trusts.' },
-  { id: 'measure',  name: 'Measurement',          blurb: 'Making sense of Search Console and profile data.' }
+  { id: 'measure',  name: 'Measurement',          blurb: 'Tracking whether assistants are naming you, month over month.' }
 ];
 
 const PROMPTS = [
@@ -287,31 +287,6 @@ Format as a table. Keep each item to something one busy owner can do
 in under two hours.`
   },
 
-  {
-    id: 'p-titles', cat: 'content', title: 'Write title tags and meta descriptions in bulk',
-    when: 'Once, when your page list is settled.',
-    why: 'The title tag is the strongest on-page signal and the blue line people decide to click. Writing them one at a time is why most sites never do it.',
-    prompt:
-`Write a title tag and meta description for every page on my restaurant
-website.
-
-Restaurant: {{name}}
-Cuisine: {{cuisine}}
-City / neighborhood: {{city}}
-Pages: [LIST YOUR PAGES — homepage, menu, visit, about, events,
-private dining, contact, any others]
-
-Rules:
-- Title tag under 60 characters, lead with what people search, end with
-  the restaurant name
-- Include the city or neighborhood where it fits naturally, once
-- Meta description 140 to 155 characters, written to earn the click,
-  with a reason to choose us and a clear next step
-- Every title must be unique
-- No keyword stuffing, no ALL CAPS, no "Best" unless I gave you an award
-
-Format as a table: Page | Title tag | Character count | Meta description.`
-  },
 
   /* ------------------------------- REVIEWS ------------------------------- */
   {
@@ -433,28 +408,6 @@ Here are the errors and warnings from the Google Rich Results Test:
 Fix every error, explain in one line what each one meant, and return
 the corrected complete block. Also tell me which warnings are safe to
 ignore and which are worth fixing.`
-  },
-  {
-    id: 'p-speed', cat: 'schema', title: 'Translate a PageSpeed report into a work order',
-    when: 'After running pagespeed.web.dev on your site.',
-    why: 'The report is written for developers. This turns it into instructions you can hand to whoever maintains the site.',
-    prompt:
-`Here is the PageSpeed Insights report for {{url}}:
-
-[PASTE THE REPORT OR THE KEY FINDINGS]
-
-Rewrite this as a prioritized work order for a non-technical restaurant
-owner to hand to a web developer.
-
-For each item give me:
-- What is wrong, in plain English
-- How much it likely matters for a restaurant site (high/medium/low)
-- What to actually do
-- Roughly how long it should take
-- Whether I could do it myself or need a developer
-
-Put the highest-impact, lowest-effort items first. Ignore anything
-that will not meaningfully change how fast the page feels on a phone.`
   },
 
   /* ------------------------------- AEO ----------------------------------- */
@@ -600,28 +553,6 @@ Format as a table I can print and work down.`
   },
 
   /* ------------------------------- MEASURE ------------------------------- */
-  {
-    id: 'p-gsc', cat: 'measure', title: 'Find your page-two wins in Search Console',
-    when: 'Monthly, once you have Search Console data.',
-    why: 'Queries ranking 8-20 are the cheapest possible wins — you are already close.',
-    prompt:
-`Here is my Google Search Console query export for {{url}}:
-
-[PASTE CSV OR THE TOP 100 ROWS]
-
-Analyze it and tell me:
-1. Queries ranking between position 8 and 20 with real impressions —
-   these are my cheapest wins. For each, what content change would
-   likely push it onto page one?
-2. Queries with high impressions but a low click-through rate — my
-   titles and descriptions are probably the problem. Suggest rewrites.
-3. Any query pattern showing diner intent I am not currently serving
-   with a page
-4. Anything surprising
-
-Prioritize by realistic revenue impact for a restaurant, not by
-search volume.`
-  },
   {
     id: 'p-gbp-insights', cat: 'measure', title: 'Interpret your Google Profile performance',
     when: 'Monthly.',

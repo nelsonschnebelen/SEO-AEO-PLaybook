@@ -96,39 +96,14 @@ const PAGE_CHECKS = [
     fix: 'Add one unique <title> per page, under about 60 characters, leading with what people search and ending with your restaurant name.'
   },
   {
-    id: 'title-len', todo: "Trim your page title", doIn: 'site', mins: 3, sev: 'nice', label: 'Title tag length',
-    why: 'Long titles get cut off mid-sentence in results.',
-    fix: 'Keep the title between 15 and 65 characters.'
-  },
-  {
-    id: 'title-city', todo: "Put your city in the page title", doIn: 'site', mins: 3, sev: 'important', label: 'City or neighborhood in the title',
-    why: 'Local relevance is built from the words on the page. A title with no place in it competes everywhere and wins nowhere.',
-    fix: 'Work your city or neighborhood into the title tag once, naturally.'
-  },
-  {
-    id: 'meta-desc', todo: "Write a meta description", doIn: 'site', mins: 5, sev: 'important', label: 'Meta description',
-    why: 'It does not rank you directly, but it is the sales pitch under your link and it changes click-through rate.',
-    fix: 'Add a meta description of 140 to 155 characters giving a reason to choose you and a clear next step.'
-  },
-  {
     id: 'h1', todo: "Use exactly one main heading", doIn: 'site', mins: 5, sev: 'important', label: 'A single H1',
     why: 'The H1 tells both readers and machines what this page is actually about.',
     fix: 'Use exactly one <h1> per page describing that page — not your logo alt text and not a slogan.'
   },
   {
-    id: 'viewport', todo: "Add the mobile viewport tag", doIn: 'code', mins: 10, sev: 'critical', label: 'Mobile viewport tag',
-    why: 'Without it, phones render your site at desktop width and zoom out. Most of your traffic is on a phone.',
-    fix: 'Add <meta name="viewport" content="width=device-width, initial-scale=1"> to the head.'
-  },
-  {
     id: 'lang', todo: "Set the page language", doIn: 'code', mins: 2, sev: 'nice', label: 'Language attribute',
     why: 'Tells machines and screen readers what language the page is in.',
     fix: 'Add lang="en" (or your language) to the <html> tag.'
-  },
-  {
-    id: 'tel-link', todo: "Make your phone number tap-to-call", doIn: 'site', mins: 5, sev: 'important', label: 'Tap-to-call phone link',
-    why: 'A phone number that is not a link costs you calls from people standing on the sidewalk.',
-    fix: 'Wrap your phone number in <a href="tel:+18285550142">.'
   },
   {
     id: 'address-text', todo: "Put your address on the page as text", doIn: 'site', mins: 10, sev: 'important', label: 'Address as selectable text',
@@ -139,11 +114,6 @@ const PAGE_CHECKS = [
     id: 'pdf-menu', todo: "Get your menu out of the PDF", topic: 'menu-pdf', doIn: 'site', mins: 60, sev: 'critical', label: 'Menu trapped in a PDF',
     why: 'The most common and most expensive mistake in restaurant SEO. Every dish name, price and allergen note in a PDF is invisible to search and to every AI assistant.',
     fix: 'Rebuild the menu as an HTML page with headings per section and dish names, descriptions and prices as text. Keep the PDF as an optional download if you like.'
-  },
-  {
-    id: 'img-alt', todo: "Add alt text to your photos", doIn: 'site', mins: 20, sev: 'nice', label: 'Image alt text',
-    why: 'Alt text is how a machine knows what your food photos show, and it is an accessibility requirement.',
-    fix: 'Add descriptive alt text to every food and interior photo. Decorative images should have alt="".'
   },
   {
     id: 'noindex', todo: "Unblock the page from Google", doIn: 'code', mins: 5, sev: 'critical', label: 'Page blocked from indexing',
@@ -159,10 +129,5 @@ const PAGE_CHECKS = [
     id: 'https-assets', todo: "Load everything over https", topic: 'https', doIn: 'code', mins: 15, sev: 'important', label: 'Everything loads over HTTPS',
     why: 'Mixed content triggers browser warnings that kill conversion, and some assets simply fail to load.',
     fix: 'Change every http:// reference in your page to https://.'
-  },
-  {
-    id: 'faq-content', todo: "Add a page of real diner questions", topic: 'faq', doIn: 'site', mins: 90, sev: 'nice', label: 'Question-and-answer content',
-    why: 'Question-and-answer text is the format answer engines quote from most readily. It is the highest-leverage AEO content you can publish.',
-    fix: 'Build an FAQ page with 15 to 25 real diner questions, each as a heading with a direct 40-to-60-word answer underneath.'
   }
 ];

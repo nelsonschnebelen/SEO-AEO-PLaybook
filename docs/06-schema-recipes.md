@@ -312,4 +312,4 @@ block. There is a prompt for exactly this in
 
 ---
 
-_From [The Restaurant SEO &amp; AEO Playbook](../README.md) by [Dineline](https://dineline.co/) — done-for-you restaurant marketing, tracked to the dollar._
+_From [The Restaurant AEO Playbook](../README.md) by [Dineline](https://dineline.co/) — done-for-you restaurant marketing, tracked to the dollar._

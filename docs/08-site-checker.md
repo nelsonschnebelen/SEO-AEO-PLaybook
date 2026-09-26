@@ -119,6 +119,56 @@ something reads them:
 - **Nice to have** — Event `startDate` with no timezone offset
 - **Nice to have** — Microdata instead of JSON-LD
 
+## Answer-readiness checks
+
+The checks that are specifically about being named by an assistant.
+
+| Check | Severity | Why it matters |
+| --- | --- | --- |
+| Let AI assistants read your site | Critical | If a crawler is blocked, you are not ranked low in that assistant — you are absent from it. A security plugin or CDN rule does this by default more often than owners realise. |
+| Stop blocking every crawler | Critical | A blanket disallow takes you out of search and every AI answer at once. It is almost always left over from a staging site. |
+| Answer the questions diners actually ask | Critical | Assistants lift self-contained passages. A page of real questions with a direct answer under each is the single most quotable thing a restaurant can publish. |
+| State the facts AI will never guess | Important | An assistant will not infer that you take reservations or that parking exists. Anything your site does not say becomes "I am not sure", and the diner moves on. |
+| Put a real name on the place | Nice to have | Assistants weigh signals of a real operation with real people behind it. A site with no named chef or owner reads as thinner than one that has them. |
+
+### AI crawlers we check for
+
+Blocking one of these removes you from that assistant entirely — it is not a ranking
+penalty, it is absence. Training-only crawlers are deliberately not on this list.
+
+| Crawler | What blocking it costs you |
+| --- | --- |
+| `OAI-SearchBot` | ChatGPT search results and citations |
+| `PerplexityBot` | Perplexity answers |
+| `ClaudeBot` | Claude |
+| `Google-Extended` | Gemini grounding (not normal Google Search) |
+| `Bingbot` | Bing, which feeds a share of Copilot |
+
+## Google Business Profile checks
+
+Read from the listing Google already publishes — the owner types nothing.
+
+| Check | Severity | Why it matters |
+| --- | --- | --- |
+| Set your listing back to open | Critical | A profile flagged closed is removed from most results and quietly ends your discovery traffic. It happens by accident more often than owners expect. |
+| Add your opening hours | Critical | Hours drive the "Open now" filter, which is how most hungry people narrow a list. No hours means you drop out of that filter entirely. |
+| Add your phone number | Critical | Calls are the highest-intent action a restaurant profile produces, and the call button cannot appear without a number. |
+| Add your website link | Critical | Without your own link, the profile sends traffic to aggregators and delivery apps — every tap becoming a commission on an order that was already yours. |
+| Point your profile at your own site | Critical | A profile pointing at a third-party page hands over both the traffic and the customer relationship. |
+| Lift your rating | Important | Rating is heavily weighted in the local pack, and it is the first number an AI assistant quotes when asked whether a place is any good. |
+| Get more reviews coming in | Important | Review count is both a ranking signal and a credibility signal. Thin counts get skipped even at a high rating. |
+| Get the review flow going again | Important | A steady trickle signals a live, busy restaurant. A profile whose newest review is months old reads as fading, to both Google and the person reading it. |
+| Add more photos | Important | Photo volume and freshness correlate strongly with clicks and direction requests. A profile with a handful of photos looks closed. |
+| Pick a more specific category | Important | Primary category is one of the strongest local ranking levers. "Restaurant" competes with every restaurant in the city; "Neapolitan pizza restaurant" competes with four. |
+| Set your price range | Important | Price is one of the first filters a diner applies, and an assistant will skip you rather than guess it. |
+| Tick your accessibility options | Important | Accessibility attributes power a filter that people who need it rely on completely — and leaving them blank makes you invisible to that search, not neutral. |
+| Declare your dietary options | Important | Dietary searches are high-intent and low-competition. "Vegan" and "gluten free" plus a city is a search you can win outright — but only if the box is ticked. |
+| Tick dine-in, takeout and delivery | Nice to have | Dine-in, takeout, delivery and curbside each drive their own filtered searches. |
+| Say whether you take reservations | Nice to have | Assistants will not infer this. If nothing says you take bookings, "can I reserve a table there" gets answered with a shrug. |
+| Write your profile description | Nice to have | Both Google and AI assistants read the description when summarizing what kind of place you are. |
+| Fill in your amenities | Nice to have | Each amenity is a filter and an answerable question — outdoor seating, kids, dogs, restrooms, parking, payment methods. |
+| Say which meals you serve | Nice to have | Breakfast, brunch, lunch and dinner are each their own search, and "open for brunch near me" is a filter you can only win by ticking the box. |
+
 ## On-page checks
 
 These run when you paste your full page source rather than just a schema block.
@@ -126,28 +176,21 @@ These run when you paste your full page source rather than just a schema block.
 | Check | Severity | Why it matters |
 | --- | --- | --- |
 | Title tag | Critical | The strongest single on-page signal, and the blue line people decide whether to click. |
-| Title tag length | Nice to have | Long titles get cut off mid-sentence in results. |
-| City or neighborhood in the title | Important | Local relevance is built from the words on the page. A title with no place in it competes everywhere and wins nowhere. |
-| Meta description | Important | It does not rank you directly, but it is the sales pitch under your link and it changes click-through rate. |
 | A single H1 | Important | The H1 tells both readers and machines what this page is actually about. |
-| Mobile viewport tag | Critical | Without it, phones render your site at desktop width and zoom out. Most of your traffic is on a phone. |
 | Language attribute | Nice to have | Tells machines and screen readers what language the page is in. |
-| Tap-to-call phone link | Important | A phone number that is not a link costs you calls from people standing on the sidewalk. |
 | Address as selectable text | Important | An address baked into an image cannot be read by a search engine or an AI assistant. Neither will guess. |
 | Menu trapped in a PDF | Critical | The most common and most expensive mistake in restaurant SEO. Every dish name, price and allergen note in a PDF is invisible to search and to every AI assistant. |
-| Image alt text | Nice to have | Alt text is how a machine knows what your food photos show, and it is an accessibility requirement. |
 | Page blocked from indexing | Critical | A noindex tag removes the page from search entirely. This is usually left over from a site build and nobody notices for months. |
 | Structured data present | Critical | Schema is the highest-confidence format available for stating your facts, and it is what AI retrieval leans on. |
 | Everything loads over HTTPS | Important | Mixed content triggers browser warnings that kill conversion, and some assets simply fail to load. |
-| Question-and-answer content | Nice to have | Question-and-answer text is the format answer engines quote from most readily. It is the highest-leverage AEO content you can publish. |
 
 ## What it cannot see
 
 The checker reads what you give it, in your browser. It cannot fetch your live site, and it
 has no view of your Google Business Profile, your reviews, your directory listings or what
 AI assistants currently say about you. Those are covered by the
-[full audit](05-audit-questions.md) and the [checklists](02-seo-checklist.md).
+[full audit](05-audit-questions.md) and the [checklist](02-checklist.md).
 
 ---
 
-_From [The Restaurant SEO &amp; AEO Playbook](../README.md) by [Dineline](https://dineline.co/) — done-for-you restaurant marketing, tracked to the dollar._
+_From [The Restaurant AEO Playbook](../README.md) by [Dineline](https://dineline.co/) — done-for-you restaurant marketing, tracked to the dollar._

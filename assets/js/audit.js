@@ -8,14 +8,14 @@ const STORE_KEY = 'rsap.audit.v1';
 
 /* Question steps, grouped so the wizard is four screens rather than seven. */
 const STEP_GROUPS = [
-  { id: 'g1', label: '1. Google Profile',   pillars: ['gbp'],
-    lead: 'Your Google Business Profile is the storefront most of your customers actually see. Have it open in another tab while you answer these.' },
-  { id: 'g2', label: '2. Website & Menu',   pillars: ['site', 'content'],
-    lead: 'Open your own website on a phone while you go through these. That is how most people will see it.' },
-  { id: 'g3', label: '3. Reviews & Listings', pillars: ['reviews', 'citations'],
-    lead: 'Reviews rank you, persuade people, and are what AI assistants quote when asked whether you are any good.' },
-  { id: 'g4', label: '4. Schema & AI',      pillars: ['schema', 'aeo'],
-    lead: 'The technical and AI-readiness side. If you do not know an answer here, "Not sure" is a perfectly good response — it becomes a task.' }
+  { id: 'g1', label: '1. Google listing',   pillars: ['gbp'],
+    lead: 'The biggest single source of the facts an assistant repeats about you. Have your profile open in another tab.' },
+  { id: 'g2', label: '2. What AI can read', pillars: ['content'],
+    lead: 'Everything an assistant learns from your own site it has to be able to parse. Open your site while you answer these.' },
+  { id: 'g3', label: '3. Trust',            pillars: ['reviews', 'citations'],
+    lead: 'What reviewers keep saying, and whether your facts agree wherever an assistant finds them.' },
+  { id: 'g4', label: '4. Answer readiness', pillars: ['schema', 'aeo'],
+    lead: 'The code that states your facts, and whether your pages answer questions in a form an assistant can lift.' }
 ];
 
 const ANSWER_VALUES = { yes: 1, partly: 0.6, unsure: 0.25, no: 0 };
