@@ -837,6 +837,51 @@ select {
 .split dt { font-weight: 700; color: var(--ink-3); font-size: .74rem; letter-spacing: .07em; text-transform: uppercase; padding-top: 3px; }
 .split dd { margin: 0; color: var(--ink-2); }
 
+/* ---------------------------------------------------------------- icons
+   One stroke weight, one corner treatment, one 24px grid — drawn as a set
+   so they read as a family rather than assorted clip art. */
+.sprite { position: absolute; width: 0; height: 0; overflow: hidden; }
+svg use, .sprite symbol {
+  fill: none; stroke: currentColor; stroke-width: 1.6;
+  stroke-linecap: round; stroke-linejoin: round;
+}
+.ico { width: 20px; height: 20px; flex: 0 0 auto; color: var(--brand); vertical-align: -3px; }
+
+/* ------------------------------------------------------------ explainer */
+.explain {
+  display: grid; gap: 1px; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  background: var(--line); border: 1px solid var(--line);
+  border-radius: var(--r); overflow: hidden;
+}
+.ex { background: var(--paper-2); padding: 28px 26px; }
+.ex-ico {
+  display: grid; place-items: center; width: 46px; height: 46px;
+  border-radius: 13px; background: var(--brand-wash); color: var(--brand);
+  margin-bottom: 18px;
+}
+.ex-ico svg { width: 24px; height: 24px; }
+.ex h3 { margin: 0 0 3px; font-size: 1.15rem; }
+.ex-eg {
+  margin: 0 0 12px; font-size: .88rem; color: var(--ink-3); font-style: italic;
+}
+.ex p:last-child { margin: 0; font-size: .93rem; color: var(--ink-2); line-height: 1.6; }
+
+/* The three steps: a sequence, so they are numbered and connected. */
+.steps {
+  list-style: none; margin: 34px 0 0; padding: 0;
+  display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  counter-reset: step;
+}
+.steps li { display: flex; gap: 14px; align-items: flex-start; margin: 0; position: relative; }
+.steps .sn {
+  flex: 0 0 auto; width: 30px; height: 30px; border-radius: 50%;
+  background: var(--ink); color: var(--paper);
+  display: grid; place-items: center; font: 800 .82rem var(--sans);
+}
+.steps li > div { font-size: .9rem; color: var(--ink-3); line-height: 1.5; }
+.steps li b { display: block; color: var(--ink); font-size: .96rem; margin-bottom: 3px; }
+
+
 /* ------------------------------------------------------------- top ten
    The fix list is the product. Numbered because it is genuinely ranked —
    work it top down — and every row says where the work happens and how

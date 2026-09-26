@@ -67,7 +67,7 @@ const App = {
       window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const targets = document.querySelectorAll(
       '.section-head, .card, .split, .callout, .table-scroll, .answer-card, ' +
-      '.kpi-row, .weight-stack, .timeline, .rows');
+      '.kpi-row, .weight-stack, .timeline, .rows, .explain, .steps');
 
     if (reduced || !('IntersectionObserver' in window)) {
       targets.forEach(el => el.classList.add('in'));
