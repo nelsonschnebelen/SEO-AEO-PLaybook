@@ -708,7 +708,7 @@ const CheckerUI = {
   },
 
   buildFixed(r) {
-    const profile = (window.Audit && Audit.state.profile) || {};
+    const profile = (window.Profile && Profile.data) || {};
     const obj = Checker.buildFixed(r, profile, this.gatherExtras());
     const json = JSON.stringify(obj, null, 2);
     const block = '<script type="application/ld+json">\n' + json + '\n</' + 'script>';
@@ -717,9 +717,9 @@ const CheckerUI = {
     const warn = holes
       ? '<div class="callout warn" style="margin:0 0 14px"><strong>' + holes +
         ' value' + (holes === 1 ? '' : 's') + ' still missing</strong><p>' +
-        'Fill in the <a href="#audit">Add your restaurant</a> form and the hours in the ' +
-        '<a href="#schema">generator</a> below, then press this button again — or replace each ' +
-        '<code>FILL_IN</code> by hand. Never publish markup containing a placeholder.</p></div>'
+        'Add your details and hours in the <a href="#schema">generator</a> below, then press ' +
+        'this button again — or replace each <code>FILL_IN</code> by hand. Never publish markup ' +
+        'containing a placeholder.</p></div>'
       : '<div class="callout tip" style="margin:0 0 14px"><strong>Complete</strong><p>' +
         'No placeholders left. Validate it in the Rich Results Test, then paste it into the ' +
         '<code>&lt;head&gt;</code> of your homepage.</p></div>';
@@ -744,7 +744,7 @@ const CheckerUI = {
   },
 
   download(r) {
-    const p = (window.Audit && Audit.state.profile) || {};
+    const p = (window.Profile && Profile.data) || {};
     const nl = '\n';
     let md = '# Site & schema check' + (p.name ? ' — ' + p.name : '') + nl + nl;
     md += 'Generated ' + new Date().toLocaleDateString() + nl + nl;

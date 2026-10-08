@@ -203,7 +203,7 @@ const App = {
   /* Fill {{placeholders}} from the audit profile, leaving an obvious
      bracketed hint where the owner has not told us yet. */
   fill(text) {
-    const p = (window.Audit && Audit.state.profile) || {};
+    const p = (window.Profile && Profile.data) || {};
     const map = {
       name:    p.name    || '[YOUR RESTAURANT NAME]',
       cuisine: p.cuisine || '[YOUR CUISINE]',
@@ -247,7 +247,7 @@ const App = {
   },
 
   onProfileChange() {
-    const p = (window.Audit && Audit.state.profile) || {};
+    const p = (window.Profile && Profile.data) || {};
     const box = document.getElementById('prompt-personalized');
     if (!box) return;
     if (p.name) {
@@ -290,7 +290,7 @@ const App = {
   },
 
   generateSchema() {
-    const p = (window.Audit && Audit.state.profile) || {};
+    const p = (window.Profile && Profile.data) || {};
     const FILL = 'FILL_IN';
 
     // "Asheville, NC 28801" -> locality / region / postal code
@@ -508,7 +508,7 @@ const App = {
 window.App = App;
 
 document.addEventListener('DOMContentLoaded', () => {
-  Audit.init();
+  Profile.init();
   App.init();
   if (window.CheckerUI) CheckerUI.init();
 });

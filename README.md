@@ -2,10 +2,10 @@
 
 **By [Dineline](https://dineline.co/)** — done-for-you restaurant marketing, tracked to the dollar.
 
-A guided, plain-English walk-through of what AI assistants have already started doing to restaurant
-discovery, and what an owner should do about it before 2027. It opens with a one-button score, then
-takes the reader through the shift, the dated receipts for it, the four surfaces a diner now meets
-them on, the six-job stack to install, and where Dineline fits — ending in a conversation.
+A short, plain-English walk-through of what AI assistants have already started doing to restaurant
+discovery, and what an owner should do about it before 2027. Seven sections: a one-button score,
+the shift, the dated receipts for it, the four surfaces a diner now meets them on, the six-job
+stack to install, and where Dineline fits — ending in a conversation.
 
 ChatGPT has booked restaurant tables through OpenTable, Resy and Yelp since August 2026, and Google
 AI Mode answers some dining questions with a single recommendation instead of a list. The point of
@@ -92,24 +92,12 @@ than being invented.
 
 The full rule set is documented in [What the site checker looks for](docs/08-site-checker.md).
 
-### "Add your restaurant" — the self-audit
+### Your details — read off your own site
 
-An owner enters their restaurant details, answers 37 plain-English questions across
-four short screens, and gets back:
-
-- **A score out of 100** with a grade band and an honest read on what it means
-- **A breakdown by pillar** showing exactly where the gaps are
-- **A ranked list of priority fixes**, each with why it matters, what to do, and how AI helps
-- **A 90-day plan** built from their own gaps, sequenced quick-wins first
-- **A downloadable Markdown report** they can print or hand to whoever maintains the site
-
-Every question includes a **how to check** line, so answers are verified rather than guessed. "Not
-sure" is a valid answer — it scores cautiously and becomes a "verify this first" task, which is a
-real thing worth having on the list.
-
-Scoring is weighted for an independent restaurant: pillars carry different weights, questions carry
-different weights inside them, and pillars left unanswered are excluded with the remaining weights
-renormalized — so a half-finished audit still scores honestly.
+There is no questionnaire. The site check already reads the restaurant's name, address and phone
+off its own markup, so those flow straight into the schema generator and the AI prompts. The six
+fields in the generator exist only as a fallback for a site that is not live yet, and so anything
+the check got wrong can be corrected. They are stored in `localStorage` and nowhere else.
 
 ### The narrative sections
 
@@ -125,17 +113,11 @@ The 2027 story the page walks a client through, in order:
   skip (including an honest read on `llms.txt`), and the schema generator
 - **06 · Where we come in** — what the owner runs themselves versus what Dishio and Dineline do
 
-### The playbook
-
-Twelve chapters, ordered by return on effort: the first afternoon, Google Business Profile, the
-menu problem, website foundations, local content, reviews as a system, structured data without a
-developer, how AI actually picks a restaurant, working with AI without getting burned, multiple
-locations, what to ignore, and what to measure. Folded in under the audit as the reference layer.
-
 ### The checklist
 
 **74 tickable tasks**, ordered the way an assistant meets you: can it reach you, read you, trust you, quote you.
-Progress saves to the browser. Items with a 🤖 tag link straight to a matching AI prompt.
+Collapsed under the stack section, since it is the six jobs broken all the way down. Progress saves
+to the browser. Items with a 🤖 tag link straight to a matching AI prompt.
 
 ### AI prompt library
 
@@ -175,18 +157,17 @@ walk-in:
 | [Quick start](docs/01-quick-start.md) | The five things to do this afternoon |
 | [The checklist](docs/02-checklist.md) | 74 tasks, in the order an assistant meets you |
 | [AI prompt library](docs/04-ai-prompt-library.md) | All 27 prompts, with when and why to use each |
-| [Audit questions](docs/05-audit-questions.md) | The full question set, with how to check each one |
 | [Schema recipes](docs/06-schema-recipes.md) | Copy-paste JSON-LD for restaurant, menu, FAQ, events, multi-location |
 | [Measurement](docs/07-measurement.md) | The monthly loop and how to measure AI visibility |
 | [Site checker rules](docs/08-site-checker.md) | Every check the site checker runs, and why |
-| [The playbook in full](docs/09-the-playbook.md) | All twelve chapters, long form |
+| [The playbook in full](docs/09-the-playbook.md) | All twelve chapters, long form — the reference layer behind the page |
 
 ---
 
 ## Privacy
 
-Audit answers, restaurant details and checklist ticks are stored in `localStorage` in the visitor's
-own browser and never leave the device. Anything pasted or uploaded into the checker is parsed in
+Restaurant details and checklist ticks are stored in `localStorage` in the visitor's own browser
+and never leave the device. Anything pasted or uploaded into the checker is parsed in
 the page and never transmitted.
 
 The one-click check is the single exception, and it is deliberately narrow: the browser sends the
@@ -198,12 +179,13 @@ API. It stores nothing. There is no analytics, no tracking and no account anywhe
 ## Project structure
 
 ```
-index.html                  The whole site — one page, nine anchored sections
+index.html                  The whole site — one page, seven anchored sections
 assets/
   css/styles.css            Design system; light and dark, print stylesheet
-  js/data.js                6 pillars, 37 audit questions, score bands
+  js/data.js                6 pillars and score bands
   js/prompts.js             27 AI prompts across 8 categories
   js/checklists.js          74 checklist items, one AEO track
+  js/profile.js             Restaurant details, filled in from the site check
   js/config.js              Where the analyser lives; empty = paste-only mode
   js/checker-spec.js        What the site checker looks for, and why
   js/checker.js             Checker engine (parse, analyse, rebuild) + its UI
@@ -211,7 +193,6 @@ assets/
   js/aeo.js                 Crawler access + answer-readiness checks
   js/analyze.js             One-click flow: combined scoring and report
   img/dineline.svg          Wordmark (light + dark variants)
-  js/audit.js               Wizard, scoring, action plan, Markdown export
   js/app.js                 Page chrome, checklists, prompt library, schema generator
 api/                        The analyser service — see api/README.md
 tools/build-single-file.js  Bundles everything into one shareable .html

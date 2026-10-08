@@ -1090,6 +1090,13 @@ tbody tr:hover { background: color-mix(in srgb, var(--paper-3) 45%, transparent)
 .win.no { background: var(--bad-wash); border-color: color-mix(in srgb, var(--bad) 18%, transparent); }
 .win.no .tick { color: var(--bad); font-size: 1.05rem; line-height: 1.2; }
 
+/* ------------------------------------------- 2027: details form inside a card */
+.profile-grid { display: grid; gap: 4px 16px; grid-template-columns: repeat(auto-fit, minmax(186px, 1fr)); }
+.profile-grid .field { margin-bottom: 12px; }
+
+/* The skip list reads better three-up than four-up-and-a-widow. */
+.wins-grid.skips { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 10px; }
+
 /* ----------------------------------------------------- 2027: closing CTA band */
 .cta-close {
   display: grid; grid-template-columns: 1fr auto; gap: 22px 30px; align-items: center;

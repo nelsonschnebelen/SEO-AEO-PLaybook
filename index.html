@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>The 2027 Restaurant AI Playbook — Dineline</title>
-<meta name="description" content="Assistants now book the table. A plain-English 2027 playbook from Dineline: score your restaurant, see what already shipped, and learn exactly what to install so AI can find, quote and book you.">
+<meta name="description" content="Assistants now book the table. A short 2027 playbook from Dineline: score your website in one click, see what already shipped, and install the six things that make a restaurant readable, quotable and bookable by AI.">
 <meta name="color-scheme" content="light dark">
 <meta property="og:title" content="The 2027 Restaurant AI Playbook — Dineline">
 <meta property="og:description" content="In 2027 the assistant picks the restaurant — and books it. Free checkup and playbook for restaurant owners, from Dineline.">
@@ -36,10 +36,10 @@
     <button class="nav-toggle" id="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
     <nav class="nav" id="nav">
       <a href="#shift">The shift</a>
-      <a href="#doors">The four doors</a>
-      <a href="#stack">Plugins</a>
+      <a href="#checker">Your score</a>
+      <a href="#doors">Four doors</a>
+      <a href="#stack">The stack</a>
       <a href="#dineline">What we do</a>
-      <a href="#plan">90 days</a>
       <a href="#top" class="cta">Get my score</a>
     </nav>
   </div>
@@ -54,8 +54,8 @@
       <span class="eyebrow">Free from Dineline &middot; 2027 edition</span>
       <h1>In 2027 the assistant <span class="accent">picks</span>. And books.</h1>
       <p class="lede">
-        ChatGPT has been booking restaurant tables since August 2026. Type your address and see
-        whether an assistant can find you, quote you and book you &mdash; and what to fix if it can&rsquo;t.
+        ChatGPT has booked restaurant tables since August 2026. Type your address &mdash; can an
+        assistant find you, quote you, book you?
       </p>
 
       <form class="url-panel" id="url-form">
@@ -67,7 +67,7 @@
           <button type="submit" class="btn btn-primary" id="btn-analyze">Score my restaurant</button>
         </div>
         <p class="url-note" id="url-note">
-          45 answer-engine checks across your Google listing and your site. Nothing to fill in.
+          45 checks. One button. Nothing to fill in.
         </p>
         <p style="margin:12px 0 0">
           <button type="button" class="btn btn-quiet btn-sm" id="btn-sample-report">
@@ -104,10 +104,7 @@
     <div class="section-head">
       <div class="kicker">01 &middot; The shift</div>
       <h2>Your website stopped being the destination.</h2>
-      <p>
-        For twenty years the job was to win the click. Now an assistant reads your site, answers
-        for the diner, and books the table itself. They may never land on your page at all.
-      </p>
+      <p>An assistant reads your site, answers for the diner, and books the table. They never land on your page.</p>
     </div>
 
     <div class="explain">
@@ -115,40 +112,31 @@
         <span class="ex-ico"><svg><use href="#i-search"></use></svg></span>
         <h3>Then: ten links</h3>
         <p class="ex-eg">you competed for a click</p>
-        <p>
-          Rank, get the click, sell on your own page. Ten slots on page one, and page two
-          existed. Keywords and backlinks were the game.
-        </p>
+        <p>Rank, get the click, sell on your own page. Page two existed.</p>
       </div>
       <div class="ex">
         <span class="ex-ico"><svg><use href="#i-ask"></use></svg></span>
         <h3>Now: three names</h3>
         <p class="ex-eg">and a Reserve button</p>
-        <p>
-          ChatGPT books tables through <b>OpenTable, Resy and Yelp</b>. Google AI Mode answers some
-          dining questions with <b>one</b> recommendation instead of a list.
-        </p>
+        <p>ChatGPT books through <b>OpenTable, Resy and Yelp</b>. Google AI Mode sometimes names <b>one</b> place.</p>
       </div>
       <div class="ex">
         <span class="ex-ico"><svg><use href="#i-list"></use></svg></span>
         <h3>Next: the agent acts</h3>
         <p class="ex-eg">facts it can read, or you&rsquo;re skipped</p>
-        <p>
-          Booking, ordering, re-ordering &mdash; done for the diner. Agents only act on facts they
-          can read as <b>data</b>. Prose, images and PDF menus get passed over.
-        </p>
+        <p>It books and orders for the diner. Prose, images and PDF menus get passed over.</p>
       </div>
     </div>
 
-    <div class="split" style="margin-top:34px">
+    <div class="split" style="margin-top:30px">
       <div>
         <h4>Search era</h4>
         <p class="sd">2015&ndash;2023</p>
         <dl>
-          <dt>Who chooses</dt><dd>The diner, from ten links</dd>
+          <dt>Who picks</dt><dd>The diner, from ten links</dd>
           <dt>What wins</dt><dd>Keywords and backlinks</dd>
-          <dt>Where it closes</dt><dd>On your website</dd>
-          <dt>How you measure</dt><dd>Clicks and rankings</dd>
+          <dt>Closes</dt><dd>On your website</dd>
+          <dt>Measured by</dt><dd>Clicks and rankings</dd>
           <dt>Site&rsquo;s job</dt><dd>Sell to a human</dd>
         </dl>
       </div>
@@ -156,10 +144,10 @@
         <h4>Right now</h4>
         <p class="sd">2026</p>
         <dl>
-          <dt>Who chooses</dt><dd>An assistant, from three names</dd>
+          <dt>Who picks</dt><dd>An assistant, from three names</dd>
           <dt>What wins</dt><dd>Readable facts and review themes</dd>
-          <dt>Where it closes</dt><dd>In the chat, or on a booking partner</dd>
-          <dt>How you measure</dt><dd>Ask the assistants monthly, log who got named</dd>
+          <dt>Closes</dt><dd>In the chat, or on a booking partner</dd>
+          <dt>Measured by</dt><dd>Asking the assistants monthly</dd>
           <dt>Site&rsquo;s job</dt><dd>Feed the machine <em>and</em> the human</dd>
         </dl>
       </div>
@@ -167,21 +155,18 @@
         <h4>Where it&rsquo;s going</h4>
         <p class="sd">2027</p>
         <dl>
-          <dt>Who chooses</dt><dd>An agent, acting for the diner</dd>
+          <dt>Who picks</dt><dd>An agent, acting for the diner</dd>
           <dt>What wins</dt><dd>Machine-readable facts <em>plus</em> a bookable action</dd>
-          <dt>Where it closes</dt><dd>Inside the assistant, before you know they exist</dd>
-          <dt>How you measure</dt><dd>At the POS &mdash; the only place a visit is real</dd>
+          <dt>Closes</dt><dd>Inside the assistant, before you know they exist</dd>
+          <dt>Measured by</dt><dd>Your POS &mdash; the only place a visit is real</dd>
           <dt>Site&rsquo;s job</dt><dd>Be the source of truth the agent trusts</dd>
         </dl>
       </div>
     </div>
 
-    <div class="callout tip" style="margin-top:26px">
-      <strong>The one line that matters</strong>
-      <p>
-        If an assistant can <b>book</b> you, it recommends you. If it can only <b>describe</b> you,
-        it mentions you. That gap is the whole 2027 game &mdash; and closing it is mostly free.
-      </p>
+    <div class="callout tip" style="margin-top:24px">
+      <strong>The whole game, in one line</strong>
+      <p>If an assistant can <b>book</b> you, it recommends you. If it can only <b>describe</b> you, it mentions you.</p>
     </div>
   </div>
 </section>
@@ -190,11 +175,12 @@
 <section class="band alt" id="shipped">
   <div class="wrap">
     <div class="section-head">
-      <div class="kicker">02 &middot; Not a prediction</div>
-      <h2>This already happened. Here are the dates.</h2>
+      <div class="kicker">02 &middot; Not a forecast</div>
+      <h2>It already happened. Here are the dates.</h2>
       <p>
-        Everything below shipped. That is why the 2027 part is worth half an hour of your week
-        rather than a line in next year&rsquo;s budget.
+        <b class="pill-live">Live</b> shipped &mdash; test it today.
+        <b class="pill-test">Beta</b> and <b class="pill-soon">Unreleased</b> are direction, from
+        reporting and app teardowns.
       </p>
     </div>
 
@@ -204,9 +190,8 @@
         <div class="ship-what">
           <h4>ChatGPT books your table</h4>
           <p>
-            Reservations <em>and</em> waitlists inside the conversation, through <b>OpenTable</b>
-            (global), <b>Resy</b> (US) and <b>Yelp</b> (US and Canada). The Reserve button only
-            appears when a supported provider is connected to your restaurant.
+            Reservations and waitlists inside the chat, via <b>OpenTable</b> (global), <b>Resy</b>
+            (US) and <b>Yelp</b> (US + Canada). No connected provider, no Reserve button.
           </p>
         </div>
       </li>
@@ -214,76 +199,45 @@
         <span class="ship-when">Aug 2026<b class="pill-live">Live</b></span>
         <div class="ship-what">
           <h4>Google Maps takes food orders</h4>
-          <p>
-            A diner can ask for a specific dish along their route and add it to a cart through a
-            partner ordering service. The dish name is now a search term.
-          </p>
+          <p>Diners ask for a <em>dish</em> along their route and add it to a cart. Your dish names are now search terms.</p>
         </div>
       </li>
       <li class="ship">
         <span class="ship-when">Apr 2026<b class="pill-live">Live</b></span>
         <div class="ship-what">
-          <h4>Google AI Mode books, and sometimes names one place</h4>
-          <p>
-            Restaurant booking landed in several countries, and for some dining questions AI Mode
-            returns a <b>single</b> AI-written recommendation rather than a list. One slot, not ten.
-          </p>
+          <h4>Google AI Mode books &mdash; and sometimes names one place</h4>
+          <p>Booking in several countries, and for some dining questions a <b>single</b> AI-written pick instead of a list. One slot, not ten.</p>
         </div>
       </li>
       <li class="ship">
         <span class="ship-when">Early 2026<b class="pill-test">Rolling out</b></span>
         <div class="ship-what">
           <h4>Gemini turns your reviews into your description</h4>
-          <p>
-            Google began generating local results that group review text into themes &mdash; what
-            people order, what they come for. Whatever your reviewers keep repeating becomes the
-            sentence an assistant says about you.
-          </p>
+          <p>Review text grouped into themes &mdash; what people order, what they come for. Whatever repeats becomes what AI says about you.</p>
         </div>
       </li>
       <li class="ship">
         <span class="ship-when">Mar 2026<b class="pill-live">Default on</b></span>
         <div class="ship-what">
           <h4>Shopify made 5.6M storefronts agent-readable overnight</h4>
-          <p>
-            Agentic storefronts switched on by default in March, with <code>llms.txt</code>
-            pushed to every store weeks later. Nobody opted in. Platforms will keep doing this
-            &mdash; good news if yours does, a gap if yours doesn&rsquo;t.
-          </p>
+          <p>Agentic storefronts on by default, <code>llms.txt</code> pushed weeks later. Nobody opted in. Good news if your platform does it &mdash; a gap if it doesn&rsquo;t.</p>
         </div>
       </li>
       <li class="ship">
         <span class="ship-when">Jun 2026<b class="pill-test">Beta</b></span>
         <div class="ship-what">
           <h4>Siri rebuilt on a Gemini model</h4>
-          <p>
-            Shown in developer beta. Any app that exposes App Intents can be driven by voice
-            &mdash; so the booking and ordering apps you already use become the hands-free path to
-            your door.
-          </p>
+          <p>Any app exposing App Intents can be driven by voice &mdash; so your booking app becomes the hands-free path to your door.</p>
         </div>
       </li>
       <li class="ship">
         <span class="ship-when">Jul 2026<b class="pill-soon">Unreleased</b></span>
         <div class="ship-what">
           <h4>&ldquo;Ask Maps to order food&rdquo;</h4>
-          <p>
-            Found in a Google Maps build, not switched on. No partners and no date announced
-            &mdash; so treat it as direction, not a deadline.
-          </p>
+          <p>Found in a Maps build, switched off. No partners, no date &mdash; direction, not a deadline.</p>
         </div>
       </li>
     </ol>
-
-    <div class="callout note" style="margin-top:26px">
-      <strong>How to read this page</strong>
-      <p>
-        Anything marked <b class="pill-live">Live</b> has shipped and you can test it today.
-        <b class="pill-test">Beta</b> and <b class="pill-soon">Unreleased</b> are direction, from
-        reporting and app teardowns rather than announcements. Platforms change fast &mdash; check
-        anything platform-specific against the official docs before you spend money on it.
-      </p>
-    </div>
   </div>
 </section>
 
@@ -291,9 +245,9 @@
 <section class="band" id="checker">
   <div class="wrap">
     <div class="section-head">
-      <div class="kicker">03 &middot; Where you stand</div>
-      <h2>Score your restaurant the way an assistant reads it.</h2>
-      <p>45 checks across the sources an assistant actually uses. Nothing to fill in.</p>
+      <div class="kicker">03 &middot; Your inventory</div>
+      <h2>What an assistant finds when it looks you up.</h2>
+      <p>45 checks on the two sources it reads. Type your address &mdash; nothing to fill in.</p>
     </div>
 
     <div id="analyze-status" class="hidden"></div>
@@ -352,10 +306,7 @@
 
     <div id="check-results" style="margin-top:30px"></div>
 
-    <h3 style="margin:46px 0 6px;font-size:1.15rem">How the score is weighted</h3>
-    <p class="muted" style="margin:0 0 20px;font-size:.93rem">
-      Not everything counts the same. Spend your time left to right.
-    </p>
+    <h3 style="margin:44px 0 18px;font-size:1.12rem">How the score is weighted</h3>
 <div class="weight-stack" id="weight-stack"></div>
     <div class="weight-key" id="weight-key"></div>
   </div>
@@ -366,72 +317,69 @@
   <div class="wrap">
     <div class="section-head">
       <div class="kicker">04 &middot; The four doors</div>
-      <h2>Four places a diner now meets you.</h2>
-      <p>
-        Different sources, different winners. Each one needs one thing more than the rest &mdash;
-        that is the line to read first.
-      </p>
+      <h2>Four ways a diner meets you now.</h2>
+      <p>Each needs one thing more than the rest. That&rsquo;s the line to read.</p>
     </div>
 
     <div class="split">
       <div>
         <h4><svg class="ico"><use href="#i-ask"></use></svg> ChatGPT</h4>
-        <p class="sd">Where the booking already happens</p>
+        <p class="sd">Where the booking happens</p>
         <dl>
-          <dt>Reads</dt><dd>Its own index via <b>OAI-SearchBot</b>, your site, and live availability from Yelp, OpenTable and Resy</dd>
+          <dt>Reads</dt><dd>Its index via <b>OAI-SearchBot</b>, your site, live tables from Yelp, OpenTable and Resy</dd>
           <dt>Can do</dt><dd>Find, compare, reserve, join a waitlist &mdash; without leaving the chat</dd>
-          <dt>Your one job</dt><dd><b>Be bookable.</b> No connected provider, no Reserve button, no recommendation.</dd>
+          <dt>Your job</dt><dd><b>Be bookable.</b></dd>
         </dl>
       </div>
       <div>
         <h4><svg class="ico"><use href="#i-pin"></use></svg> Google AI Mode &amp; Maps</h4>
         <p class="sd">The biggest source of facts about you</p>
         <dl>
-          <dt>Reads</dt><dd>Your Business Profile, your review text, your site, and editorial &ldquo;best of&rdquo; lists</dd>
+          <dt>Reads</dt><dd>Your Business Profile, review text, your site, editorial &ldquo;best of&rdquo; lists</dd>
           <dt>Can do</dt><dd>Name a single place, book a table, order a dish along a route</dd>
-          <dt>Your one job</dt><dd><b>Fill in every attribute.</b> Price, dietary, parking, accessibility, hours. Unstated means unmatched.</dd>
+          <dt>Your job</dt><dd><b>Fill in every attribute.</b> Unstated means unmatched.</dd>
         </dl>
       </div>
       <div>
         <h4><svg class="ico"><use href="#i-window"></use></svg> Gemini, Siri &amp; the phone</h4>
         <p class="sd">Hands-free, chained across apps</p>
         <dl>
-          <dt>Reads</dt><dd>Maps data, your reviews, and whatever booking or ordering app is on the phone</dd>
-          <dt>Can do</dt><dd>Chain steps &mdash; find, book, add to calendar &mdash; by voice</dd>
-          <dt>Your one job</dt><dd><b>Make your facts agree.</b> Three different closing times and it hedges, or picks somewhere unambiguous.</dd>
+          <dt>Reads</dt><dd>Maps data, your reviews, whatever booking app is on the phone</dd>
+          <dt>Can do</dt><dd>Find, book and add to calendar in one breath</dd>
+          <dt>Your job</dt><dd><b>Make your facts agree.</b> Three closing times and it hedges.</dd>
         </dl>
       </div>
       <div>
         <h4><svg class="ico"><use href="#i-list"></use></svg> The pages AI quotes</h4>
         <p class="sd">The shortlist before the shortlist</p>
         <dl>
-          <dt>Reads</dt><dd>Eater, The Infatuation, Time Out, your city magazine, Reddit, local press, aggregators</dd>
-          <dt>Can do</dt><dd>Decide who is even a candidate, before you are considered</dd>
-          <dt>Your one job</dt><dd><b>Get cited.</b> Ask Perplexity for the best in your city &mdash; its citation list is your outreach list.</dd>
+          <dt>Reads</dt><dd>Eater, The Infatuation, Time Out, your city magazine, Reddit, aggregators</dd>
+          <dt>Can do</dt><dd>Decide who&rsquo;s a candidate before you&rsquo;re considered</dd>
+          <dt>Your job</dt><dd><b>Get cited.</b> Ask Perplexity for the best in your city &mdash; that citation list is your outreach list.</dd>
         </dl>
       </div>
     </div>
 
-    <div class="kpi-row" style="margin-top:34px">
+    <div class="kpi-row" style="margin-top:30px">
       <div class="kpi">
-        <div class="kl">Check this before anything</div>
+        <div class="kl">Check this first</div>
         <div class="kv">robots.txt</div>
-        <div class="kn">A blocked crawler means absent, not ranked low. Ten minutes.</div>
+        <div class="kn">Blocked means absent, not ranked low. Ten minutes.</div>
       </div>
       <div class="kpi">
-        <div class="kl">Best hour you can spend</div>
+        <div class="kl">Best hour you&rsquo;ll spend</div>
         <div class="kv">1 hour</div>
-        <div class="kn">Getting your menu out of a PDF, so the dish name is searchable.</div>
+        <div class="kn">Your menu out of a PDF, so the dish name is searchable.</div>
       </div>
       <div class="kpi">
-        <div class="kl">The rating sweet spot</div>
+        <div class="kl">Rating sweet spot</div>
         <div class="kv">4.3&ndash;4.8</div>
-        <div class="kn">Above ~4.4 the average barely moves the needle. Recent, detailed reviews do.</div>
+        <div class="kn">Past ~4.4 the average stops mattering. Recent, detailed reviews don&rsquo;t.</div>
       </div>
       <div class="kpi">
-        <div class="kl">Names in an AI answer</div>
+        <div class="kl">Names in an answer</div>
         <div class="kv">1&ndash;3</div>
-        <div class="kn">A search page lists ten. AI Mode sometimes names one. Be it.</div>
+        <div class="kn">Search lists ten. AI Mode sometimes names one. Be it.</div>
       </div>
     </div>
   </div>
@@ -443,10 +391,7 @@
     <div class="section-head">
       <div class="kicker">05 &middot; Features &amp; plugins</div>
       <h2>Six jobs. That&rsquo;s the whole stack.</h2>
-      <p>
-        An agent-ready restaurant site does six things. Here is each one, what it costs you in
-        time, and what does the job on your platform.
-      </p>
+      <p>What each one costs you, and what does it on your platform.</p>
     </div>
 
     <div class="fixlist">
@@ -460,15 +405,10 @@
             <span class="chip where code">Web person</span>
           </div>
           <p class="fix-what">
-            If <code>robots.txt</code> blocks <b>OAI-SearchBot</b>, <b>PerplexityBot</b> or
-            <b>ClaudeBot</b>, you are not ranked low in those assistants &mdash; you are missing
-            from them. A security plugin or CDN rule does this by default more often than anyone
-            expects, and nobody notices because Google traffic looks fine.
+            Block <b>OAI-SearchBot</b>, <b>PerplexityBot</b> or <b>ClaudeBot</b> and you&rsquo;re not
+            ranked low &mdash; you&rsquo;re missing. Security plugins do this by accident constantly.
           </p>
-          <p class="fix-do">
-            <b>Where:</b> <code>yourdomain.com/robots.txt</code>, and your CDN or firewall rules
-            separately &mdash; those can challenge a crawler no matter what robots.txt says.
-          </p>
+          <p class="fix-do"><b>Where:</b> <code>robots.txt</code> &mdash; then your CDN or firewall, which blocks crawlers regardless of it.</p>
         </div>
       </div>
 
@@ -481,15 +421,10 @@
             <span class="chip where code">Plugin or paste</span>
           </div>
           <p class="fix-what">
-            Your page says &ldquo;open 5pm till late, Tues&ndash;Sun&rdquo;. Schema says
-            <code>opens 17:00</code> for each day, plus price range, address, menu URL and
-            <code>acceptsReservations</code>. Nothing left to interpret &mdash; which is exactly
-            what an agent needs before it acts.
+            Your page says &ldquo;5pm till late&rdquo;. Schema says <code>opens 17:00</code>. Nothing
+            left to interpret &mdash; which is what an agent needs before it acts.
           </p>
-          <p class="fix-do">
-            <b>Where:</b> your SEO plugin, or one pasted <code>JSON-LD</code> block.
-            <a href="#schema">Generate yours below</a> and validate it before publishing.
-          </p>
+          <p class="fix-do"><b>Where:</b> your SEO plugin, or one pasted <code>JSON-LD</code> block. <a href="#schema">Generate yours below.</a></p>
         </div>
       </div>
 
@@ -502,16 +437,10 @@
             <span class="chip where site">Your website</span>
           </div>
           <p class="fix-what">
-            <b>The test:</b> open your menu and try to select a dish name with your cursor.
-            Can&rsquo;t? No assistant can read it. Google Maps now lets diners search for a
-            <em>specific dish</em> along their route &mdash; a PDF menu means the dish
-            you&rsquo;re known for is invisible.
+            <b>The test:</b> try to select a dish name with your cursor. Can&rsquo;t? No assistant can
+            read it &mdash; and Maps now sends diners hunting a <em>specific dish</em>.
           </p>
-          <p class="fix-do">
-            <b>Where:</b> a real menu page &mdash; headings per section, dish names as text, a line
-            of description, prices, dietary tags. <b>AI shortcut:</b> photograph the printed menu,
-            ask ChatGPT for clean HTML, then check every price yourself.
-          </p>
+          <p class="fix-do"><b>Shortcut:</b> photograph the printed menu, ask ChatGPT for clean HTML, check every price yourself.</p>
         </div>
       </div>
 
@@ -524,15 +453,10 @@
             <span class="chip where site">Your website</span>
           </div>
           <p class="fix-what">
-            Assistants lift <em>passages</em>, not pages. Make the question the heading, phrased
-            how a diner would ask it, and answer completely in the first 40&ndash;60 words.
-            15&ndash;25 real diner questions is the most quotable thing a restaurant can publish.
+            Assistants lift <em>passages</em>, not pages. Question as the heading, answered in the
+            first 40 words. 15&ndash;25 of them is the most quotable thing you can publish.
           </p>
-          <p class="fix-do">
-            <b>Where:</b> ordinary pages, plus <code>FAQPage</code> schema. State what AI will
-            never guess: price range, reservation policy, biggest party, private dining, parking,
-            transit, accessibility, kids, dress code, last seating.
-          </p>
+          <p class="fix-do"><b>Say what AI can&rsquo;t guess:</b> price, reservation policy, biggest party, parking, transit, accessibility, kids, dress code, last seating.</p>
         </div>
       </div>
 
@@ -545,16 +469,10 @@
             <span class="chip where ops">Your provider</span>
           </div>
           <p class="fix-what">
-            This is the one that turns a mention into a <b>Reserve</b> button. ChatGPT books
-            through OpenTable, Resy and Yelp; Maps orders through partner ordering services. If
-            your tables live in a notebook or a phone line, the assistant describes you and books
-            someone else.
+            The one that turns a mention into a <b>Reserve</b> button. If your tables live in a
+            notebook, the assistant describes you and books someone else.
           </p>
-          <p class="fix-do">
-            <b>Where:</b> OpenTable, Resy, Yelp, SevenRooms for tables; Toast, Olo, Square for
-            orders. Ask your provider one question: <em>are we live in ChatGPT and Maps, and what
-            do you need from us?</em>
-          </p>
+          <p class="fix-do"><b>Ask your provider:</b> <em>are we live in ChatGPT and Maps?</em> Tables: OpenTable, Resy, Yelp, SevenRooms. Orders: Toast, Olo, Square.</p>
         </div>
       </div>
 
@@ -562,135 +480,167 @@
         <span class="fix-n">6</span>
         <div class="fix-body">
           <div class="fix-top">
-            <h4>A review flow that names dishes</h4>
+            <h4>Reviews that name dishes</h4>
             <span class="chip time">Ongoing</span>
             <span class="chip where ops">In the shift</span>
           </div>
           <p class="fix-what">
-            Google now groups review text into themes &mdash; what people order, what they come
-            for. A review that names the short rib is worth more than three that say
-            &ldquo;great!&rdquo;. Whatever repeats becomes your description, good or bad.
+            One review naming the short rib beats three saying &ldquo;great!&rdquo;. Whatever repeats
+            becomes your description &mdash; good or bad.
           </p>
-          <p class="fix-do">
-            <b>Where:</b> QR on the check, a line in the receipt email, a POS prompt. Five a shift
-            is 150 a month. <b>Never:</b> gate the ask to happy diners, pay for reviews, or
-            solicit on Yelp at all.
-          </p>
+          <p class="fix-do"><b>Where:</b> QR on the check, a line in the receipt email &mdash; five a shift is 150 a month. <b>Never</b> gate the ask, pay, or solicit on Yelp.</p>
         </div>
       </div>
     </div>
 
-    <h3 style="margin:46px 0 6px;font-size:1.15rem">What does the job on your platform</h3>
-    <p class="muted" style="margin:0 0 20px;font-size:.93rem">
-      Open yours. Validate everything with Google&rsquo;s Rich Results Test &mdash; never trust a
-      plugin&rsquo;s own preview.
-    </p>
+    <h3 style="margin:44px 0 16px;font-size:1.12rem">What does the job on your platform</h3>
 
     <div class="rows">
       <details class="row-item">
-        <summary><span class="rn">WP</span><span><span class="rt">WordPress</span><span class="rs">Rank Math or Yoast for schema. Check the Restaurant type specifically.</span></span><span class="rc">&#9656;</span></summary>
+        <summary><span class="rn">WP</span><span><span class="rt">WordPress</span><span class="rs">Rank Math or Yoast. Check the Restaurant type specifically.</span></span><span class="rc">&#9656;</span></summary>
         <div class="row-body">
           <ul>
-            <li><b>Rank Math</b> &mdash; the widest schema coverage of the big three, including <code>LocalBusiness</code>. Before you commit, confirm it exposes the <b>Restaurant</b> subtype and fields for menu, hours and price range.</li>
-            <li><b>Yoast</b> &mdash; solid and conservative, aimed at Google first. Fine if you already run it; its AI features are brand monitoring, not schema generation.</li>
-            <li><b>Schema Pro</b> or a pasted JSON-LD block &mdash; if your plugin won&rsquo;t give you the restaurant fields you need, stop fighting it and paste the markup. <a href="#schema">Generator below.</a></li>
-            <li><b>Watch for:</b> security plugins and firewall rules blocking AI crawlers. This is the single most common own-goal on WordPress.</li>
+            <li><b>Rank Math</b> &mdash; widest schema coverage of the big three. Confirm it exposes the <b>Restaurant</b> subtype with menu, hours and price range.</li>
+            <li><b>Yoast</b> &mdash; solid, Google-first. Fine if you already run it; its AI features are brand monitoring, not schema.</li>
+            <li><b>Can&rsquo;t get the fields you need?</b> Stop fighting the plugin and paste the markup. <a href="#schema">Generator below.</a></li>
+            <li><b>Watch for:</b> security plugins blocking AI crawlers. The most common own-goal on WordPress.</li>
           </ul>
         </div>
       </details>
       <details class="row-item">
-        <summary><span class="rn">SH</span><span><span class="rt">Shopify</span><span class="rs">Agent-readable by default. Your job is restaurant schema, not product schema.</span></span><span class="rc">&#9656;</span></summary>
+        <summary><span class="rn">SH</span><span><span class="rt">Shopify</span><span class="rs">Agent-ready already. Your job is restaurant schema, not product schema.</span></span><span class="rc">&#9656;</span></summary>
         <div class="row-body">
-          <p>Shopify switched on agentic storefronts and pushed <code>llms.txt</code> to every store in 2026, so the plumbing is done for you. Two gaps remain:</p>
           <ul>
-            <li>Shopify thinks in <code>Product</code>. You need <code>Restaurant</code> with hours, price range and <code>acceptsReservations</code> &mdash; usually a theme edit or a JSON-LD block in <code>theme.liquid</code>.</li>
+            <li>Agentic storefronts and <code>llms.txt</code> are done for you.</li>
+            <li>Shopify thinks in <code>Product</code>. You need <code>Restaurant</code> &mdash; usually a JSON-LD block in <code>theme.liquid</code>.</li>
             <li>Your menu is probably a collection or a PDF. Build a real text menu page.</li>
           </ul>
         </div>
       </details>
       <details class="row-item">
-        <summary><span class="rn">SQ</span><span><span class="rt">Squarespace, Wix &amp; website builders</span><span class="rs">Basics are built in. Schema needs a code block.</span></span><span class="rc">&#9656;</span></summary>
+        <summary><span class="rn">SQ</span><span><span class="rt">Squarespace, Wix &amp; builders</span><span class="rs">Basics built in. Schema needs a code block.</span></span><span class="rc">&#9656;</span></summary>
         <div class="row-body">
           <ul>
-            <li>Built-in SEO fields handle titles, descriptions and sitemaps. Restaurant schema almost always needs a <b>code injection</b> block in site-wide header settings.</li>
+            <li>Restaurant schema needs a <b>code injection</b> block in site-wide header settings.</li>
             <li><b>Check your menu block renders text, not an image.</b> Several builders ship menu widgets that output images or embedded PDFs &mdash; invisible to every assistant.</li>
-            <li>Confirm you can edit <code>robots.txt</code> or at least that the builder isn&rsquo;t blocking AI crawlers for you.</li>
+            <li>Confirm the builder isn&rsquo;t blocking AI crawlers on your behalf.</li>
           </ul>
         </div>
       </details>
       <details class="row-item">
         <summary><span class="rn">&lt;/&gt;</span><span><span class="rt">Custom or agency build</span><span class="rs">Easiest to get right. Most often blocked by a rule nobody remembers.</span></span><span class="rc">&#9656;</span></summary>
         <div class="row-body">
-          <p>You have full control, so there is no excuse for a PDF menu or missing schema. The failure mode here is infrastructure, not markup:</p>
           <ul>
-            <li>Check <code>robots.txt</code> and your <b>CDN, WAF and bot-protection rules</b> separately. Bot managers block unfamiliar user agents by default, and AI crawlers are unfamiliar.</li>
-            <li>If the site renders only in JavaScript, verify the facts appear in the raw HTML. Assume the crawler does not run your app.</li>
+            <li>Check <code>robots.txt</code> <em>and</em> your <b>CDN, WAF and bot protection</b> separately. Bot managers block unfamiliar agents by default, and AI crawlers are unfamiliar.</li>
+            <li>If the site renders only in JavaScript, verify the facts are in the raw HTML. Assume the crawler doesn&rsquo;t run your app.</li>
           </ul>
         </div>
       </details>
       <details class="row-item">
-        <summary><span class="rn">POS</span><span><span class="rt">Toast, Olo or a provider-hosted site</span><span class="rs">You get the booking integration free and the schema control last.</span></span><span class="rc">&#9656;</span></summary>
+        <summary><span class="rn">POS</span><span><span class="rt">Toast, Olo or a provider-hosted site</span><span class="rs">Booking comes free. Schema control comes last.</span></span><span class="rc">&#9656;</span></summary>
         <div class="row-body">
           <ul>
-            <li><b>The upside:</b> your provider is the one doing integrations with assistants. Job 5 may already be done &mdash; ask them.</li>
-            <li><b>The catch:</b> you usually can&rsquo;t touch markup or <code>robots.txt</code>. Keep <b>your own domain</b> as the canonical source of truth and point your Google listing at it, never at a delivery app taking a cut.</li>
-            <li>Put the facts an agent needs &mdash; hours, price, parking, reservations, dietary &mdash; on a page you <em>do</em> control.</li>
+            <li><b>Upside:</b> your provider does the assistant integrations. Job 5 may already be done &mdash; ask them.</li>
+            <li><b>Catch:</b> you usually can&rsquo;t touch markup or <code>robots.txt</code>. Keep <b>your own domain</b> as the source of truth and point your Google listing at it, never at a delivery app taking a cut.</li>
           </ul>
         </div>
       </details>
     </div>
 
-    <h3 style="margin:46px 0 6px;font-size:1.15rem">And five things to skip</h3>
-    <p class="muted" style="margin:0 0 20px;font-size:.93rem">
-      Where restaurant AI budgets go to die.
-    </p>
+    <h3 style="margin:44px 0 16px;font-size:1.12rem">Five things to skip</h3>
 
-    <div class="wins-grid">
+    <div class="wins-grid skips">
       <div class="win no">
         <span class="tick">&times;</span>
         <span><b>Paying for llms.txt</b>
-        Independent log studies found AI crawlers almost never request it &mdash; 0.1% of AI bot
-        visits in one 90-day test, and 88% of sites in another never got a single request. Google
-        says no Search system uses it; OpenAI&rsquo;s own docs still point to robots.txt. Publish it
-        if your platform does it for free. Don&rsquo;t buy it.</span>
+        Log studies found AI crawlers almost never request it &mdash; 0.1% of AI bot visits in one
+        90-day test. Google says Search doesn&rsquo;t use it; OpenAI still points to robots.txt.
+        Free from your platform? Fine. Don&rsquo;t buy it.</span>
       </div>
       <div class="win no">
         <span class="tick">&times;</span>
-        <span><b>&ldquo;AEO tools&rdquo; that promise AI rankings</b>
-        Nobody controls who gets named. Anyone guaranteeing you a spot is selling you something
-        they cannot deliver. Do the six jobs first, for free.</span>
+        <span><b>&ldquo;AEO tools&rdquo; promising AI rankings</b>
+        Nobody controls who gets named. Do the six jobs first, for free.</span>
       </div>
       <div class="win no">
         <span class="tick">&times;</span>
         <span><b>Marking up your own star rating</b>
-        Self-serving review schema is a policy violation and a common cause of penalties. Let the
-        review platforms carry the stars.</span>
+        A policy violation and a common cause of penalties. Let the review platforms carry the stars.</span>
       </div>
       <div class="win no">
         <span class="tick">&times;</span>
-        <span><b>AI-written allergen or dietary info</b>
-        Never publish it without your kitchen checking it line by line. This is the one place a
-        confident wrong answer hurts a person.</span>
+        <span><b>AI-written allergen info</b>
+        Never publish it without your kitchen checking line by line. The one place a confident wrong
+        answer hurts someone.</span>
       </div>
       <div class="win no">
         <span class="tick">&times;</span>
         <span><b>Bought links and directory blasts</b>
-        Also keyword-stuffing your business name, which breaks Google&rsquo;s rules outright, and
-        blogging for its own sake. None of it moves an assistant.</span>
+        Plus keyword-stuffing your business name, which breaks Google&rsquo;s rules outright. None of
+        it moves an assistant.</span>
       </div>
     </div>
 
-    <h3 id="schema" style="margin:46px 0 6px;font-size:1.15rem">Job 2, done for you</h3>
-    <p class="muted" style="margin:0 0 20px;font-size:.93rem">
-      Add your hours, press the button, paste the result into your homepage. Five minutes.
-    </p>
+    <h3 id="schema" style="margin:44px 0 16px;font-size:1.12rem">Job 2, written for you</h3>
 
     <div class="grid grid-2">
       <div class="card">
-        <h3 style="margin-top:0;font-size:1.05rem">Opening hours</h3>
-        <p style="font-size:.88rem;color:var(--ink-3)">
-          Use 24-hour times. Leave a day blank if you are closed. For a split shift, use the
-          format <code>11:00-14:30, 17:00-22:00</code>.
+        <h3 style="margin:0 0 4px;font-size:1.05rem">Your details</h3>
+        <p style="font-size:.88rem;color:var(--ink-3);margin:0 0 14px" id="profile-note">
+          Run the check above and these fill themselves in from your own site.
+        </p>
+        <form id="profile-form" novalidate>
+          <div class="profile-grid">
+            <div class="field">
+              <label for="f-name">Restaurant name</label>
+              <input type="text" id="f-name" name="name" placeholder="Rosa&rsquo;s Trattoria" autocomplete="organization">
+            </div>
+            <div class="field">
+              <label for="f-cuisine">Cuisine or concept</label>
+              <input type="text" id="f-cuisine" name="cuisine" placeholder="Neapolitan pizza">
+              <div class="hint">Be specific. &ldquo;Italian&rdquo; is weaker than &ldquo;Neapolitan pizza&rdquo;.</div>
+            </div>
+            <div class="field">
+              <label for="f-address">Street address</label>
+              <input type="text" id="f-address" name="address" placeholder="412 Main Street">
+            </div>
+            <div class="field">
+              <label for="f-city">City, state ZIP</label>
+              <input type="text" id="f-city" name="city" placeholder="Asheville, NC 28801">
+            </div>
+            <div class="field">
+              <label for="f-phone">Phone</label>
+              <input type="tel" id="f-phone" name="phone" placeholder="(828) 555-0142">
+            </div>
+            <div class="field">
+              <label for="f-url">Website</label>
+              <input type="url" id="f-url" name="url" placeholder="https://rosastrattoria.com">
+            </div>
+            <div class="field">
+              <label for="f-price">Price range</label>
+              <select id="f-price" name="price">
+                <option value="">Choose&hellip;</option>
+                <option value="$">$ &mdash; under $15 a head</option>
+                <option value="$$">$$ &mdash; $15&ndash;30</option>
+                <option value="$$$">$$$ &mdash; $31&ndash;60</option>
+                <option value="$$$$">$$$$ &mdash; $61+</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="f-tone">Voice, for the AI prompts</label>
+              <input type="text" id="f-tone" name="tone" placeholder="warm and straightforward">
+            </div>
+          </div>
+        </form>
+        <p style="margin:0">
+          <button type="button" class="btn btn-quiet btn-sm" id="btn-clear-profile">Clear my details</button>
+        </p>
+      </div>
+
+      <div class="card">
+        <h3 style="margin:0 0 4px;font-size:1.05rem">Opening hours</h3>
+        <p style="font-size:.88rem;color:var(--ink-3);margin:0 0 14px">
+          24-hour times. Blank means closed. Split shift: <code>11:00-14:30, 17:00-22:00</code>.
         </p>
         <div id="hours-fields"></div>
 
@@ -701,289 +651,46 @@
         </div>
         <div class="field">
           <label for="s-book">Reservation URL</label>
-          <input type="url" id="s-book" placeholder="https://resy.com/…  (leave blank if none)">
+          <input type="url" id="s-book" placeholder="https://resy.com/&hellip;  (blank if none)">
         </div>
         <div class="field">
           <label for="s-same">Your other profiles, one per line</label>
-          <textarea id="s-same" rows="4" placeholder="https://www.instagram.com/…
-https://www.yelp.com/biz/…
-https://www.facebook.com/…
-https://maps.app.goo.gl/…"></textarea>
-          <div class="hint">This is the <code>sameAs</code> list — it tells machines all of these are you.</div>
+          <textarea id="s-same" rows="3" placeholder="https://www.instagram.com/&hellip;
+https://www.yelp.com/biz/&hellip;
+https://maps.app.goo.gl/&hellip;"></textarea>
+          <div class="hint">The <code>sameAs</code> list &mdash; it tells machines all of these are you.</div>
         </div>
         <div class="field">
           <label for="s-geo">Latitude, longitude <span class="muted">(optional)</span></label>
           <input type="text" id="s-geo" placeholder="35.5951, -82.5515">
-          <div class="hint">Right-click your restaurant in Google Maps and the coordinates are at the top of the menu.</div>
+          <div class="hint">Right-click your restaurant in Google Maps; the coordinates are at the top.</div>
         </div>
-        <button type="button" class="btn btn-primary" id="btn-gen-schema">Generate schema →</button>
-      </div>
-
-      <div class="card">
-        <h3 style="margin-top:0;font-size:1.05rem">Your markup</h3>
-        <div id="schema-out-wrap">
-          <p class="muted" style="font-size:.9rem">
-            Fill in the form and press Generate. Anything you have not supplied appears as a clear
-            <code>FILL_IN</code> placeholder rather than being invented.
-          </p>
-        </div>
+        <button type="button" class="btn btn-primary" id="btn-gen-schema">Generate schema &rarr;</button>
       </div>
     </div>
 
-    <div class="callout warn" style="margin-top:26px">
+    <div id="schema-out-wrap" style="margin-top:20px">
+      <p class="muted" style="font-size:.9rem">
+        Press Generate. Anything you haven&rsquo;t supplied appears as a clear <code>FILL_IN</code>
+        placeholder rather than being invented.
+      </p>
+    </div>
+
+    <div class="callout warn" style="margin-top:20px">
       <strong>Validate before you publish</strong>
       <p>
-        Paste the generated code into Google's Rich Results Test at
-        <code>search.google.com/test/rich-results</code> before adding it to your site. If it
-        reports errors, paste both the code and the errors into an AI assistant and ask for a fix —
-        there is a prompt for exactly that in the library. Never publish schema you have not
-        validated, and never mark up facts that are not visible on the page.
-      </p>
-    </div>
-  </div>
-</section>
-
-<!-- =============================================================== DINELINE -->
-<section class="band alt" id="dineline">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="kicker">06 &middot; Where we come in</div>
-      <h2>You own the facts. We prove they paid.</h2>
-      <p>
-        Everything above is yours to run in-house, free, forever. Two parts of the 2027 picture are
-        genuinely hard to do alone &mdash; and one of them is about to get harder.
+        Run it through Google&rsquo;s Rich Results Test first. Never mark up facts that aren&rsquo;t
+        visible on the page.
       </p>
     </div>
 
-    <div class="split">
-      <div>
-        <h4>You run this</h4>
-        <p class="sd">The six jobs &middot; free &middot; no agency required</p>
-        <dl>
-          <dt>Listing</dt><dd>Category, price range, every attribute, hours plus a year of holidays</dd>
-          <dt>Site</dt><dd>Crawlers allowed in, text menu, answer pages, schema</dd>
-          <dt>Shift</dt><dd>The review ask, built into the check and the receipt email</dd>
-          <dt>Monthly</dt><dd>Ask your 15 questions, log who got named, fix every wrong fact at its source</dd>
-        </dl>
-        <p style="font-size:.9rem;color:var(--ink-3);margin:16px 0 0">
-          Genuinely &mdash; run it yourself. The whole list is on this page with the prompts written
-          for you.
+    <details class="fallback" id="checklists" style="margin-top:30px">
+      <summary>The full checklist &mdash; 74 things to tick off</summary>
+      <div class="fallback-body">
+        <p class="muted" style="font-size:.92rem;margin-top:0">
+          The six jobs broken all the way down, in the order an assistant meets you. Ticks save in
+          this browser.
         </p>
-      </div>
-      <div class="hi">
-        <h4>Dineline runs this</h4>
-        <p class="sd">Powered by Dishio, our tracking layer</p>
-        <dl>
-          <dt>Dishio</dt><dd>Installs against your POS and booking system &mdash; Toast, Square, Clover, NCR, Revel, PAR, OpenTable, Resy, SevenRooms, Olo, Omnivore</dd>
-          <dt>Captures</dt><dd>The walk-in, the reservation, the menu scan and the online order as <b>one guest profile</b></dd>
-          <dt>Shows</dt><dd>Visit frequency, order history, spend per guest, cost to bring them back</dd>
-          <dt>Then</dt><dd>Meta, Google, Instagram and YouTube behind what already works &mdash; reported bi-weekly against attributed revenue</dd>
-          <dt>Keeps</dt><dd>Loyalty and follow-up flows on repeat visits, so the diner an assistant sent once comes back without one</dd>
-        </dl>
-      </div>
-    </div>
-
-    <div class="kpi-row" style="margin-top:34px">
-      <div class="kpi">
-        <div class="kl">The 2027 attribution problem</div>
-        <div class="kv">No referrer</div>
-        <div class="kn">An assistant referral arrives with no campaign tag and often no click. Analytics never sees it.</div>
-      </div>
-      <div class="kpi">
-        <div class="kl">The only place it&rsquo;s real</div>
-        <div class="kv">Your POS</div>
-        <div class="kn">Agents close the booking elsewhere. The cover and the cheque are the proof.</div>
-      </div>
-      <div class="kpi">
-        <div class="kl">Whose data it is</div>
-        <div class="kv">Yours</div>
-        <div class="kn">Not DoorDash&rsquo;s, not OpenTable&rsquo;s. That matters more every year.</div>
-      </div>
-      <div class="kpi">
-        <div class="kl">Your time, per month</div>
-        <div class="kv">&lt;30 min</div>
-        <div class="kn">You approve campaigns and read the numbers on a bi-weekly call.</div>
-      </div>
-    </div>
-
-    <div class="callout note" style="margin-top:26px">
-      <strong>Straight with you</strong>
-      <p>
-        Dineline&rsquo;s day job is paid acquisition and attribution &mdash; ads, tracking, loyalty,
-        with a dedicated account manager. The answer-engine work on this page is yours and we would
-        rather you ran it. Where we earn our keep is <b>proving a visit happened</b> when no click
-        did, and putting spend behind the thing that worked. We specialise in brick-and-mortar
-        operators with 50 locations or fewer; the entry point is one location doing $500K a year.
-      </p>
-    </div>
-
-    <div class="cta-close">
-      <div>
-        <h3>Want a second pair of eyes on your score?</h3>
-        <p>
-          Free demo call, no obligation. Bring your report from section 03 and we will tell you
-          which two fixes are worth your week &mdash; whether or not you ever work with us.
-        </p>
-      </div>
-      <a class="btn btn-primary" href="https://dineline.co/discovery/" target="_blank" rel="noopener">Talk to Dineline &rarr;</a>
-    </div>
-  </div>
-</section>
-
-<!-- ================================================================== AUDIT -->
-<section class="band" id="audit">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="kicker">07 &middot; Go deeper</div>
-      <h2>The full audit</h2>
-      <p>
-        37 questions the automatic check can&rsquo;t see &mdash; your reviews, your listings, what AI
-        says about you today. Every question tells you how to check it.
-      </p>
-    </div>
-
-    <div class="audit-shell">
-      <div class="audit-progress"><i id="audit-bar"></i></div>
-      <div class="audit-steps" role="tablist" id="audit-steps"></div>
-      <div class="audit-body">
-        <form id="audit-form" novalidate>
-
-          <!-- ---------------------------------------------- STEP 0: intake -->
-          <div class="step" data-step="0">
-            <h3 style="margin-top:0">Tell us about your restaurant</h3>
-            <p class="muted" style="font-size:.93rem">
-              Only the name is required. The rest personalizes your report, your AI prompts and the
-              schema markup generator — the more you fill in, the more useful the output.
-            </p>
-
-            <div class="grid grid-2" style="margin-top:20px">
-              <div class="field">
-                <label for="f-name">Restaurant name <span style="color:var(--brand)">*</span></label>
-                <input type="text" id="f-name" name="name" placeholder="Rosa's Trattoria" autocomplete="organization">
-              </div>
-              <div class="field">
-                <label for="f-cuisine">Cuisine or concept</label>
-                <input type="text" id="f-cuisine" name="cuisine" placeholder="Neapolitan pizza, ramen, southern BBQ…">
-                <div class="hint">Be specific. "Italian" is weaker than "Neapolitan pizza".</div>
-              </div>
-              <div class="field">
-                <label for="f-address">Street address</label>
-                <input type="text" id="f-address" name="address" placeholder="412 Main Street" autocomplete="street-address">
-              </div>
-              <div class="field">
-                <label for="f-city">City, state &amp; ZIP</label>
-                <input type="text" id="f-city" name="city" placeholder="Asheville, NC 28801">
-              </div>
-              <div class="field">
-                <label for="f-phone">Phone</label>
-                <input type="tel" id="f-phone" name="phone" placeholder="(828) 555-0142" autocomplete="tel">
-              </div>
-              <div class="field">
-                <label for="f-url">Website</label>
-                <input type="url" id="f-url" name="url" placeholder="https://rosastrattoria.com" autocomplete="url">
-              </div>
-              <div class="field">
-                <label for="f-price">Price range</label>
-                <select id="f-price" name="price">
-                  <option value="">Choose one…</option>
-                  <option value="$">$ — under $15 per person</option>
-                  <option value="$$">$$ — $15 to $30 per person</option>
-                  <option value="$$$">$$$ — $31 to $60 per person</option>
-                  <option value="$$$$">$$$$ — over $60 per person</option>
-                </select>
-              </div>
-              <div class="field">
-                <label for="f-service">Main service style</label>
-                <select id="f-service" name="service">
-                  <option value="">Choose one…</option>
-                  <option>Full service, dine-in</option>
-                  <option>Fast casual / counter service</option>
-                  <option>Quick service / drive-thru</option>
-                  <option>Cafe / bakery / coffee</option>
-                  <option>Bar / brewpub / cocktail</option>
-                  <option>Fine dining</option>
-                  <option>Food truck / stall</option>
-                  <option>Ghost kitchen / delivery only</option>
-                  <option>Catering / private events</option>
-                </select>
-              </div>
-              <div class="field">
-                <label for="f-tone">Voice for AI-written copy</label>
-                <select id="f-tone" name="tone">
-                  <option value="warm and straightforward">Warm and straightforward</option>
-                  <option value="polished and refined">Polished and refined</option>
-                  <option value="casual and playful">Casual and playful</option>
-                  <option value="rustic and family-run">Rustic and family-run</option>
-                  <option value="bold and modern">Bold and modern</option>
-                </select>
-              </div>
-              <div class="field">
-                <label for="f-locations">Number of locations</label>
-                <select id="f-locations" name="locations">
-                  <option value="1">One</option>
-                  <option value="2-4">Two to four</option>
-                  <option value="5+">Five or more</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="callout ai">
-              <strong>🤖 Where AI fits in, honestly</strong>
-              <p>
-                AI is very good at the <em>writing and formatting</em> parts of this work: menu
-                descriptions, schema code, FAQ drafts, review replies, turning a photographed menu
-                into a web page. It is not a substitute for the parts only you can do — claiming
-                your profile, taking real photos, fixing what reviews complain about, and checking
-                that every fact it produces is actually true. <b>Use it to go faster, then verify
-                everything.</b>
-              </p>
-            </div>
-          </div>
-
-          <!-- steps 1..n rendered by audit.js -->
-
-          <!-- ---------------------------------------------- results -->
-          <div class="step step-results" data-step="results">
-            <div id="results-out"></div>
-          </div>
-
-          <div class="audit-nav">
-            <button type="button" class="btn btn-ghost" id="btn-back">← Back</button>
-            <button type="button" class="btn btn-primary" id="btn-next">Next →</button>
-            <span class="spacer"></span>
-            <span class="progress-note" id="progress-note"></span>
-            <button type="button" class="btn btn-ghost btn-sm" id="btn-reset">Start over</button>
-          </div>
-        </form>
-      </div>
-    </div>
-
-    <h3 id="playbook" style="margin:52px 0 6px;font-size:1.15rem">The twelve chapters</h3>
-    <p class="muted" style="margin:0 0 20px;font-size:.93rem">
-      The reference layer, ordered by payoff. Open the ones you need.
-    </p>
-
-    <div class="rows"><details class="row-item"><summary><span class="rn">01</span><span><span class="rt">Let the assistants in</span><span class="rs">Blocked crawler = invisible. Check this before anything else.</span></span><span class="rc">&#9656;</span></summary><div class="row-body"><p>Open <code>yourdomain.com/robots.txt</code>. If it blocks <b>OAI-SearchBot</b>, <b>PerplexityBot</b> or <b>ClaudeBot</b>, you are not ranked low in those assistants &mdash; you are absent from them.</p><p>A security plugin or CDN rule does this by default more often than anyone expects, and nobody notices because search traffic looks fine.</p><p><b>Also check</b> your CDN or firewall separately. It can challenge those crawlers no matter what robots.txt says.</p></div></details><details class="row-item"><summary><span class="rn">02</span><span><span class="rt">Your Google listing</span><span class="rs">The biggest single source of the facts AI repeats about you.</span></span><span class="rc">&#9656;</span></summary><div class="row-body"><p>When an assistant says &ldquo;they take reservations and there&rsquo;s parking behind the building&rdquo;, that usually came from here.</p><ul><li><b>Category</b> &mdash; &ldquo;Neapolitan pizza restaurant&rdquo; beats &ldquo;Restaurant&rdquo;.</li><li><b>Attributes</b> nobody fills in: dietary, accessibility, parking, payments. Each one is a question an assistant can answer about you.</li><li><b>Price range</b> &mdash; a top filter, and AI won&rsquo;t guess it.</li><li><b>Your website field</b> &mdash; make sure it points at you, not a delivery app taking a cut.</li></ul></div></details><details class="row-item"><summary><span class="rn">03</span><span><span class="rt">The menu problem</span><span class="rs">A PDF menu is invisible. This one hour pays for itself.</span></span><span class="rc">&#9656;</span></summary><div class="row-body"><p><b>The test:</b> open your menu and try to select a dish name. Can&rsquo;t? Then no assistant can read it &mdash; and someone asking for the exact dish you&rsquo;re known for will never hear your name.</p><p>Rebuild it as a real page: headings per section, dish names as text, a line of description, prices, dietary tags.</p><p><b>AI shortcut:</b> photograph your printed menu, hand it to ChatGPT, ask for clean HTML. Then check every price yourself.</p></div></details><details class="row-item"><summary><span class="rn">04</span><span><span class="rt">Say what AI will never guess</span><span class="rs">Unstated means &ldquo;I&rsquo;m not sure&rdquo;, and they move on.</span></span><span class="rc">&#9656;</span></summary><div class="row-body"><p>Assistants do not infer. If your site never says you take reservations, the answer to &ldquo;can I book there?&rdquo; is a shrug.</p><p>Put these in plain text somewhere: price range, reservation policy and biggest party, private dining capacity, parking, transit, accessibility, kids, dress code, dietary accommodation, last seating.</p></div></details><details class="row-item"><summary><span class="rn">05</span><span><span class="rt">Write to be quoted</span><span class="rs">Question as the heading. Answer in the first 40 words.</span></span><span class="rc">&#9656;</span></summary><div class="row-body"><p>Assistants lift <em>passages</em>, not pages. The single most effective structural change you can make:</p><ul><li>Make the question the heading &mdash; phrased how a diner would ask it</li><li>Answer completely in the first 40&ndash;60 words</li><li>Make each answer stand alone without the rest of the page</li><li>Detail and personality go <em>after</em> the answer</li></ul><p>A page of 15&ndash;25 real diner questions is the most quotable thing a restaurant can publish.</p></div></details><details class="row-item"><summary><span class="rn">06</span><span><span class="rt">Reviews are what AI paraphrases</span><span class="rs">Ask if you're any good and it summarises strangers.</span></span><span class="rc">&#9656;</span></summary><div class="row-body"><p>Whatever theme keeps repeating in your reviews is roughly what an assistant will say about you. If &ldquo;slow on weekends&rdquo; shows up eleven times, that sentence is now part of your description.</p><p>Build the ask into the shift &mdash; QR on the check, line in the receipt email. Five a shift is 150 a month.</p><p><b>Three ways to get burned:</b> gating (only asking happy diners), paying, or soliciting on Yelp at all.</p></div></details><details class="row-item"><summary><span class="rn">07</span><span><span class="rt">Make your sources agree</span><span class="rs">Conflicting facts make AI hedge — or skip you.</span></span><span class="rc">&#9656;</span></summary><div class="row-body"><p>Your site says you close at 10, Google says 11, Yelp says 9:30. The assistant has three facts and no way to choose, so it says &ldquo;hours vary, check ahead&rdquo; &mdash; or picks somewhere unambiguous.</p><p>Pick your website as the source of truth and reconcile everything to it. Claim Apple Business Connect and Bing Places while you&rsquo;re there &mdash; Bing feeds a share of Copilot.</p></div></details><details class="row-item"><summary><span class="rn">08</span><span><span class="rt">Spell it out in code</span><span class="rs">Schema: the one format that can't be misread.</span></span><span class="rc">&#9656;</span></summary><div class="row-body"><p>Your page says &ldquo;open 5pm till late, Tues&ndash;Sun&rdquo;. Schema says <code>opensAt 17:00</code> for each day, and there is nothing left to interpret.</p><p>Use the <a href="#schema">generator below</a>, validate it, paste it in. Five minutes.</p><p><b>Never</b> mark up your own star rating. Self-serving review markup is against Google&rsquo;s rules and a common cause of penalties.</p></div></details><details class="row-item"><summary><span class="rn">09</span><span><span class="rt">Get onto the pages AI cites</span><span class="rs">Faster than becoming a trusted source yourself.</span></span><span class="rc">&#9656;</span></summary><div class="row-body"><p>Ask Perplexity for the best restaurants in your city and look at what it cites. That citation list <em>is</em> your outreach list.</p><p>Claim every aggregator that appears. Pitch the local publications. Enter the reader polls. Being on a page an assistant already trusts beats trying to earn that trust from scratch.</p></div></details><details class="row-item"><summary><span class="rn">10</span><span><span class="rt">Using AI without getting burned</span><span class="rs">Brilliant at writing. Confidently wrong about your facts.</span></span><span class="rc">&#9656;</span></summary><div class="row-body"><p><b>Let it:</b> turn a photographed menu into HTML, write dish descriptions, generate schema, draft review replies, summarise 100 reviews into themes.</p><p><b>Never let it:</b> state your hours or prices unchecked, invent dishes, claim awards, or post to your Google profile unsupervised.</p><p><b>The allergen rule:</b> never publish AI-written dietary or allergen info without your kitchen checking it line by line.</p></div></details><details class="row-item"><summary><span class="rn">11</span><span><span class="rt">Measuring it</span><span class="rs">No dashboard exists. You measure by asking.</span></span><span class="rc">&#9656;</span></summary><div class="row-body"><p>Write 15 realistic diner questions. Ask them in ChatGPT, Gemini, Perplexity and Copilot on the same day each month. Log four things: were you named, in what position, were the facts right, and what did it cite.</p><p>That is the whole methodology, and it works. Chase every wrong fact back to the source that produced it.</p></div></details><details class="row-item"><summary><span class="rn">12</span><span><span class="rt">What to ignore</span><span class="rs">Where restaurant marketing money goes to die.</span></span><span class="rc">&#9656;</span></summary><div class="row-body"><ul><li>Bought backlinks and &ldquo;1,000 directory submissions&rdquo;</li><li>Keyword-stuffing your business name &mdash; it&rsquo;s a policy violation</li><li>Blogging for its own sake</li><li>Paid &ldquo;AEO tools&rdquo; before you&rsquo;ve done the free list</li><li>Anyone guaranteeing you a spot in AI answers &mdash; nobody controls that</li></ul></div></details></div>
-
-    <p class="muted" style="margin-top:20px;font-size:.92rem">
-      Want the long version, with the tables and the reasoning?
-      <a href="docs/09-the-playbook.md">Read it all in full &rarr;</a>
-    </p>
-  </div>
-</section>
-
-<!-- ============================================================ CHECKLISTS -->
-<section class="band alt" id="checklists">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="kicker">08 &middot; The work</div>
-      <h2>74 things to tick off</h2>
-      <p>
-        In the order an assistant meets you. Progress saves in this browser. Anything tagged
-        <b style="color:var(--info)">AI prompt</b> has the wording written for you.
-      </p>
-    </div>
-
     <div class="check-toolbar">
       <span class="prog" id="check-progress"></span>
       <button type="button" class="btn btn-ghost btn-sm" id="btn-print-check">Print</button>
@@ -991,15 +698,16 @@ https://maps.app.goo.gl/…"></textarea>
     </div>
 
     <div id="checklist-out"></div>
+      </div>
+    </details>
 
-    <details class="fallback" id="prompts" style="margin-top:34px">
+    <details class="fallback" id="prompts">
       <summary>Let AI do the writing &mdash; 27 prompts, copy and paste</summary>
       <div class="fallback-body">
         <p class="muted" style="font-size:.92rem;margin-top:0">
-          Fill in the audit above and these arrive with your restaurant&rsquo;s details already in
-          them. Works in ChatGPT, Claude, Gemini &mdash; whatever you use.
+          Add your details above and these arrive pre-filled. Works in ChatGPT, Claude, Gemini.
         </p>
-    <div id="prompt-personalized" class="callout tip hidden">
+<div id="prompt-personalized" class="callout tip hidden">
       <strong>Personalized</strong>
       <p>These prompts are filled in with your restaurant's details. <span id="pp-detail"></span></p>
     </div>
@@ -1011,39 +719,104 @@ https://maps.app.goo.gl/…"></textarea>
   </div>
 </section>
 
+<!-- =============================================================== DINELINE -->
+<section class="band alt" id="dineline">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">06 &middot; Where we come in</div>
+      <h2>You own the facts. We prove they paid.</h2>
+      <p>Everything above is yours to run, free, forever. One part gets harder in 2027.</p>
+    </div>
+
+    <div class="split">
+      <div>
+        <h4>You run this</h4>
+        <p class="sd">The six jobs &middot; free &middot; no agency</p>
+        <dl>
+          <dt>Listing</dt><dd>Category, price range, every attribute, hours plus a year of holidays</dd>
+          <dt>Site</dt><dd>Crawlers in, text menu, answer pages, schema</dd>
+          <dt>Shift</dt><dd>The review ask, built into the check</dd>
+          <dt>Monthly</dt><dd>Ask your 15 questions, log who got named, fix every wrong fact at its source</dd>
+        </dl>
+      </div>
+      <div class="hi">
+        <h4>Dineline runs this</h4>
+        <p class="sd">Powered by Dishio, our tracking layer</p>
+        <dl>
+          <dt>Dishio</dt><dd>Installs against your POS and booking system &mdash; Toast, Square, Clover, NCR, Revel, PAR, OpenTable, Resy, SevenRooms, Olo</dd>
+          <dt>Captures</dt><dd>Walk-in, reservation, menu scan and online order as <b>one guest profile</b></dd>
+          <dt>Shows</dt><dd>Visit frequency, spend per guest, cost to bring them back</dd>
+          <dt>Then</dt><dd>Meta, Google, Instagram and YouTube behind what works &mdash; reported bi-weekly against attributed revenue</dd>
+        </dl>
+      </div>
+    </div>
+
+    <div class="kpi-row" style="margin-top:30px">
+      <div class="kpi">
+        <div class="kl">The 2027 problem</div>
+        <div class="kv">No referrer</div>
+        <div class="kn">An assistant referral arrives with no campaign tag and often no click. Analytics never sees it.</div>
+      </div>
+      <div class="kpi">
+        <div class="kl">Only place it&rsquo;s real</div>
+        <div class="kv">Your POS</div>
+        <div class="kn">Agents close the booking elsewhere. The cover and the cheque are the proof.</div>
+      </div>
+      <div class="kpi">
+        <div class="kl">Whose data</div>
+        <div class="kv">Yours</div>
+        <div class="kn">Not DoorDash&rsquo;s, not OpenTable&rsquo;s. That matters more every year.</div>
+      </div>
+      <div class="kpi">
+        <div class="kl">Your time</div>
+        <div class="kv">&lt;30 min</div>
+        <div class="kn">A month. You approve campaigns and read the numbers.</div>
+      </div>
+    </div>
+
+    <div class="callout note" style="margin-top:24px">
+      <strong>Straight with you</strong>
+      <p>
+        Our day job is paid acquisition and attribution. The answer-engine work on this page is
+        yours, and we&rsquo;d rather you ran it. We earn our keep <b>proving a visit happened when no
+        click did</b>. Brick-and-mortar, 50 locations or fewer, from one location doing $500K a year.
+      </p>
+    </div>
+  </div>
+</section>
+
 <!-- ================================================================== PLAN -->
 <section class="band" id="plan">
   <div class="wrap">
     <div class="section-head">
-      <div class="kicker">09 &middot; The plan</div>
+      <div class="kicker">07 &middot; The plan</div>
       <h2>90 days. Readable, quotable, bookable.</h2>
-      <p>Run your score first and this gets rebuilt around your own gaps.</p>
+      <p>Run your score first and this rebuilds around your own gaps.</p>
     </div>
 
     <div class="timeline">
       <div class="tl-phase">
         <div class="tp">Days 1&ndash;30</div>
         <h4>Get readable</h4>
-        <p>Let the crawlers in, then give them something to read.</p>
+        <p>Let them in, then give them something to read.</p>
         <ul>
           <li>Unblock OAI-SearchBot, PerplexityBot, ClaudeBot</li>
           <li>Check your CDN and firewall separately</li>
-          <li>Claim and verify your Google listing</li>
+          <li>Claim your Google listing</li>
           <li>Hours plus a year of holidays</li>
           <li>Specific category, price range, every attribute</li>
-          <li>Menu out of the PDF, dish names as text</li>
-          <li>Start asking for reviews that name dishes</li>
+          <li>Menu out of the PDF</li>
         </ul>
       </div>
       <div class="tl-phase">
         <div class="tp">Days 31&ndash;60</div>
         <h4>Get quotable</h4>
-        <p>Build the pages and markup that get you named.</p>
+        <p>Build what gets you named.</p>
         <ul>
-          <li>15&ndash;25 diner questions, answers in the first 40 words</li>
-          <li>Visit page: parking, transit, accessibility</li>
-          <li>State price, reservations, dietary in plain text</li>
-          <li>Restaurant schema on the homepage and menu</li>
+          <li>15&ndash;25 diner questions, answered in 40 words</li>
+          <li>Parking, transit, accessibility on one page</li>
+          <li>Price, reservations, dietary in plain text</li>
+          <li>Restaurant schema on homepage and menu</li>
           <li>Claim Apple Business Connect and Bing Places</li>
           <li>Reconcile every source to your own site</li>
         </ul>
@@ -1051,38 +824,15 @@ https://maps.app.goo.gl/…"></textarea>
       <div class="tl-phase">
         <div class="tp">Days 61&ndash;90</div>
         <h4>Get bookable</h4>
-        <p>The 2027 move. Start it now, because it depends on other people.</p>
+        <p>Start now &mdash; it depends on other people.</p>
         <ul>
           <li>Ask your booking provider: are we live in ChatGPT and Maps?</li>
           <li>Same question to your ordering provider</li>
-          <li>Find the sources AI cites for your city, claim every one</li>
-          <li>Pitch two local writers, enter the reader polls</li>
+          <li>Claim every source AI cites for your city</li>
+          <li>Pitch two local writers</li>
           <li>Connect visits at the POS so you can see it working</li>
-          <li>Run your 15 test questions, re-run your score, compare</li>
+          <li>Re-run your score and compare</li>
         </ul>
-      </div>
-    </div>
-
-    <div class="kpi-row" style="margin-top:34px">
-      <div class="kpi">
-        <div class="kl">Every month, forever</div>
-        <div class="kv">30 min</div>
-        <div class="kn">Ask your 15 questions &middot; log who got named &middot; fix every wrong fact at its source.</div>
-      </div>
-      <div class="kpi">
-        <div class="kl">Listing edits land in</div>
-        <div class="kv">Days</div>
-        <div class="kn">The fastest feedback you get. Start here.</div>
-      </div>
-      <div class="kpi">
-        <div class="kl">Site &amp; schema settle in</div>
-        <div class="kv">4&ndash;12 wks</div>
-        <div class="kn">Assistants refresh on their own schedule. Don&rsquo;t panic on day three.</div>
-      </div>
-      <div class="kpi">
-        <div class="kl">Judge the whole thing at</div>
-        <div class="kv">1 quarter</div>
-        <div class="kn">Reviews and authority compound. Not on a Tuesday.</div>
       </div>
     </div>
 
@@ -1090,9 +840,9 @@ https://maps.app.goo.gl/…"></textarea>
       <div>
         <h3>Then what?</h3>
         <p>
-          You will have a site an assistant can read, quote and book. The next question is whether
-          any of it filled a table &mdash; and that answer lives in your POS, not your analytics.
-          That is the conversation to have with us.
+          You&rsquo;ll have a site an assistant can read, quote and book. Whether any of it filled a
+          table is a question your analytics can&rsquo;t answer. That&rsquo;s the conversation to have
+          with us &mdash; free, no obligation, bring your score.
         </p>
       </div>
       <a class="btn btn-primary" href="https://dineline.co/discovery/" target="_blank" rel="noopener">Book a free demo &rarr;</a>
@@ -1129,9 +879,8 @@ https://maps.app.goo.gl/…"></textarea>
           <li><a href="#doors">The four doors</a></li>
           <li><a href="#stack">Features &amp; plugins</a></li>
           <li><a href="#schema">Schema generator</a></li>
+          <li><a href="#checklists">The checklist</a></li>
           <li><a href="#dineline">What Dineline does</a></li>
-          <li><a href="#audit">The full audit</a></li>
-          <li><a href="#checklists">Checklist</a></li>
           <li><a href="#plan">90-day plan</a></li>
         </ul>
       </div>
@@ -1158,9 +907,9 @@ https://maps.app.goo.gl/…"></textarea>
     </div>
     <hr>
     <p style="margin:0 0 10px">
-      Your audit answers, your checklist ticks and anything you paste into the checker stay in your
-      own browser — we never see them. The one-click site check is the only part that talks to a
-      server, and all it sends is the web address you typed.
+      Your restaurant details, your checklist ticks and anything you paste into the checker stay in
+      your own browser — we never see them. The one-click site check is the only part that talks to
+      a server, and all it sends is the web address you typed.
     </p>
     <p style="margin:0">
       Dates and features in section 02 were accurate when this page was written and come from
@@ -1178,13 +927,13 @@ https://maps.app.goo.gl/…"></textarea>
 <script src="assets/js/config.js"></script>
 <script src="assets/js/save.js"></script>
 <script src="assets/js/checklists.js"></script>
+<script src="assets/js/profile.js"></script>
 <script src="assets/js/checker-spec.js"></script>
 <script src="assets/js/sample.js"></script>
 <script src="assets/js/gmb.js"></script>
 <script src="assets/js/aeo.js"></script>
 <script src="assets/js/checker.js"></script>
 <script src="assets/js/analyze.js"></script>
-<script src="assets/js/audit.js"></script>
 <script src="assets/js/app.js"></script>
 </body>
 </html>

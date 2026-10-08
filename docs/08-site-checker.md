@@ -188,8 +188,8 @@ These run when you paste your full page source rather than just a schema block.
 
 The checker reads what you give it, in your browser. It cannot fetch your live site, and it
 has no view of your Google Business Profile, your reviews, your directory listings or what
-AI assistants currently say about you. Those are covered by the
-[full audit](05-audit-questions.md) and the [checklist](02-checklist.md).
+AI assistants currently say about you. The one-click check on the page covers the first
+two; the rest are in the [checklist](02-checklist.md).
 
 ---
 

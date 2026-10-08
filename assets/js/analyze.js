@@ -113,6 +113,9 @@ const Analyzer = {
     document.getElementById('analyze-status').classList.add('hidden');
     const preview = document.getElementById('checker-preview');
     if (preview) preview.classList.add('hidden');
+    /* The check already read their name, address and phone off the site, so
+       the schema generator and the prompts get them for free. */
+    if (window.Profile) Profile.applyIdentity(data.identity, data.finalUrl);
     this.render(data);
   },
 
