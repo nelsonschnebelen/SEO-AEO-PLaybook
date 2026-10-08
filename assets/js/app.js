@@ -20,6 +20,33 @@ const App = {
     this.renderHoursFields();
     this.bind();
     this.chrome();
+    this.anchors();
+  },
+
+  /* Some sections now live inside a collapsed <details> — the prompt library
+     under the checklist, for one. A plain #hash link would scroll to a closed
+     box, so open every <details> above the target before the jump lands. */
+  reveal(hash) {
+    if (!hash || hash === '#' || hash === '#top') return null;
+    let el;
+    try { el = document.querySelector(hash); } catch (e) { return null; }
+    if (!el) return null;
+    let d = el.closest('details');
+    while (d) { d.open = true; d = d.parentElement && d.parentElement.closest('details'); }
+    return el;
+  },
+
+  anchors() {
+    document.addEventListener('click', e => {
+      const a = e.target.closest('a[href^="#"]');
+      if (!a || a.hasAttribute('data-open-prompt')) return;
+      this.reveal(a.getAttribute('href'));
+    });
+    window.addEventListener('hashchange', () => this.reveal(location.hash));
+    if (location.hash) {
+      const el = this.reveal(location.hash);
+      if (el) setTimeout(() => el.scrollIntoView(), 0);
+    }
   },
 
   /* Page chrome: mobile nav, sticky header state, reading progress and the
@@ -438,6 +465,7 @@ const App = {
     }
     const card = document.querySelector('[data-prompt="' + id + '"]');
     if (!card) return;
+    this.reveal('#prompts');
     card.classList.add('open');
     const y = card.getBoundingClientRect().top + window.scrollY - 80;
     window.scrollTo({ top: y, behavior: 'smooth' });

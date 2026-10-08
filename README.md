@@ -1,11 +1,15 @@
-# The Restaurant AEO Playbook
+# The 2027 Restaurant AI Playbook
 
 **By [Dineline](https://dineline.co/)** — done-for-you restaurant marketing, tracked to the dollar.
 
-A plain-English playbook for getting a restaurant **named when people ask an AI where to eat**.
-An owner types their web address and gets a score for the two sources assistants actually read —
-their Google listing and their own site — with a ranked list of the ten things worth fixing, then a
-full self-audit, a checklist, 27 AI prompts, and a schema markup generator.
+A guided, plain-English walk-through of what AI assistants have already started doing to restaurant
+discovery, and what an owner should do about it before 2027. It opens with a one-button score, then
+takes the reader through the shift, the dated receipts for it, the four surfaces a diner now meets
+them on, the six-job stack to install, and where Dineline fits — ending in a conversation.
+
+ChatGPT has booked restaurant tables through OpenTable, Resy and Yelp since August 2026, and Google
+AI Mode answers some dining questions with a single recommendation instead of a list. The point of
+the page is that **being bookable and being readable are now the same project**.
 
 **Answer engines, not search rankings.** Title-tag lengths, meta descriptions and page-one
 positioning are out of scope. The Google Business Profile very much is *in* scope: when an
@@ -90,8 +94,8 @@ The full rule set is documented in [What the site checker looks for](docs/08-sit
 
 ### "Add your restaurant" — the self-audit
 
-The centrepiece. An owner enters their restaurant details, answers 43 plain-English questions across
-six short screens, and gets back:
+An owner enters their restaurant details, answers 37 plain-English questions across
+four short screens, and gets back:
 
 - **A score out of 100** with a grade band and an honest read on what it means
 - **A breakdown by pillar** showing exactly where the gaps are
@@ -107,21 +111,35 @@ Scoring is weighted for an independent restaurant: pillars carry different weigh
 different weights inside them, and pillars left unanswered are excluded with the remaining weights
 renormalized — so a half-finished audit still scores honestly.
 
+### The narrative sections
+
+The 2027 story the page walks a client through, in order:
+
+- **01 · The shift** — what changed between the search era, now and 2027, as a three-column chart
+- **02 · Not a prediction** — a dated timeline of what has already shipped, each row labelled
+  *Live*, *Beta* or *Unreleased* so direction is never dressed up as fact
+- **04 · The four doors** — ChatGPT, Google AI Mode and Maps, Gemini/Siri, and the pages AI quotes,
+  each with what it reads, what it can do, and the single thing that gets you in
+- **05 · Features & plugins** — the six jobs that make a site agent-readable, what does each on
+  WordPress, Shopify, Squarespace/Wix, a custom build or a provider-hosted site, five things to
+  skip (including an honest read on `llms.txt`), and the schema generator
+- **06 · Where we come in** — what the owner runs themselves versus what Dishio and Dineline do
+
 ### The playbook
 
 Twelve chapters, ordered by return on effort: the first afternoon, Google Business Profile, the
 menu problem, website foundations, local content, reviews as a system, structured data without a
 developer, how AI actually picks a restaurant, working with AI without getting burned, multiple
-locations, what to ignore, and what to measure.
+locations, what to ignore, and what to measure. Folded in under the audit as the reference layer.
 
-### Two checklists
+### The checklist
 
 **74 tickable tasks**, ordered the way an assistant meets you: can it reach you, read you, trust you, quote you.
 Progress saves to the browser. Items with a 🤖 tag link straight to a matching AI prompt.
 
 ### AI prompt library
 
-**30 prompts** for the work restaurants actually need doing — turning a photographed menu into HTML,
+**27 prompts** for the work restaurants actually need doing — turning a photographed menu into HTML,
 writing dish descriptions, generating schema, drafting review replies, mining 100 reviews for
 themes, testing what AI already says about you. They auto-fill with the restaurant's own details
 once the audit form is completed.
@@ -173,20 +191,19 @@ the page and never transmitted.
 
 The one-click check is the single exception, and it is deliberately narrow: the browser sends the
 web address the owner typed to the analyser, which fetches that public page and queries the Places
-API. It stores nothing. There is no analytics, no tracking and no account anywhere in the project. There is no analytics, no
-tracking, no network request of any kind, and no backend to send anything to.
+API. It stores nothing. There is no analytics, no tracking and no account anywhere in the project.
 
 ---
 
 ## Project structure
 
 ```
-index.html                  The whole site — one page, anchored sections
+index.html                  The whole site — one page, nine anchored sections
 assets/
   css/styles.css            Design system; light and dark, print stylesheet
-  js/data.js                7 pillars, 43 audit questions, score bands
-  js/prompts.js             30 AI prompts + categories
-  js/checklists.js          118 checklist items across two tracks
+  js/data.js                6 pillars, 37 audit questions, score bands
+  js/prompts.js             27 AI prompts across 8 categories
+  js/checklists.js          74 checklist items, one AEO track
   js/config.js              Where the analyser lives; empty = paste-only mode
   js/checker-spec.js        What the site checker looks for, and why
   js/checker.js             Checker engine (parse, analyse, rebuild) + its UI

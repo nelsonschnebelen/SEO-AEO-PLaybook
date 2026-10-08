@@ -1042,6 +1042,65 @@ tbody tr:hover { background: color-mix(in srgb, var(--paper-3) 45%, transparent)
 .site-footer ul { list-style: none; padding: 0; margin: 0; }
 .site-footer li { margin-bottom: 6px; }
 
+/* ------------------------------------------- 2027: answer-card reserve action */
+.ac-action { display: flex; align-items: center; gap: 11px; flex-wrap: wrap; margin: 2px 0 14px; }
+.ac-btn {
+  font: 800 .78rem/1 var(--sans); background: var(--brand); color: var(--brand-ink);
+  padding: 9px 15px; border-radius: var(--r-pill); white-space: nowrap;
+}
+.ac-via { font-size: .78rem; color: var(--ink-3); }
+
+/* ------------------------------------------------- 2027: highlighted era card */
+.split > div.hi {
+  background: var(--brand-wash);
+  box-shadow: inset 0 3px 0 var(--brand);
+}
+.split > div.hi h4 { color: var(--ink); }
+.split > div.hi dt { color: var(--brand-2); }
+
+/* ------------------------------------------------------- 2027: shipped timeline */
+.ships { list-style: none; margin: 0; padding: 0; }
+.ship {
+  display: grid; grid-template-columns: 148px 1fr; gap: 8px 22px; align-items: start;
+  padding: 20px 0; margin: 0; border-bottom: 1px solid var(--line);
+}
+.ship:last-child { border-bottom: 0; }
+.ship::marker { content: none; }
+.ship-when {
+  display: flex; flex-direction: column; align-items: flex-start; gap: 8px;
+  font: 700 .82rem/1.3 var(--sans); color: var(--ink-3);
+  letter-spacing: .04em; text-transform: uppercase; padding-top: 3px;
+}
+.pill-live, .pill-test, .pill-soon {
+  font: 700 .7rem/1 var(--sans); padding: 5px 10px; border-radius: var(--r-pill);
+  letter-spacing: .02em; text-transform: none; white-space: nowrap;
+}
+.pill-live { background: var(--good-wash); color: var(--good); border: 1px solid color-mix(in srgb, var(--good) 22%, transparent); }
+.pill-test { background: var(--warn-wash); color: var(--warn-ink); border: 1px solid color-mix(in srgb, var(--warn) 30%, transparent); }
+.pill-soon { background: var(--paper-3); color: var(--ink-3); border: 1px solid var(--line-2); }
+.ship-what { min-width: 0; }
+.ship-what h4 { margin: 0 0 7px; font-size: 1.08rem; letter-spacing: -.02em; }
+.ship-what p { margin: 0; font-size: .93rem; color: var(--ink-2); line-height: 1.6; }
+@media (max-width: 620px) {
+  .ship { grid-template-columns: 1fr; gap: 10px; }
+  .ship-when { flex-direction: row; align-items: center; padding-top: 0; }
+}
+
+/* --------------------------------------------------------- 2027: skip list */
+.win.no { background: var(--bad-wash); border-color: color-mix(in srgb, var(--bad) 18%, transparent); }
+.win.no .tick { color: var(--bad); font-size: 1.05rem; line-height: 1.2; }
+
+/* ----------------------------------------------------- 2027: closing CTA band */
+.cta-close {
+  display: grid; grid-template-columns: 1fr auto; gap: 22px 30px; align-items: center;
+  margin-top: 34px; padding: 26px 28px; border-radius: var(--r);
+  background: var(--paper-4); border: 1px solid var(--line-2);
+}
+.cta-close h3 { margin: 0 0 7px; font-size: 1.22rem; letter-spacing: -.02em; }
+.cta-close p { margin: 0; font-size: .93rem; color: var(--ink-2); line-height: 1.6; max-width: 62ch; }
+.cta-close .btn { flex: 0 0 auto; }
+@media (max-width: 720px) { .cta-close { grid-template-columns: 1fr; } }
+
 /* ------------------------------------------------------------- reveal */
 .reveal { opacity: 0; transform: translateY(14px); transition: opacity .6s var(--ease), transform .6s var(--ease); }
 .reveal.in { opacity: 1; transform: none; }
