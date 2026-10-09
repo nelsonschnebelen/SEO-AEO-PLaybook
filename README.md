@@ -26,8 +26,8 @@ Open `index.html` in a browser. That is the whole install — it is a static sit
 no dependencies and no server.
 
 ```bash
-git clone https://github.com/nelsonschnebelen/SEO-AEO-PLaybook.git
-cd SEO-AEO-PLaybook
+git clone https://github.com/nelsonschnebelen/The-2027-Restaurant-AI-Playbook-Dineline.git
+cd The-2027-Restaurant-AI-Playbook-Dineline
 open index.html          # macOS  ·  xdg-open on Linux  ·  start on Windows
 ```
 
@@ -44,7 +44,8 @@ A workflow is already here. One switch to flip:
 > **Settings → Pages → Build and deployment → Source: *GitHub Actions***
 
 That is the whole setup. Every push to the default branch republishes, and the site lands at
-`https://<user>.github.io/SEO-AEO-PLaybook/`, with the one-file copy alongside it at
+`https://nelsonschnebelen.github.io/The-2027-Restaurant-AI-Playbook-Dineline/`, with the
+one-file copy alongside it at
 `/playbook.html`.
 
 The deploy is gated: it runs `tools/validate.js` and refuses to publish if any number on the page
