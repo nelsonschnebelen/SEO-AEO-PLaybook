@@ -37,8 +37,28 @@ To switch on the one-click check, deploy [`api/`](api/README.md) and put its URL
 Need a single file to email or drop on any host? `node tools/build-single-file.js` inlines the CSS,
 JS and logo into one self-contained `dist/playbook.html` that opens on a labelled sample report.
 
-Or host it anywhere that serves static files — GitHub Pages, Netlify, Cloudflare Pages, an S3
-bucket. Nothing needs configuring.
+### Host it on GitHub Pages
+
+A workflow is already here. One switch to flip:
+
+> **Settings → Pages → Build and deployment → Source: *GitHub Actions***
+
+That is the whole setup. Every push to the default branch republishes, and the site lands at
+`https://<user>.github.io/SEO-AEO-PLaybook/`, with the one-file copy alongside it at
+`/playbook.html`.
+
+The deploy is gated: it runs `tools/validate.js` and refuses to publish if any number on the page
+has drifted from the data behind it, if an in-page anchor is dead, or if `docs/` is stale against
+`assets/js/`. Paths in the page are all relative, so the project subpath works untouched.
+
+**The hosted copy has no analyser behind it**, so the one-click check degrades to the sample report
+and the paste flow, and says so. To switch it on, deploy [`api/`](api/README.md) and set a
+repository variable — *Settings → Secrets and variables → Actions → Variables* —
+named `AEO_API_BASE` to the service URL. That is a plain endpoint, not a credential; the Places
+API key stays server-side in the worker, and `assets/js/config.js` ships empty either way.
+
+Or host it anywhere else that serves static files — Netlify, Cloudflare Pages, an S3 bucket.
+Nothing needs configuring.
 
 ---
 
@@ -195,6 +215,7 @@ assets/
   img/dineline.svg          Wordmark (light + dark variants)
   js/app.js                 Page chrome, checklists, prompt library, schema generator
 api/                        The analyser service — see api/README.md
+tools/validate.js           Integrity check — CI will not deploy if it fails
 tools/build-single-file.js  Bundles everything into one shareable .html
 docs/                       Markdown editions (some generated — see below)
 tools/build-docs.js         Regenerates the generated docs from assets/js/

@@ -1,0 +1,102 @@
+# Publishes the playbook to GitHub Pages.
+#
+# One-time setup: Settings -> Pages -> Build and deployment -> Source:
+# "GitHub Actions". Nothing else to configure.
+#
+# The deploy is gated on tools/validate.js, so the live page can never claim
+# "45 checks" while the data says something else, and on the generated docs
+# being current — docs/ is built from assets/js/, and a stale copy means the
+# Markdown and the page disagree.
+name: Pages
+
+on:
+  push:
+    branches:
+      - claude/restaurant-seo-aeo-playbook-9s0afw
+      - main
+      - master
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Never let two deploys race; always finish the one in flight.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Check the page against its own data
+        run: node tools/validate.js
+
+      - name: Check the generated docs are current
+        run: |
+          node tools/build-docs.js
+          git diff --exit-code -- docs/ \
+            || { echo "::error::docs/ is stale — run 'node tools/build-docs.js' and commit the result"; exit 1; }
+
+      # The analyser is a separate service (see api/README.md). Deploy it, then
+      # set the repository variable AEO_API_BASE to its URL — Settings ->
+      # Secrets and variables -> Actions -> Variables — and the hosted page's
+      # one-click check starts working. It is a plain endpoint URL, not a
+      # credential; the Places API key stays server-side in the worker.
+      # Left unset, the page degrades to the sample and paste flows and says so.
+      - name: Point the hosted copy at the analyser, if there is one
+        env:
+          API_BASE: ${{ vars.AEO_API_BASE }}
+        run: |
+          if [ -z "$API_BASE" ]; then
+            echo "AEO_API_BASE not set — publishing in paste-only mode."
+            exit 0
+          fi
+          case "$API_BASE" in
+            https://*) ;;
+            *) echo "::error::AEO_API_BASE must be an https:// URL"; exit 1 ;;
+          esac
+          node -e '
+            const fs = require("fs"), f = "assets/js/config.js";
+            const base = process.env.API_BASE.replace(/\/+$/, "");
+            const src = fs.readFileSync(f, "utf8");
+            const out = src.replace(/apiBase: (?:""|\x27\x27)/, "apiBase: " + JSON.stringify(base));
+            if (out === src) { console.error("no empty apiBase to set in " + f); process.exit(1); }
+            fs.writeFileSync(f, out);
+          '
+          echo "Hosted copy will call $API_BASE"
+
+      - name: Build the single-file copy
+        run: node tools/build-single-file.js
+
+      - name: Assemble the site
+        run: |
+          mkdir -p _site
+          cp index.html README.md _site/
+          cp -r assets docs _site/
+          # One self-contained file to email or drop on any host.
+          cp dist/playbook.html _site/playbook.html
+          # Serve every path verbatim; no Jekyll pass.
+          touch _site/.nojekyll
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

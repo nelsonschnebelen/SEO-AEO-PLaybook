@@ -44,11 +44,14 @@ const Analyzer = {
   /* No analyser deployed yet — say so plainly and open the paste flow,
      rather than letting the button fail silently. */
   showUnconfigured() {
+    /* Lead with what the visitor can still do. The copy that only matters to
+       whoever runs the site goes last, in brackets. */
     document.getElementById('url-note').innerHTML =
-      '<b>Live scoring is not switched on for this copy yet</b> &mdash; see the sample report below ' +
-      'for what you get, or <a href="#paste-fallback" id="open-paste">paste your page source</a> ' +
-      'to run the website checks right now. Turning on the one-click version takes about ten ' +
-      'minutes (<code>api/README.md</code>).';
+      '<b>Live scoring is not switched on for this copy.</b> ' +
+      'See the sample report below for what you get, or ' +
+      '<a href="#paste-fallback" id="open-paste">paste your page source</a> to run the site ' +
+      'checks right now. <span class="muted">(Running your own copy? <code>api/README.md</code> ' +
+      'switches this on in about ten minutes.)</span>';
     const open = document.getElementById('open-paste');
     if (open) open.addEventListener('click', e => {
       e.preventDefault();

@@ -31,8 +31,9 @@ if (!scripts.length) throw new Error('no local scripts found in index.html');
 let bundle = scripts.map(m => {
   let src = read(m[1]);
   if (m[1].endsWith('config.js')) {
-    // No analyser in a shared preview: open on the sample instead.
-    src = src.replace(/apiBase: '[^']*'/, "apiBase: ''")
+    // No analyser in a shared preview: open on the sample instead. Match
+    // either quote style — CI may have written an apiBase in here.
+    src = src.replace(/apiBase: (?:'[^']*'|"[^"]*")/, "apiBase: ''")
              .replace('window.DINELINE_CONFIG = {', 'window.DINELINE_CONFIG = {\n  autoSample: true,');
   }
   return '/* ===== ' + m[1] + ' ===== */\n' + src;
